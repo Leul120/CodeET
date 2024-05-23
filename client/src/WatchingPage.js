@@ -27,7 +27,7 @@ const WatchingPage = () => {
     console.log(token)
     const filter=async ()=>{
       
-      const response=await axios.get(`http://localhost:8000/api/${courseID}`,{withCredentials: true,
+      const response=await axios.get(`${process.env.URL}/api/${courseID}`,{withCredentials: true,
         headers:{
           Authorization:`Bearer ${token}`
         }}
