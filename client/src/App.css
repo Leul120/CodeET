@@ -1,0 +1,6 @@
+.video{
+    height: 30rem;
+    max-width:100rem ;
+    display:flex;
+    justify-content: center;
+}
