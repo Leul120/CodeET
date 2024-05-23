@@ -25,7 +25,7 @@ const Login = () => {
       if(user){
         navigate('/')
       }
-    },[user])
+    },[])
     
     const loginSchema=yup.object().shape({
         email:yup.string().email('Please Provide A Valid Email').required("Email Required"),
