@@ -8,15 +8,11 @@ const User=require('../models/UserModel')
 const axios=require('axios')
 
 const CHAPA_URL = "https://api.chapa.co/v1/transaction/initialize"
-const CHAPA_AUTH = process.env.CHAPA_AUTH // || register to chapa and get the key
+ // || register to chapa and get the key
 
 
 // req header with chapa secret key
-const config = {
-    headers: {
-        Authorization: `Bearer ${CHAPA_AUTH}`
-    }
-}
+
 
 exports.pay= async (req, res) => {
         const courseID=req.params.courseID
@@ -27,7 +23,7 @@ exports.pay= async (req, res) => {
         console.log(courseID)
         // const user=await User.findById(req.params.userID)
          // chapa redirect you to this url when payment is successful
-        const CALLBACK_URL = `http://localhost:8000/api/verify-payment/${courseID}/${userID}/`
+        const CALLBACK_URL = `${process.env.MAIN_URL}/api/verify-payment/${courseID}/${userID}/`
         const RETURN_URL = `http://localhost:3000`
 
         // a unique reference given to every transaction
@@ -46,15 +42,14 @@ exports.pay= async (req, res) => {
            
         }
 
-        console.log(data)
+    console.log(data)
         try{
         const response=await axios.post("https://api.chapa.co/v1/transaction/initialize", data, {
     headers: {
-        Authorization: "Bearer CHASECK_TEST-EqQOEHfuqjYtcueTtuMht1oMicnQNczz"
+        Authorization: `Bearer ${process.env.CHAPA_AUTH}`
     },
     timeout: 10000 // increase timeout to 10 seconds
 })
-        console.log(response)
         const responsed=response.data
         console.log(response.data.data.checkout_url)
         res.status(200).json({
@@ -79,13 +74,14 @@ exports.verifyPayment= async (req, res) => {
         //verify the transaction 
         await axios.get("https://api.chapa.co/v1/transaction/verify/" + req.params.id,{
             headers: {
-                Authorization: "Bearer CHASECK_TEST-EqQOEHfuqjYtcueTtuMht1oMicnQNczz"
+                Authorization:`Bearer ${process.env.CHAPA_AUTH}`
             }
         } )
             .then(async (response) => {
                 const responsed=response.data
                 console.log("Payment was successfully verified")
-                await User.findByIdAndUpdate(userID, { $push: { courses: courseID } });
+                const user=await User.findByIdAndUpdate(userID, { $push: { courses: courseID } });
+                console.log(user)
                 await Course.findByIdAndUpdate(courseID, { $inc: { bought: 1 } });
                 res.status(200).json({
                     status:"success",
