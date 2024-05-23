@@ -1,15 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 // import {AppContext} from './App'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
 import { FaRegEye } from 'react-icons/fa6'
-
-import { AppContext } from './App';
 import {useNavigate} from 'react-router-dom'
 import {message} from 'antd'
 
@@ -21,27 +19,14 @@ const Login = () => {
     // let {user,setUser}=useContext(AppContext)
     const navigate=useNavigate()
      const user=JSON.parse(window.localStorage.getItem('user'))
+     
     useEffect(()=>{
       
       if(user){
         navigate('/')
       }
-    },[])
-    // const history=useHistory()
-    // const [email,setEmail]=useState('')
-    // const [password,setPassword]=useState('')
-    // const setAuthorizationCookie =  (minutes) => {
-    // //   if(data?.status==='success'){
-    // //   const expirationDate = new Date();
-    // //   expirationDate.setTime(expirationDate.getTime() + minutes * 60 * 1000);
-    // //   console.log(data?.token)
-    // //  Cookies.set('authorization',data?.token, {
-    // //     expires: expirationDate,
-    // //   });
-    // //   console.log('Cookie set!');
-    // //   console.log(expirationDate)
-      
-    // };
+    },[user])
+    
     const loginSchema=yup.object().shape({
         email:yup.string().email('Please Provide A Valid Email').required("Email Required"),
         password:yup.string().required().min(8)
