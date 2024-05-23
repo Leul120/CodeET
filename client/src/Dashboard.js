@@ -36,7 +36,7 @@ useEffect(() => {
       if (!hasRun.current) {
         hasRun.current = true;
         const promises = courseID?.map(async (courseId) => {
-          const res = await axios.get(`http://localhost:8000/api/${courseId}`, {
+          const res = await axios.get(`${process.env.URL}/api/${courseId}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
