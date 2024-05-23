@@ -35,7 +35,7 @@ console.log(userID)
 console.log(courseID)
 const paymentData=async (data)=>{
     console.log(data)
-    await axios.post(`${process.env.REACT_URL}/api/pay/${courseID}/${userID}`,data).then(async (response)=>{
+    await axios.post(`${process.env.REACT_APP_URL}/api/pay/${courseID}/${userID}`,data).then(async (response)=>{
         console.log(response.data)
         window.open(response.data.responsed.data.checkout_url, '_self');
         
