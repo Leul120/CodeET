@@ -29,7 +29,7 @@ const SingleCourse = () => {
   const filter = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`${process.env.REACT_URL}/api/course/?_id=${courseID}`);
+      const response = await axios.get(`${process.env.REACT_APP_URL}/api/course/?_id=${courseID}`);
       if (response.data.courses) {
         console.log(response.data.courses);
         setIsLoading(false);
@@ -57,7 +57,7 @@ const SingleCourse = () => {
   const findUser=async ()=>{
     try{
         
-const response=await axios.get(`${process.env.REACT_URL}/users/${userID}`)
+const response=await axios.get(`${process.env.REACT_APP_URL}/users/${userID}`)
 console.log(response.data.user)
 window.localStorage.setItem('user',JSON.stringify(response.data.user))
     }catch(error){
