@@ -9,4 +9,10 @@ router.route('/users/signup').post(signup)
 router.route('/users/login').post(login)
 router.route('/users/forget-password').post(login)
 router.route('/verify-email').post(verifyEmail)
+router.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Welcome to the User API!'
+  });
+});
 module.exports=router
