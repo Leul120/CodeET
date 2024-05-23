@@ -17,12 +17,13 @@ const Navbar = () => {
   const {courses,setText,setCourses,text,user,setUser,page,setPage,isLoading,setIsLoading,refetcher}=useContext(AppContext)
   const [open, setOpen] = useState(false);
   const [tx,setTx]=useState("")
-console.log(page)
+
+console.log(user)
   useEffect(()=>{
     setUser(JSON.parse(window.localStorage.getItem('user')))
     
-  },[page,setUser])
-  
+  },[page])
+  console.log(user)
 //   const caller=async ()=>{
 //     setIsLoading(true)
    
@@ -91,14 +92,14 @@ const cancel = (e) => {
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
       <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
       {!user && <Menu.Item key="login" icon={<IoIosLogIn/>}><Link to='/login'>Login</Link></Menu.Item>}
-      {user && <Menu.SubMenu key='logout' icon={<RxAvatar/>} title={user.name}><Menu.Item ><Popconfirm
+      {user && <Menu.SubMenu key='logout' icon={<RxAvatar/>} title={user.name}><Menu.Item><Popconfirm
     title="Log Out"
     description="Are you sure to Log Out?"
     onConfirm={Logout}
     onCancel={cancel}
     okText="Yes"
     cancelText="No"
-  ><button className='m-0 h-full'>Log Out</button></Popconfirm></Menu.Item></Menu.SubMenu>}
+  ><button className='m-0 h-full w-full'>Log Out</button></Popconfirm></Menu.Item></Menu.SubMenu>}
      </Menu>
       </Drawer>
 
@@ -119,14 +120,14 @@ const cancel = (e) => {
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
       <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
       {!user && <Menu.Item key="login" icon={<IoIosLogIn/>}><Link to='/login'>Login</Link></Menu.Item>}
-      {user && <Menu.Item key="lodde"  className='float-right text-black'><Menu.SubMenu key='logout' icon={<RxAvatar/>} title={user.name}><Menu.Item ><Popconfirm
+      {user && <Menu.SubMenu key='logout' icon={<RxAvatar/>} title={user.name}><Menu.Item ><Popconfirm
     title="Log Out"
     description="Are you sure to Log Out?"
     onConfirm={Logout}
     onCancel={cancel}
     okText="Yes"
     cancelText="No"
-  ><Button className='w-full h-full ring-0 hover:ring-0'>Log Out</Button></Popconfirm></Menu.Item></Menu.SubMenu></Menu.Item>}
+  ><button className='w-full h-full ring-0 w-full hover:ring-0'>Log Out</button></Popconfirm></Menu.Item></Menu.SubMenu>}
      </Menu>
 
 
