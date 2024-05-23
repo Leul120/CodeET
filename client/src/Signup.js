@@ -41,7 +41,7 @@ function Signup() {
     })
 const poster=async (data)=>{
   try{
-    const response=await axios.post('http://localhost:8000/users/signup',data)
+    const response=await axios.post(`${process.env.REACT_URL}/users/signup`,data)
     console.log(response.data.data.user)
     if(response?.data.status==='success'){
       window.localStorage.setItem('user',JSON.stringify(response.data.data.user))
