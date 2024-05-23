@@ -61,7 +61,9 @@ const response=await axios.get(`${process.env.REACT_APP_URL}/users/${userID}`)
 console.log(response.data.user)
 window.localStorage.setItem('user',JSON.stringify(response.data.user))
     }catch(error){
-        console.log(error)
+        return(
+          <h1>Network Error</h1>
+        )
     }
 }
   return (
