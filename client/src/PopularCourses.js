@@ -13,8 +13,8 @@ import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io'
 
 
 const PopularCourses = () => {
-    const {courses,text,setCourses,page,setPage,isLoading,setIsLoading,setRefetcher,sort,setSort}=useContext(AppContext)
-    const [user,setUser]=useState({})
+    const {courses,text,setCourses,page,setPage,isLoading,setIsLoading,setRefetcher,sort,setSort,user,setUser}=useContext(AppContext)
+    // const [user,setUser]=useState({})
     console.log(sort)
    useEffect(() => {
 
@@ -71,7 +71,7 @@ console.log(process.env.REACT_APP_URL)
 
           
         </div>
-        <section className='pl-24 bg-gradient-to-t from-slate-950 to-slate-100'>
+        <section className='pl-24 bg-gradient-to-t from-slate-700 to-slate-100'>
     <Description/>
    
     <div className='xs:grid gap-5 flex flex-row flex-wrap xs:grid-cols-2  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4 '>
@@ -80,7 +80,7 @@ console.log(process.env.REACT_APP_URL)
             return(
                 // <div className='p-1 mt-1 w-44 h-48 xs:h-64 xs:w-auto border-spacing-1 border border-border rounded-lg bg-slate-800 shadow-md shadow-slate-600 flex justify-center object-fill'>
                 <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-32 xs:w-96 rounded-lg ' loading='lazy'/>
-                <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full bg-gradient-to-r from-orange-600 to-green-800 text-transparent bg-clip-text' key={Math.random()}>{course.Title}</p>
+                <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text' key={Math.random()}>{course.Title}</p>
                 <p className='text-red-300 text-sm bg-gradient-to-r from-stone-200 to-orange-400 text-transparent bg-clip-text' key={Math.random()}>Released: {date}</p>
                 <p className='text-red-200 text-sm' key={Math.random()}>Rating: {course.Rating}</p>
                 <p className='text-red-300 text-sm bg-gradient-to-r from-stone-200 to-orange-400 text-transparent bg-clip-text' key={Math.random()}>{course.bought} {" "} people bought</p>
