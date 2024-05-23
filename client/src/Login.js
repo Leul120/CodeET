@@ -50,7 +50,7 @@ const Login = () => {
       const dataPost=async (value)=>{
         try{
           setIsLoading(true)
-        const response=await axios.post(`${process.env.URL}/users/login`,value)
+        const response=await axios.post(`${process.env.REACT_URL}/users/login`,value)
         if(response?.data.status==='success'){
           setErrored("")
           setIsLoading(false)
