@@ -40,7 +40,7 @@ const PopularCourses = () => {
       setPage(1)
     }
     
-
+console.log(process.env.REACT_APP_URL)
   return (
     <>
     {isLoading?(<div role="status" className='flex justify-center items-center mt-56 text-3xl bg-transparent'>
