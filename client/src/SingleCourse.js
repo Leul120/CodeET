@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import { AppContext } from './App';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 const SingleCourse = () => {
   const { user, setUser,enrolled,setEnrolled,course,setCourse,isLoading,setIsLoading } = useContext(AppContext);
+  const [error,setError]=useState(false)
   useEffect(() => {
     findUser()
     filter();
@@ -26,7 +27,7 @@ const SingleCourse = () => {
     setEnrolled(true)
   }else if(user && !user.courses.includes(courseID)){
     setEnrolled(false)
-  }},[user,courseID])
+  }},[user,setEnrolled])
 
 
   
@@ -40,13 +41,16 @@ const SingleCourse = () => {
       setIsLoading(true);
       const response = await axios.get(`${process.env.REACT_APP_URL}/api/course/?_id=${courseID}`);
       if (response.data.courses) {
+        setError(false)
         console.log(response.data.courses);
         setIsLoading(false);
       }
       setCourse(response.data.courses[0]);
     } catch (error) {
       console.error(error);
+      
       setIsLoading(false);
+      setError(true)
     }
   };
  
