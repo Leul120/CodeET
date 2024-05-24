@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './App.css'
 import 'react-html5video/dist/styles.css'
-import introVideo from './2a6700dc41e61f6f53bb8cfd2c269188.mp4'
+// import introVideo from './2a6700dc41e61f6f53bb8cfd2c269188.mp4'
 import { useParams } from 'react-router-dom'
-import ReactPlayer from 'react-player'
+
 import axios from 'axios'
 import { AppContext } from './App'
-import Cookies from 'js-cookie'
 import { useQuery } from 'react-query'
-import Login from './Login'
+
 import { useNavigate } from 'react-router-dom'
 const WatchingPage = () => {
   const {enrolled,user}=useContext(AppContext)
@@ -24,7 +23,6 @@ const WatchingPage = () => {
       }
     })
     
-    console.log(token)
     const filter=async ()=>{
       
       const response=await axios.get(`${process.env.REACT_APP_URL}/api/${courseID}`,{withCredentials: true,
@@ -32,10 +30,9 @@ const WatchingPage = () => {
           Authorization:`Bearer ${token}`
         }}
       )
-      console.log(response.data.course)
       return response.data.courses
     }
-        const {data,isLoading,error,isFetched,refetch}=useQuery("singleCourse",filter)
+        const {data,error,isFetched}=useQuery("singleCourse",filter)
         useEffect(()=>{
           if(data){
           setCourse(data)}},[setCourse,data])
