@@ -15,7 +15,7 @@ import {message} from 'antd'
 const Login = () => {
     const [types,setTypes]=useState('password')
     const [errored,setErrored]=useState("")
-    const [isLoading,setIsLoading]=useState(false)
+    
     // let {user,setUser}=useContext(AppContext)
     const navigate=useNavigate()
      const user=JSON.parse(window.localStorage.getItem('user'))
@@ -34,25 +34,21 @@ const Login = () => {
     }) 
       const dataPost=async (value)=>{
         try{
-          setIsLoading(true)
+     
         const response=await axios.post(`${process.env.REACT_APP_URL}/users/login`,value)
         if(response?.data.status==='success'){
           setErrored("")
-          setIsLoading(false)
+         
          message.success('Logged In Successfully')
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
-          console.log(response.data.token)
+          
           const custom=btoa(response.data.token)
-          // Cookies.set('authorization',response.data.token)
+          
           window.localStorage.setItem('token',custom)
-          // setName(response.data.user.name)
-          console.log(response.data.user)
-          // setUser(response?.data.user)
           window.localStorage.setItem('user',JSON.stringify(response.data.user))
          navigate(-1)
         }
-        // setUser(response?.data.user)
       }catch(error){
           setErrored("Incorrect Email or Password!")
         }}
