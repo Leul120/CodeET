@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect} from 'react';
 import { AppContext } from './App';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -40,25 +40,19 @@ const SingleCourse = () => {
       setIsLoading(false);
     }
   };
-  console.log(user)
  
   useEffect(()=>{
   if(user && user.courses.includes(courseID)){
-    console.log("true")
     setEnrolled(true)
   }else if(user && !user.courses.includes(courseID)){
-    console.log("false")
     setEnrolled(false)
   }},[user,setEnrolled])
 
   const userID=user?._id
-  console.log(userID)
-  console.log(user?.courses)
   const findUser=async ()=>{
     try{
         
 const response=await axios.get(`${process.env.REACT_APP_URL}/users/${userID}`)
-console.log(response.data.user)
 window.localStorage.setItem('user',JSON.stringify(response.data.user))
     }catch(error){
         return(
