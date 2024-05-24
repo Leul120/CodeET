@@ -10,6 +10,15 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 const SingleCourse = () => {
   const { user, setUser,enrolled,setEnrolled,course,setCourse,isLoading,setIsLoading } = useContext(AppContext);
+  useEffect(() => {
+    findUser()
+    filter();
+    
+  }, []);
+  useEffect(() => {
+    
+    setUser(JSON.parse(window.localStorage.getItem('user')));
+  }, []);
 
   const { courseID } = useParams();
   useEffect(()=>{
@@ -19,17 +28,11 @@ const SingleCourse = () => {
     setEnrolled(false)
   }},[user,courseID])
 
-  useEffect(() => {
-    findUser()
-    filter();
-    
-  }, []);
+
+  
   let token=window.localStorage.getItem('token')
    token=atob(token)
-  useEffect(() => {
-    
-    setUser(JSON.parse(window.localStorage.getItem('user')));
-  }, []);
+  
   const navigate=useNavigate()
   console.log(token)
   const filter = async () => {
