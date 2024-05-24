@@ -5,54 +5,40 @@ import { RxAvatar, RxDashboard } from "react-icons/rx";
 import { Menu, Popconfirm ,Drawer} from 'antd';
 import { AppContext } from './App';
 import { Link } from 'react-router-dom';
-import { fetchCourses } from './Home';
-import { useQuery } from 'react-query';
+
 import Cookies from 'js-cookie'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Button, message } from 'antd';
-import {LoadingOutlined}from '@ant-design/icons'
+import {  message } from 'antd';
+
 
 const Navbar = () => {
-  const {courses,setText,setCourses,text,user,setUser,page,setPage,isLoading,setIsLoading,refetcher}=useContext(AppContext)
+  const {courses,setText,user,setUser,page,setPage,isLoading,setIsLoading}=useContext(AppContext)
   const [open, setOpen] = useState(false);
   const [tx,setTx]=useState("")
 
-console.log(user)
+
   useEffect(()=>{
     setUser(JSON.parse(window.localStorage.getItem('user')))
     
   },[page])
-  console.log(user)
-//   const caller=async ()=>{
-//     setIsLoading(true)
-   
-//    const fetchedCourses=fetchCourses(page,text)
-//    setCourses(fetchedCourses)
-   
-// }
-  // let {data,refetch}=useQuery('course',caller)
-  // if(data){
-  //   setIsLoading(false)
-  //   setCourses(data)
-  // }
-  
+ 
+
   const fetcher=async ()=>{
     setIsLoading(true)
     setText(tx)
     setIsLoading(false)
 }
-console.log(courses)
+
 const Logout=()=>{
   Cookies.remove('authorization')
   window.localStorage.removeItem('user')
   setUser(null)
-  console.log("logged out")
+  
 
   message.success('Logged out Successfully');
 }
 const cancel = (e) => {
-  console.log(e);
   message.error('Cancelled Log Out');
 };
 
