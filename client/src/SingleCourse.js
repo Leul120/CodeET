@@ -46,7 +46,7 @@ const SingleCourse = () => {
     setEnrolled(true)
   }else if(user && !user.courses.includes(courseID)){
     setEnrolled(false)
-  }},[user,setEnrolled])
+  }},[user,courseID])
 
   const userID=user?._id
   const findUser=async ()=>{
