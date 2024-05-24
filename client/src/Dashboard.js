@@ -6,18 +6,13 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { AppContext } from './App';
 
 const Dashboard = () => {
-    // const [courseID,setCourseID]=useState([])
     const {user,setUser,isLoading,setIsLoading}=useContext(AppContext)
     let [course,setCourse]=useState([])
-    
-    
-    let coursed=[]
     const storedUser=JSON.parse(window.localStorage.getItem('user'))
     const userID=storedUser?._id
     console.log(userID)
     let token= atob(window.localStorage.getItem('token'))
     console.log(token)
-    const courseID=storedUser?.courses
     useEffect(() => {
         setUser(JSON.parse(window.localStorage.getItem('user')));
       }, [setUser]);
@@ -27,39 +22,23 @@ const Dashboard = () => {
         setIsLoading(true)
     },[setIsLoading])
 
-            const hasRun = useRef(false);
 
 
 
 useEffect(() => {
     const fetchCourses = async () => {
-      if (!hasRun.current) {
-        hasRun.current = true;
-        const promises = courseID?.map(async (courseId) => {
-          const res = await axios.get(`${process.env.REACT_APP_URL}/api/${courseId}`, {
+          const res = await axios.get(`${process.env.REACT_APP_URL}/api/dashboard/${userID}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
-          console.log(res.data.course);
-          return res?.data.course;
-        });
-        let allCourses;
-        if(promises){
-            allCourses= await Promise.all(promises);}
-        setCourse(allCourses);
+          setCourse(res.data.courses);
         setIsLoading(false);
       }
-    };
   
     fetchCourses();
   }, []);
-    // }catch(error){
-    //     console.log(error)
-    // }}
-
-    
-    // console.log(course.length)
+  
     console.log("hello")
   return (
     <div >
