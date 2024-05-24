@@ -1,4 +1,5 @@
 const Course=require('../models/CourseModel')
+const User=require('../models/UserModel')
 const ApiFeatures=require('../utils/ApiFeatures')
 const catchAsync=require('../utils/catchAsync')
 const aliasTopCourses=(req,res,next)=>{
@@ -95,5 +96,16 @@ const getMonthlyPlan=catchAsync(async (req,res)=>{
       }
   ])
 })
+const dashboard=catchAsync(async (req,res)=>{
+  const userID = req.params.userID;
+      const user = await User.findOne({ _id: userID });
+    let courses=[];
+    const course=user.courses
+      for(let i=0;i<course.length;i++){
+       courses.push(await Course.findById({_id:course[i]}))
+      }
+      res.status(200).json({courses})
 
-module.exports={getAllCourses,PostCourses,getCourse,updateCourse,deleteCourse,aliasTopCourses,getCourseStat}
+})
+
+module.exports={getAllCourses,PostCourses,getCourse,updateCourse,deleteCourse,aliasTopCourses,getCourseStat,dashboard}
