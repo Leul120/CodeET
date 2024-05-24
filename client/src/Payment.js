@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Input } from 'antd'
 import axios from 'axios'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect} from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as yup from 'yup'
@@ -11,11 +10,11 @@ import { AppContext } from './App'
 const Payment = () => {
     const navigate=useNavigate()
     const {course,user}=useContext(AppContext)
-    // useEffect(()=>{
+    useEffect(()=>{
         if(!user){
             navigate('/login')
         }
-    // },[])
+    },[])
     const paymentSchema=yup.object().shape({
         first_name:yup.string().required(),
         last_name:yup.string().required(),
@@ -26,24 +25,20 @@ const Payment = () => {
         const {handleSubmit,register}=useForm({
             resolver:yupResolver(paymentSchema)
         })
-// console.log(data)
-console.log("heloo")
 const {courseID}=useParams()
 let {userID}=useParams()
-// userID=userID.userID
-console.log(userID)
-console.log(courseID)
+
+
 const paymentData=async (data)=>{
-    console.log(data)
+ 
     await axios.post(`${process.env.REACT_APP_URL}/api/pay/${courseID}/${userID}`,data).then(async (response)=>{
         console.log(response.data)
         window.open(response.data.responsed.data.checkout_url, '_blank');
         
     }).catch((err)=>{
-        console.log(err)
+       
     }) 
 }
-console.log(course)
   return (
     <div className='flex justify-center pt-44 bg-gradient-to-b from-slate-200 to-slate-700 h-screen pb-44'>
         <form onSubmit={handleSubmit(paymentData)} className='flex flex-col justify-center bg-gradient-to-t from-slate-200 to-slate-500 rounded-md  p-10 mt-3 w-72 items-center gap-3 shadow-lg shadow-slate-800'>
