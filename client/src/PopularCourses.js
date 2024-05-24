@@ -7,15 +7,15 @@ import Description from './Description'
 import Footer from './Footer'
 import Pagination from '@mui/material/Pagination';
 import {LoadingOutlined} from '@ant-design/icons'
-import { Menu, Radio } from 'antd'
-import SubMenu from 'antd/es/menu/SubMenu'
+import { Menu } from 'antd'
+
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io'
 
 
 const PopularCourses = () => {
-    const {courses,text,setCourses,page,setPage,isLoading,setIsLoading,setRefetcher,sort,setSort,user,setUser}=useContext(AppContext)
+    const {courses,text,setCourses,page,setPage,isLoading,setIsLoading,setRefetcher,sort,setSort,setUser}=useContext(AppContext)
     // const [user,setUser]=useState({})
-    console.log(sort)
+   
    useEffect(() => {
 
      setUser(JSON.parse(window.localStorage.getItem('user')));
@@ -35,7 +35,6 @@ const PopularCourses = () => {
    
     
     const onChange=(e)=>{
-      console.log(e.key)
       setSort(e.key)
       setPage(1)
     }
