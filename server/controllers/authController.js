@@ -111,19 +111,6 @@ user.passwordResetToken=undefined
 user.passwordResetExpires=undefined
 await user.save()
 })
-exports.checkEnrollment=catchAsync(async(req,res)=>{
-    const {courseID}=req.params;
-    const user=await User.findById(req.user._id)
-    const ids=[]
-    const length=user.courses.length
-    for(let i=0;i<length;i++){
-        ids.push(user.courses[i].toString())
-    }
-    res.json({
-        status:ids.includes(courseID),
-        course:await Course.findById(courseID)
-    })
-}) 
 exports.verifyEmail=async (req,res)=>{
     try{
         const emailToken=req.body.emailToken;
