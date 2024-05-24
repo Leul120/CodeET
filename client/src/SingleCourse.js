@@ -12,6 +12,12 @@ const SingleCourse = () => {
   const { user, setUser,enrolled,setEnrolled,course,setCourse,isLoading,setIsLoading } = useContext(AppContext);
 
   const { courseID } = useParams();
+  useEffect(()=>{
+  if(user && user.courses.includes(courseID)){
+    setEnrolled(true)
+  }else if(user && !user.courses.includes(courseID)){
+    setEnrolled(false)
+  }},[user,courseID])
 
   useEffect(() => {
     findUser()
@@ -41,12 +47,7 @@ const SingleCourse = () => {
     }
   };
  
-  useEffect(()=>{
-  if(user && user.courses.includes(courseID)){
-    setEnrolled(true)
-  }else if(user && !user.courses.includes(courseID)){
-    setEnrolled(false)
-  }},[user,courseID])
+  
 
   const userID=user?._id
   const findUser=async ()=>{
