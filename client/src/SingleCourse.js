@@ -72,7 +72,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
     <div>
       {isLoading? (<div className='w-full h-1/2 mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(
     <div className='flex flex-row pt-10 items-center flex-wrap bg-gradient-to-t from-slate-950 to-slate-300  min-h-screen'>
-        <img alt={course.Title} src={course.Poster} className='h-96 w-80 pt-16 '/>
+        <img alt={course.Title} src={course.Poster} className='h-96 pl-3 rounded-lg  w-80 pt-16 '/>
         <div className='pl-4 text-slate-200' >
         <h1 className='mb-4 flex justify-center ' style={{whiteSpace:"pre-wrap"}}>{course.Title}</h1>
 
