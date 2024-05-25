@@ -19,7 +19,6 @@ const signRefreshToken=(id)=>{
 }
 exports.signup=catchAsync(async (req,res,next)=>{
     const result=await authSchema.validateAsync(req.body)
-    console.log(result)
     const newUser=await User.create({
         name:result.name,
         email:result.email,
@@ -44,23 +43,30 @@ exports.login=catchAsync(async (req,res,next)=>{
     if(!email||!password){
         return next(new AppError('Please provide email and password!',400))
     }else{
-        const user= await User.findOne({email:email}).select('+password')
-        console.log(user)
+        let user= await User.findOne({email:email}).select('+password')
         if(!user || !await user.correctPassword(password,user.password)){
             return next(new AppError('Incorrect email or password',401))
-        }
+        }else{
+            if(!user.isLogged){
     const token= signToken(user._id)
+    user=await User.findOneAndUpdate({email:email}, {  isLogged: true  },{ new: true });
+    
     // res.setHeader('Access-Control-Allow-Credentials', 'true');
     // res.cookie("authorization",token,{
     //     path:'/'
     // })
     // res.setHeader('Set-Cookie', 'authorization==lmmlmlkm; Path=/');
-    console.log(res.headers)
     res.status(200).json({
         status:"success",
         token,
         user
-    })}
+    })}else{
+        res.status(500).json({
+            status:"failed",
+            message:"you have already logged in on another device"
+        })
+    }
+}}
 })
 exports.protect=catchAsync(async(req,res,next)=>{
     let token;
