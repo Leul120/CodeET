@@ -6,7 +6,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { AppContext } from './App';
 
 const Dashboard = () => {
-    const {user,setUser,isLoading,setIsLoading}=useContext(AppContext)
+    const {user,setUser,isLoading,setIsLoading,setMenu}=useContext(AppContext)
     let [course,setCourse]=useState([])
     const storedUser=JSON.parse(window.localStorage.getItem('user'))
     const userID=storedUser?._id
@@ -14,6 +14,7 @@ const Dashboard = () => {
     let token= atob(window.localStorage.getItem('token'))
     console.log(token)
     useEffect(() => {
+      setMenu('Dashboard')
         setUser(JSON.parse(window.localStorage.getItem('user')));
       }, [setUser]);
       console.log(storedUser)
