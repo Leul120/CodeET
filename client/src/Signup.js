@@ -40,22 +40,22 @@ function Signup() {
 const poster=async (data)=>{
   try{
     const response=await axios.post(`${process.env.REACT_APP_URL}/users/signup`,data)
-    console.log(response.data.data.user)
+    console.log(response)
     if(response?.data.status==='success'){
-      window.localStorage.setItem('user',JSON.stringify(response.data.data.user))
-      message.success('Signed Up Successfully')
+      
+      message.success('Signed Up Successfully. Please Login with your signed up account')
       const expirationDate = new Date();
   expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
-  window.localStorage.setItem('token',btoa(response.data.token))
-  navigate('/')
+  
+  navigate('/login')
 }
     return (
         <h1 className='white'>{console.log(response.data.status)}</h1>
     )
 
 }catch(error){
-  console.log(error)
-  setErrored([true,'You have already registered!'])
+  console.log(error.response.data.message)
+  setErrored([true,"Email already exists. Please try again!"])
 }}
 console.log(errored[0])
 const submitForm=async (value)=>{
@@ -73,24 +73,20 @@ const submitForm=async (value)=>{
         <h1 className='text-green-700 text-center ' >Sign-Up</h1>
 
     <form className="max-w-sm mx-auto border text-white border-border bg-gradient-to-b from-slate-500 to-slate-100 p-10 shadow-slate-800 rounded-lg shadow-lg" onSubmit={handleSubmit(submitForm)}>
-        <div className='flex flex-col'>
+        <div className='flex flex-col py-1'>
           <p className='text-red-950'>{errored[1]}</p>
-      <label htmlFor="Full name">Full Name</label>
       <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='Eg. Full Name' {...register("name")} />
       <p className='text-red-400 text-sm '>{errors.name?.message}</p>
       </div>
-      <div className='flex flex-col'>
-      <label htmlFor="email" >Email</label>
+      <div className='flex flex-col py-1'>
       <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='Eg. email@gmail.com' {...register("email")}/>
       <p className='text-red-400 text-sm'>{errors.email?.message}</p>
       </div>
-      <div className='flex flex-col'>
-      <label htmlFor="Full name">Password</label>
+      <div className='flex flex-col py-1'>
       <div className='border bg-white border-border flex justify-between items-center   rounded-lg'>
       <input type={type} className=' border-white text-black pl-2 h-10 w-full focus:ring-0 focus-visible:ring-0 ring-0 rounded-lg ' placeholder='Eg. okrior349340930' {...register("password")}/> <button onClick={clicker} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
       <p className='text-red-400 text-sm'>{errors.password?.message}</p></div>
-      <div className='flex flex-col '>
-      <label >Confirm Password</label>
+      <div className='flex flex-col py-1'>
       <div className='border border-border flex  bg-white justify-between items-center   rounded-lg'>
       <input type={types}  className=' border-white text-black focus:ring-0 focus-visible:ring-0 ring-0 pl-2 h-10 w-full   rounded-lg ' placeholder='Eg. okrior349340930' {...register("passwordConfirm")}/> <button onClick={(e)=>{
         e.preventDefault();
@@ -103,7 +99,7 @@ const submitForm=async (value)=>{
     }} className='pr-2 pl-2 bg-white   text-black'><FaRegEye /></button></div>
     <p className='text-red-400 text-sm'>{errors.passwordConfirm?.message}</p>
       </div>
-      <input type="submit" value='Sign Up' disabled={errored[0]} className="text-white mb-1 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300  xs:w-full dark:focus:ring-cyan-800 text-xs xs:font-medium xs:rounded-lg rounded-md px-5 py-2.5 h-6 xs:h-auto  me-2 mt-7 w-full xs:text-center xs:text-nowrap overflow-hidden"/>
+      <button type="submit" value='Sign Up'  className="text-white w-full mt-2 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sign Up</button>
       {/* <input type="submit" className='text-white' /> */}
     </form>
     <div className='text-white'>{poster}</div>
