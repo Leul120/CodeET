@@ -13,11 +13,11 @@ import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io'
 
 
 const PopularCourses = () => {
-    const {courses,text,setCourses,page,setPage,isLoading,setIsLoading,setRefetcher,sort,setSort,setUser}=useContext(AppContext)
+    const {courses,text,setCourses,page,setPage,isLoading,setIsLoading,setRefetcher,sort,setSort,setUser,setMenu}=useContext(AppContext)
     // const [user,setUser]=useState({})
    
    useEffect(() => {
-
+    setMenu('home')
      setUser(JSON.parse(window.localStorage.getItem('user')));
     setIsLoading(true)
  
@@ -46,12 +46,12 @@ console.log(process.env.REACT_APP_URL)
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
         <div className='flex  '>
-        <div className='flex flex-col fixed w-24 text-black h-full bg-transparent '>
+        <div className='flex flex-col fixed w-24 text-black h-full bg-transparent'>
          
           
-          <Menu onChange={onChange} value={sort} onSelect={onChange} className='text-white bg-transparent'>
+          <Menu onChange={onChange} value={sort} onSelect={onChange} className='text-white bg-transparent '>
          
-          <Menu.SubMenu key="odd" title="sort" className='text-black  '>
+          <Menu.SubMenu key="odd" title="sort" className='text-black  mt-10 border border-red-300 shadow-md shadow-red-500  '>
             <Menu.SubMenu  title="Released">
             <Menu.Item key="Released" className='text-2xl w-6 text-center'><IoIosArrowRoundUp/></Menu.Item>
             <Menu.Item key='-Released' className='text-2xl w-6 text-center' ><IoIosArrowRoundDown /></Menu.Item>
