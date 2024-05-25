@@ -10,7 +10,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.583.0",
     "@hapi/joi": "^17.1.1",
+    "aws-sdk": "^2.1627.0",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "chapa-node": "^1.1.9",
