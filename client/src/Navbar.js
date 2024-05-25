@@ -13,9 +13,11 @@ import {  message } from 'antd';
 
 
 const Navbar = () => {
-  const {courses,setText,user,setUser,page,setPage,isLoading,setIsLoading}=useContext(AppContext)
+  const {courses,setText,user,setUser,page,setPage,isLoading,setIsLoading,menu,setMenu}=useContext(AppContext)
   const [open, setOpen] = useState(false);
   const [tx,setTx]=useState("")
+  
+  
 
 
   useEffect(()=>{
@@ -48,7 +50,10 @@ const cancel = (e) => {
   const onClose = () => {
     setOpen(false);
   };
-
+  const select=(e)=>{
+    setMenu(e.key)
+    console.log(e.key)
+  }
 
   return (<>
     {!isLoading &&(<>
@@ -73,7 +78,7 @@ const cancel = (e) => {
       <IoIosMenu/>
       </button>
       <Drawer title="Menu" className='h-1/2 w-full' onClose={onClose} open={open}>
-      <Menu defaultSelectedKeys={['home']} className='w-full bg-transparent flex-col   md:flex '>
+      <Menu defaultSelectedKeys={[menu]} onSelect={select} className='w-full bg-transparent flex-col   md:flex '>
       <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
       <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
@@ -101,7 +106,7 @@ const cancel = (e) => {
          
       }
       </datalist>
-     <Menu mode='horizontal' defaultSelectedKeys={['home']} className='w-1/2 bg-transparent h-12 hidden md:flex justify-start items-center overflow-x-auto '>
+     <Menu mode='horizontal' defaultSelectedKeys={[menu]} onSelect={select} className='w-1/2 bg-transparent h-12 hidden md:flex justify-start items-center overflow-x-auto '>
       <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
       <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
@@ -113,7 +118,7 @@ const cancel = (e) => {
     onCancel={cancel}
     okText="Yes"
     cancelText="No"
-  ><button className='w-full h-full ring-0 w-full hover:ring-0'>Log Out</button></Popconfirm></Menu.Item></Menu.SubMenu>}
+  ><button className='w-full h-full ring-0  hover:ring-0'>Log Out</button></Popconfirm></Menu.Item></Menu.SubMenu>}
      </Menu>
 
 
