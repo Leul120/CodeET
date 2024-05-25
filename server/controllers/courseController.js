@@ -2,12 +2,27 @@ const Course=require('../models/CourseModel')
 const User=require('../models/UserModel')
 const ApiFeatures=require('../utils/ApiFeatures')
 const catchAsync=require('../utils/catchAsync')
-const aliasTopCourses=(req,res,next)=>{
-  req.query.limit='5'
-  req.query.sort='-Rating,Price'
-  req.query.fields='Title,Price,Rating,Description,Difficulty'
-  next()
-}
+const AWS=require('aws-sdk')
+require('dotenv').config();
+
+const { SES } = require("@aws-sdk/client-ses");
+
+const awsConfig = {
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  },
+  region: process.env.AWS_REGION,
+  apiVersion: process.env.AWS_API_VERSION,
+};
+
+const ses = new SES(awsConfig);
+const aliasTopCourses = (req, res, next) => {
+  req.query.limit = '5';
+  req.query.sort = '-Rating,Price';
+  req.query.fields = 'Title,Price,Rating,Description,Difficulty';
+  next();
+};
 
 const getAllCourses = catchAsync(async (req, res) => {
     
@@ -107,5 +122,42 @@ const dashboard=catchAsync(async (req,res)=>{
       res.status(200).json({courses})
 
 })
+const sendEmail = async (req, res) => {
+  const email = "leulmelkamu15@gmail.com";
 
-module.exports={getAllCourses,PostCourses,getCourse,updateCourse,deleteCourse,aliasTopCourses,getCourseStat,dashboard}
+  const params = {
+    Source: process.env.EMAIL_FROM,
+    Destination: {
+      ToAddresses: [process.env.EMAIL_FROM],
+    },
+    ReplyToAddresses: [process.env.EMAIL_FROM],
+    Message: {
+      Body: {
+        Html: {
+          Charset: "UTF-8",
+          Data: `
+            <html>
+              <h1>Reset password link</h1>
+              <p>Please use the following link to reset your password</p>
+            </html>
+          `,
+        },
+      },
+      Subject: {
+        Charset: "UTF-8",
+        Data: "password reset link",
+      },
+    },
+  };
+
+  try {
+    const emailSent = await ses.sendEmail(params);
+    console.log(emailSent);
+    res.json({ ok: true });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to send email" });
+  }
+};
+
+module.exports={getAllCourses,PostCourses,getCourse,updateCourse,deleteCourse,aliasTopCourses,getCourseStat,dashboard,sendEmail}
