@@ -39,7 +39,8 @@ const userSchema=new mongoose.Schema({
     courses:[String],
     passwordChangedAt:Date,
     passwordResetToken:String,
-    passwordResetExpires:Date
+    passwordResetExpires:Date,
+    isLogged:{type:Boolean,default:false}
 })
 
 // Middleware to hash the password before saving
