@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllCourses, PostCourses, getCourse, updateCourse, deleteCourse, aliasTopCourses, getCourseStat,dashboard,sendEmail} = require('../controllers/courseController');
+const { getAllCourses, PostCourses, getCourse, updateCourse, deleteCourse, aliasTopCourses, getCourseStat,dashboard,sendEmail, s3Get} = require('../controllers/courseController');
 const {protect, restrictTo}=require('../controllers/authController');
 const { getCheckoutSession, verifyPayment, pay, success } = require('../utils/payment');
 // const attributes=/\b(_id|Title||lt)\b/g
@@ -11,7 +11,7 @@ router.route("/sendEmail").get(sendEmail)
 router.route('/course').get(getAllCourses).post(PostCourses);
 router.route('/:courseID').get(protect,getCourse).patch(updateCourse).delete(protect,restrictTo('admin'),deleteCourse);
 
-
+router.route('/course/get-course/:folderName').get(s3Get)
 router.route('/dashboard/:userID').get(dashboard)
 router.route("/pay/:courseID/:userID").post(pay)
 router.route("/verify-payment/:courseID/:userID/:id").get(verifyPayment)
