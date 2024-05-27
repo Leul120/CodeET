@@ -55,7 +55,7 @@ const paymentData=async (data)=>{
             <input type='text' className="text-black h-9   w-16 border-0 ring-0 outline-0 rounded-md "  {...register('amount')} placeholder='amount' prefix="amount : " value={course.Price}/>
             </div>
             {loading && <button type='submit' className="w-full h-20 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/></button>}
-            {!loading && <button type='submit' className="w-full h-20 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">pay</button> }
+            {!loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">pay</button> }
         </form>
     </div>
   )
