@@ -28,6 +28,7 @@ const Dashboard = () => {
 
 useEffect(() => {
     const fetchCourses = async () => {
+      try{
           const res = await axios.get(`${process.env.REACT_APP_URL}/api/dashboard/${userID}`, {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -35,6 +36,9 @@ useEffect(() => {
           });
           setCourse(res.data.courses);
         setIsLoading(false);
+      }catch(error){
+        console.log(error)
+      }
       }
   
     fetchCourses();
