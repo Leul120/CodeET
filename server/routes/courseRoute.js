@@ -12,7 +12,7 @@ router.route('/course').get(getAllCourses).post(PostCourses);
 router.route('/:courseID').get(protect,getCourse).patch(updateCourse).delete(protect,restrictTo('admin'),deleteCourse);
 
 
-router.route('/dashboard/:userID').get(protect,dashboard)
+router.route('/dashboard/:userID').get(dashboard)
 router.route("/pay/:courseID/:userID").post(protect,pay)
 router.route("/verify-payment/:courseID/:userID/:id").get(verifyPayment)
 router.route("/payment-success").get(success)
