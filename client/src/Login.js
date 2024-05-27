@@ -15,7 +15,6 @@ import {message} from 'antd'
 const Login = () => {
     const [types,setTypes]=useState('password')
     const [errored,setErrored]=useState("")
-    const [hide,setHide]=useState(false)
     // let {user,setUser}=useContext(AppContext)
     const navigate=useNavigate()
      const user=JSON.parse(window.localStorage.getItem('user'))
