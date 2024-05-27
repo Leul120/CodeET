@@ -112,8 +112,8 @@ We appreciate your understanding and cooperation in adhering to these policies. 
     }} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
         <p className='text-red-400 text-sm'>{errors.password?.message}</p>
         <Link to='/forget-Password' className='text-blue-600 text-end p-2'>Forget Password</Link>
-        <input type="submit"  value="Log In" className="text-white mb-1 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300  xs:w-full dark:focus:ring-cyan-800 text-xs xs:font-medium xs:rounded-lg rounded-md px-5  h-10    me-2 mt-7 w-full xs:text-center xs:text-nowrap overflow-hidden"/>
-        <Link to='/signup'><input type='button' value='Sign Up' className="text-white mb-1 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300  xs:w-full  flex items-center justify-center dark:focus:ring-cyan-800 text-xs xs:font-medium xs:rounded-lg rounded-md px-5  h-10    me-2 mt-7 w-full xs:text-center xs:text-nowrap overflow-hidden"/></Link>
+        <button type="submit" className="w-full h-8 text-white flex items-center justify-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Log In</button>
+        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-8 text-white flex items-center justify-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sign Up</button></Link>
         
         </form>
         
