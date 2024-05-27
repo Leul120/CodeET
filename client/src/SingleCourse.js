@@ -75,7 +75,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
         <img alt={course.Title} src={course.Poster} className='h-96 rounded-lg  w-80 pt-16 '/>
         <div className='pl-4 text-slate-200' >
         <h1 className='mb-4 flex justify-center ' style={{whiteSpace:"pre-wrap"}}>{course.Title}</h1>
-
+        
        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={user?enrolled?()=>{navigate(`/course/watch/${courseID}`)}: ()=>{navigate(`/pay/${course._id}/${userID}`)}:()=>{navigate('/login')}}>
         {user? enrolled?"Go to Course" :"Enroll Now":"Login To Enroll"}
         </button></div>
