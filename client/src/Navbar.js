@@ -17,6 +17,7 @@ const Navbar = () => {
   const {courses,setText,user,setUser,page,setPage,isLoading,setIsLoading,menu,setMenu}=useContext(AppContext)
   const [open, setOpen] = useState(false);
   const [tx,setTx]=useState("")
+  const [errored,setErrored]=useState(false)
   
   
 
@@ -34,6 +35,7 @@ const Navbar = () => {
 }
 
 const Logout=async ()=>{
+  try{
   const response=await axios.get(`${process.env.REACT_APP_URL}/users/logout/${user._id}`)
   console.log(response.data)
   Cookies.remove('authorization')
@@ -42,6 +44,9 @@ const Logout=async ()=>{
   
 
   message.success('Logged out Successfully');
+  }catch(error){
+    setErrored(true)
+  }
 }
 const cancel = (e) => {
   message.error('Cancelled Log Out');
@@ -59,7 +64,8 @@ const cancel = (e) => {
   }
 
   return (<>
-    {!isLoading &&(<>
+  {errored && <h1>Error occured</h1>}
+    {!isLoading && !errored &&(<>
     <div className='bg-gradient-to-t fixed w-full from-slate-300 to-slate-700  shadow-emerald-300 z-50  flex justify-between  items-center h-16'>
       <ToastContainer theme='dark'/>
       <div className='flex justify-between absolute left-1 '>
@@ -80,13 +86,13 @@ const cancel = (e) => {
       <button  className='border-red bg-transparent border-0 hover:bg-slate-300 flex justify-center h-6 w-7 md:hidden  font-bold text-slate-200 rounded-2xl text-2xl text-center  mx-9 text ' onClick={showDrawer}>
       <IoIosMenu/>
       </button>
-      <Drawer title="Menu" className='h-1/2 w-full' onSelect={onClose} onClose={onClose} open={open}>
-      <Menu defaultSelectedKeys={[menu]} onSelect={select} className='w-full bg-transparent flex-col   md:flex '>
+      <Drawer title="Menu" className='h-1/2 w-40' onSelect={onClose} onClose={onClose} open={open}>
+      <Menu defaultSelectedKeys={[menu]} onSelect={select} className='w-40 bg-transparent flex-col   md:flex '>
       <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
       <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
       {!user && <Menu.Item key="login" icon={<IoIosLogIn/>}><Link to='/login'>Login</Link></Menu.Item>}
-      {user && <Menu.SubMenu key='logout' icon={<RxAvatar/>} title={user.name}><Menu.Item><Popconfirm
+      {user && <Menu.SubMenu key='logout'  icon={<RxAvatar/>} title={user.name}><Menu.Item mode="inline"><Popconfirm
     title="Log Out"
     description="Are you sure to Log Out?"
     onConfirm={Logout}
