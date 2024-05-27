@@ -67,16 +67,14 @@ const Login = () => {
     }
 
   return (<>
-    <div className='justify-center flex items-center bg-gradient-to-t from-slate-950 to-slate-100 h-screen'>
-        <form onSubmit={handleSubmit(submitData)} className={`border  rounded-lg p-10 flex flex-col shadow-slate-800 shadow-lg border-border bg-gradient-to-t from-slate-200 to-slate-600`}>
+    <div className='justify-center flex items-center bg-slate-200 h-screen'>
+        <form onSubmit={handleSubmit(submitData)} className={`border  rounded-lg p-10 flex flex-col shadow-slate-800 shadow-lg bg-slate-300 `}>
         
           <p className='text-red-800 '>{errored}</p>
-        <label htmlFor="email" className='text-slate-200'>Email</label>
-        <input type='text' className='rounded-lg' placeholder='email@gmail.com '{...register('email')}/>
+        <input type='text' className='rounded-lg my-1' placeholder='email '{...register('email')}/>
         <p className='text-red-400 text-sm'>{errors.email?.message}</p>
-        <label htmlFor="password" className='text-slate-200'>Password</label>
-        <div className='border bg-white border-border flex justify-between items-center   rounded-lg'>
-      <input type={types} className=' border-white text-black pl-2 h-10 w-full  focus:ring-0 focus-visible:ring-0 ring-0 rounded-lg ' placeholder='Eg. okrior349340930' {...register("password")}/> <button onClick={(e)=>{
+        <div className='border bg-white border-border flex justify-between items-center   rounded-lg mt-1'>
+      <input type={types} className=' border-white text-black pl-2 h-10 w-full  focus:ring-0 focus-visible:ring-0 ring-0 rounded-lg ' placeholder='password' {...register("password")}/> <button onClick={(e)=>{
         e.preventDefault();
         if (types === 'text') {
           setTypes('password');
@@ -87,9 +85,9 @@ const Login = () => {
     }} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
         <p className='text-red-400 text-sm'>{errors.password?.message}</p>
         <Link to='/forget-Password' className='text-blue-600 text-end p-2'>Forget Password</Link>
-        {loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex gap-2 items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/>Login</button>}
-            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">Log In</button> }
-        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-8 text-white rounded-lg my-1 bg-blue-600">Sign Up</button></Link>
+        {loading && <button type='submit' disabled className="w-full h-8 rounded-lg p-1 text-white flex gap-2 text-sm items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/>Login</button>}
+            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600 text-sm">Log In</button> }
+        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-8 text-white rounded-lg my-1 bg-blue-600 text-sm">Sign Up</button></Link>
         
         </form>
         
