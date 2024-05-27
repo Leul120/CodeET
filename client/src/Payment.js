@@ -33,6 +33,7 @@ let {userID}=useParams()
 
 
 const paymentData=async (data)=>{
+    console.log(data)
  setLoading(true)
     await axios.post(`${process.env.REACT_APP_URL}/api/pay/${courseID}/${userID}`,data).then(async (response)=>{
         setLoading(false)
