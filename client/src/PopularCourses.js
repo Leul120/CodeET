@@ -46,7 +46,7 @@ console.log(process.env.REACT_APP_URL)
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
         <div className='flex  '>
-        <div className='flex flex-col fixed w-24 text-black h-full bg-transparent'>
+        <div className='flex flex-col fixed w-16 sm:w-24 text-black h-full bg-transparent'>
          
           
           <Menu onChange={onChange} value={sort} onSelect={onChange} className='text-white bg-transparent '>
