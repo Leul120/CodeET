@@ -10,14 +10,17 @@ import * as yup from 'yup'
 import { FaRegEye } from 'react-icons/fa6'
 import {useNavigate} from 'react-router-dom'
 import {message} from 'antd'
+import { LoadingOutlined } from '@ant-design/icons';
 
 
 const Login = () => {
     const [types,setTypes]=useState('password')
     const [errored,setErrored]=useState("")
     // let {user,setUser}=useContext(AppContext)
+    const [loading,setLoading]=useState(false)
     const navigate=useNavigate()
      const user=JSON.parse(window.localStorage.getItem('user'))
+    let load= `<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
      
     useEffect(()=>{
       
@@ -33,11 +36,11 @@ const Login = () => {
     }) 
       const dataPost=async (value)=>{
         try{
-     
+     setLoading(true)
         const response=await axios.post(`${process.env.REACT_APP_URL}/users/login`,value)
         if(response?.data.status==='success'){
           setErrored("")
-         
+         setLoading(false)
          message.success('Logged In Successfully')
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
@@ -49,8 +52,9 @@ const Login = () => {
          navigate(-1)
         }
       }catch(error){
-        console.log(error.response.data.message)
+        console.log(error.response)
           setErrored(error.response.data.message)
+          setLoading(false)
         }}
     const {handleSubmit,formState:{errors},register}=useForm({
         resolver:yupResolver(loginSchema)
@@ -83,8 +87,9 @@ const Login = () => {
     }} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
         <p className='text-red-400 text-sm'>{errors.password?.message}</p>
         <Link to='/forget-Password' className='text-blue-600 text-end p-2'>Forget Password</Link>
-        <button type="submit" className="w-full h-8 text-white flex items-center justify-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Log In</button>
-        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-8 text-white flex items-center justify-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sign Up</button></Link>
+        {loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex gap-2 items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/>Login</button>}
+            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">Log In</button> }
+        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-8 text-white rounded-lg my-1 bg-blue-600">Sign Up</button></Link>
         
         </form>
         
