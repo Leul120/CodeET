@@ -5,18 +5,6 @@ const catchAsync=require('../utils/catchAsync')
 const AWS=require('aws-sdk')
 require('dotenv').config();
 
-const { SES } = require("@aws-sdk/client-ses");
-
-const awsConfig = {
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  },
-  region: process.env.AWS_REGION,
-  apiVersion: process.env.AWS_API_VERSION,
-};
-
-const ses = new SES(awsConfig);
 const aliasTopCourses = (req, res, next) => {
   req.query.limit = '5';
   req.query.sort = '-Rating,Price';
@@ -160,4 +148,47 @@ const sendEmail = async (req, res) => {
   }
 };
 
-module.exports={getAllCourses,PostCourses,getCourse,updateCourse,deleteCourse,aliasTopCourses,getCourseStat,dashboard,sendEmail}
+
+const createS3Instance=()=>{
+  const s3=new AWS.S3({
+    credentials:{
+      accessKeyId:process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY
+    },
+    region:process.env.AWS_REGION
+  })
+  return s3
+}
+const getVideos=(bucketName,folderName)=>{
+  const s3=createS3Instance();
+  const params={
+    Bucket:bucketName,
+    Prefix: folderName + '/'
+  }
+  const bucketData=s3.listObjects(params).promise()
+  return bucketData || {}
+}
+
+async function s3Get(req,res){
+  try{
+    const folderName=req.params.folderName
+    const bucketData=await getVideos('codeet',folderName)
+    const {Contents=[]}=bucketData
+    res.send(Contents.map(content=>{
+      return {
+        key:content.Key,
+        lastModified:content.LastModified,
+        url:"https://d105f0jjk1ob12.cloudfront.net/"+content.Key
+      }
+    }))
+    console.log("yes")
+  }catch(error){
+    console.log(error)
+    // res.send({
+    //   status:"fail",
+    //   message:"error"
+    // })
+  }
+}
+
+module.exports={getAllCourses,PostCourses,getCourse,updateCourse,deleteCourse,aliasTopCourses,getCourseStat,dashboard,sendEmail,s3Get}
