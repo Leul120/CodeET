@@ -10,6 +10,7 @@ import Cookies from 'js-cookie'
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {  message } from 'antd';
+import axios from 'axios';
 
 
 const Navbar = () => {
@@ -32,7 +33,9 @@ const Navbar = () => {
     setIsLoading(false)
 }
 
-const Logout=()=>{
+const Logout=async ()=>{
+  const response=await axios.get(`${process.env.REACT_APP_URL}/users/logout/${user._id}`)
+  console.log(response.data)
   Cookies.remove('authorization')
   window.localStorage.removeItem('user')
   setUser(null)
