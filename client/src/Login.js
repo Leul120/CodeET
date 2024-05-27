@@ -64,7 +64,7 @@ const Login = () => {
 
   return (<>
     <div className='justify-center flex items-center bg-gradient-to-t from-slate-950 to-slate-100 h-screen'>
-        <form onSubmit={handleSubmit(submitData)} className={`border  rounded-lg p-10 flex flex-col shadow-slate-800 shadow-lg border-border bg-gradient-to-t from-slate-200 to-slate-600 ${!hide? "hidden":""}`}>
+        <form onSubmit={handleSubmit(submitData)} className={`border  rounded-lg p-10 flex flex-col shadow-slate-800 shadow-lg border-border bg-gradient-to-t from-slate-200 to-slate-600`}>
         
           <p className='text-red-800 '>{errored}</p>
         <label htmlFor="email" className='text-slate-200'>Email</label>
