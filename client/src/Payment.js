@@ -46,8 +46,8 @@ const paymentData=async (data)=>{
     }) 
 }
   return (
-    <div className='flex justify-center pt-44 bg-gradient-to-b from-slate-200 to-slate-700 h-screen pb-44'>
-        <form onSubmit={handleSubmit(paymentData)} className='flex flex-col justify-center bg-gradient-to-t from-slate-200 to-slate-500 rounded-md  p-10 mt-3 w-72 items-center gap-3 shadow-lg shadow-slate-800'>
+    <div className='flex justify-center pt-44 bg-slate-200 h-screen pb-44'>
+        <form onSubmit={handleSubmit(paymentData)} className='flex flex-col justify-center bg-slate-400 rounded-md  p-10 mt-3 w-72 items-center gap-3 shadow-lg shadow-slate-800'>
             <input type='text' className="text-black h-9 mt-1 pl-2 rounded-md " placeholder='First Name' {...register('first_name')}/>
             <input type='text' className="text-black h-9 mt-1 pl-2 rounded-md " placeholder='Last Name' {...register('last_name')}/>
             <input type='text' className="text-black h-9 mt-1 pl-2 rounded-md " placeholder='email' {...register('email')}/>
@@ -55,8 +55,8 @@ const paymentData=async (data)=>{
             <p className=' text-black h-full rounded-lg pl-2 bg-white flex items-center'>Amount :</p>
             <input type='text' className="text-black h-9   w-16 border-0 ring-0 outline-0 rounded-md "  {...register('amount')} placeholder='amount' prefix="amount : " value={course.Price}/>
             </div>
-            {loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/></button>}
-            {!loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">pay</button> }
+            {loading && <button type='submit' disabled className="w-full h-8 text-sm rounded-lg p-1 text-white flex items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/></button>}
+            {!loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600 text-sm">pay</button> }
         </form>
     </div>
   )
