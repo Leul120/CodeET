@@ -13,7 +13,7 @@ router.route('/:courseID').get(protect,getCourse).patch(updateCourse).delete(pro
 
 
 router.route('/dashboard/:userID').get(dashboard)
-router.route("/pay/:courseID/:userID").post(protect,pay)
+router.route("/pay/:courseID/:userID").post(pay)
 router.route("/verify-payment/:courseID/:userID/:id").get(verifyPayment)
 router.route("/payment-success").get(success)
 
