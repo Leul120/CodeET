@@ -80,7 +80,7 @@ const cancel = (e) => {
       <button  className='border-red bg-transparent border-0 hover:bg-slate-300 flex justify-center h-6 w-7 md:hidden  font-bold text-slate-200 rounded-2xl text-2xl text-center  mx-9 text ' onClick={showDrawer}>
       <IoIosMenu/>
       </button>
-      <Drawer title="Menu" className='h-1/2 w-full' onClose={onClose} open={open}>
+      <Drawer title="Menu" className='h-1/2 w-full' onSelect={onClose} onClose={onClose} open={open}>
       <Menu defaultSelectedKeys={[menu]} onSelect={select} className='w-full bg-transparent flex-col   md:flex '>
       <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
