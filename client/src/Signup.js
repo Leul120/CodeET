@@ -73,10 +73,10 @@ const submitForm=async (value)=>{
 
   return (
     <div
-    className='pt-20 h-screen bg-gradient-to-t from-slate-950 to-slate-100'>
+    className='pt-20 h-screen bg-slate-200'>
         <h1 className='text-green-700 text-center ' >Sign-Up</h1>
 
-    <form className="max-w-sm mx-auto border text-white border-border bg-gradient-to-b from-slate-500 to-slate-100 p-10 shadow-slate-800 rounded-lg shadow-lg" onSubmit={handleSubmit(submitForm)}>
+    <form className="max-w-sm mx-auto border text-white border-border bg-slate-300 p-10 shadow-blue-700 rounded-lg shadow-lg" onSubmit={handleSubmit(submitForm)}>
         <div className='flex flex-col py-1'>
           <p className='text-red-950'>{errored[1]}</p>
       <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='Eg. Full Name' {...register("name")} />
@@ -103,8 +103,8 @@ const submitForm=async (value)=>{
     }} className='pr-2 pl-2 bg-white   text-black'><FaRegEye /></button></div>
     <p className='text-red-400 text-sm'>{errors.passwordConfirm?.message}</p>
       </div>
-      {loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex gap-2 items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/> Sign Up</button>}
-            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">Sign Up</button> }
+      {loading && <button type='submit' disabled className="w-full h-8 rounded-lg p-1 text-white flex gap-2 items-center justify-center bg-blue-600 text-sm"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/> Sign Up</button>}
+            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600 text-sm">Sign Up</button> }
       {/* <input type="submit" className='text-white' /> */}
     </form>
     <div className='text-white'>{poster}</div>
