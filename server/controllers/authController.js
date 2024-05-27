@@ -68,6 +68,12 @@ exports.login=catchAsync(async (req,res,next)=>{
     }
 }}
 })
+exports.logout=catchAsync(async (req,res)=>{
+    const userID=req.params.userID
+    await User.findOneAndUpdate({_id:userID},{isLogged:false},{new:true})
+
+    res.status(200).json({ok:true})
+})
 exports.protect=catchAsync(async(req,res,next)=>{
     let token;
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
