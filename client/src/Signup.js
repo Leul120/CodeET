@@ -6,13 +6,15 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import {message} from 'antd'
-
+import { LoadingOutlined } from '@ant-design/icons';
 
 function Signup() {
   const navigate=useNavigate()
     let [type,setType]=useState("password")
     let [types,setTypes]=useState("password")
     let [errored,setErrored]=useState([false,""])
+     const [loading,setLoading]=useState(false)
+    let load= `<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
     const user=JSON.parse(window.localStorage.getItem('user'))
     console.log(type)
     useEffect(()=>{
@@ -39,10 +41,11 @@ function Signup() {
     })
 const poster=async (data)=>{
   try{
+    setLoading(true)
     const response=await axios.post(`${process.env.REACT_APP_URL}/users/signup`,data)
     console.log(response)
     if(response?.data.status==='success'){
-      
+      setLoading(false)
       message.success('Signed Up Successfully. Please Login with your signed up account')
       const expirationDate = new Date();
   expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
@@ -55,6 +58,7 @@ const poster=async (data)=>{
 
 }catch(error){
   console.log(error.response.data.message)
+  setLoading(false)
   setErrored([true,"Email already exists. Please try again!"])
 }}
 console.log(errored[0])
@@ -99,7 +103,8 @@ const submitForm=async (value)=>{
     }} className='pr-2 pl-2 bg-white   text-black'><FaRegEye /></button></div>
     <p className='text-red-400 text-sm'>{errors.passwordConfirm?.message}</p>
       </div>
-      <button type="submit" value='Sign Up'  className="text-white w-full mt-2 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sign Up</button>
+      {loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex gap-2 items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/> Sign Up</button>}
+            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">Sign Up</button> }
       {/* <input type="submit" className='text-white' /> */}
     </form>
     <div className='text-white'>{poster}</div>
