@@ -1,15 +1,18 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as yup from 'yup'
+import { LoadingOutlined } from '@ant-design/icons';
 
 import { AppContext } from './App'
 
 const Payment = () => {
+    let load=`<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
     const navigate=useNavigate()
     const {course,user}=useContext(AppContext)
+    const [loading,setLoading]=useState(false)
     useEffect(()=>{
         if(!user){
             navigate('/login')
@@ -30,13 +33,15 @@ let {userID}=useParams()
 
 
 const paymentData=async (data)=>{
- 
+ setLoading(true)
     await axios.post(`${process.env.REACT_APP_URL}/api/pay/${courseID}/${userID}`,data).then(async (response)=>{
+        setLoading(false)
         console.log(response.data)
         window.open(response.data.responsed.data.checkout_url, '_blank');
         
     }).catch((err)=>{
-       
+        console.log(err)
+       setLoading(false)
     }) 
 }
   return (
@@ -49,7 +54,8 @@ const paymentData=async (data)=>{
             <p className=' text-black h-full rounded-lg pl-2 bg-white flex items-center'>Amount :</p>
             <input type='text' className="text-black h-9   w-16 border-0 ring-0 outline-0 rounded-md "  {...register('amount')} placeholder='amount' prefix="amount : " value={course.Price}/>
             </div>
-            <button type="submit"  className='w-full h-8 text-white flex items-center justify-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>Pay</button>
+            {loading && <button type='submit' className="w-full h-20 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/></button>}
+            {!loading && <button type='submit' className="w-full h-20 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600">pay</button> }
         </form>
     </div>
   )
