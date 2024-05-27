@@ -70,9 +70,9 @@ const cancel = (e) => {
       <ToastContainer theme='dark'/>
       <div className='flex justify-between absolute left-1 '>
       <p className='-rotate-90 pr-1 pt-0 bg-gradient-to-r from-blue-800 to-yellow-400 text-transparent bg-clip-text'>CodeEt</p>
-      <div className='  top-3 sm:flex  border rounded-lg justify-between sm:justify-start - xs:w-auto  border-gradient-to-r from-blue-600 to-yellow-700 '>
+      <div className='   sm:flex  border rounded-lg justify-between sm:justify-start  xs:w-auto  border-gradient-to-r from-blue-600 to-yellow-700 '>
       
-      <input className='bg-transparent focus:ring-0 ring-black pl-2 sm:ml-2 text-slate-200  rounded-lg h-8  ml-5 ' list='course-list'  placeholder='Search Courses Here'  onChange={(e)=>{
+      <input className='bg-transparent focus:ring-0 ring-black pl-2 sm:ml-2 text-slate-200  rounded-lg h-8 w-32 xs:w-40 sm:w-auto ml-5 ' list='course-list'  placeholder='Search Courses Here'  onChange={(e)=>{
         
         setTx(e.target.value.toLowerCase())
       }} /><button onClick={()=>{setPage(1)
@@ -86,7 +86,9 @@ const cancel = (e) => {
       <button  className='border-red bg-transparent border-0 hover:bg-slate-300 flex justify-center h-6 w-7 md:hidden  font-bold text-slate-200 rounded-2xl text-2xl text-center  mx-9 text ' onClick={showDrawer}>
       <IoIosMenu/>
       </button>
-      <Drawer title="Menu" className='h-1/2 w-40' onSelect={onClose} onClose={onClose} open={open}>
+      <Drawer title="Menu" className='h-1/2 w-40' onSelect={()=>{
+        console.log("selected")
+      }} onClose={onClose} open={open}>
       <Menu defaultSelectedKeys={[menu]} onSelect={select} className='w-40 bg-transparent flex-col   md:flex '>
       <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
