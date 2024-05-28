@@ -24,7 +24,7 @@ exports.pay= async (req, res) => {
         // const user=await User.findById(req.params.userID)
          // chapa redirect you to this url when payment is successful
         const CALLBACK_URL = `${process.env.MAIN_URL}/api/verify-payment/${courseID}/${userID}/`
-        const RETURN_URL = `http://localhost:3000`
+        const RETURN_URL = `${process.env.RETURN_URL}`
 
         // a unique reference given to every transaction
         const TEXT_REF = "tx-myecommerce12345-" + Date.now()
