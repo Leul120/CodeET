@@ -7,7 +7,6 @@ import Navbar from './Navbar';
 import { createContext } from 'react';
 import SingleCourse from './SingleCourse';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import WatchingPage from './WatchingPage';
 import Signup from './Signup';
 import Chatai from './Chatai';
 import ForgetPassword from './ForgetPassword';
