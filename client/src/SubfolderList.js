@@ -37,7 +37,7 @@ const SubfolderList = () => {
   const filtered = data.filter(cour => cour.key.split('/')[1] === folderName);
 
   return (
-    <div className='pt-10 flex flex-row'>
+    <div className='pt-10'>
       <button onClick={() => navigate(-1)}>Back</button>
       <div className='h-1/2'>
         <ReactPlayer
