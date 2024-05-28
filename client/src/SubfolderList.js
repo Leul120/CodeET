@@ -37,18 +37,19 @@ const SubfolderList = () => {
   const filtered = data.filter(cour => cour.key.split('/')[1] === folderName);
 
   return (
-    <div className='pt-10'>
+    <div className='pt-10 flex flex-row'>
       <button onClick={() => navigate(-1)}>Back</button>
-      <div className=''>
+      <div className='h-1/2'>
         <ReactPlayer
           url={courseUrl}
-          width="100%"
+          width="75%"
           height="50%"
           controls
           AutoPlay
+          config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
       </div>
-      <ul className=''>
+      <ul className='w-1/3'>
         {filtered.map((cour, index) => (
           <li key={index} className='border border-blue-700 my-1 hover:bg-blue-600 rounded-lg hover:text-white h-10 flex items-center cursor-pointer' onClick={() => handleItemClick(cour)}>
             {cour.key.split('/')[2]}
