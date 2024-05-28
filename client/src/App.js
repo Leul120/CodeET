@@ -14,6 +14,8 @@ import ForgetPassword from './ForgetPassword';
 import Login from './Login';
 import Payment from './Payment';
 import Dashboard from './Dashboard';
+import FolderList from './FolderList';
+import SubfolderList from './SubfolderList';
 
 
 export const AppContext = createContext();
@@ -42,10 +44,12 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path='/signup' element={<Signup/>}/>
+              
+        <Route path="/subfolder/:folderName" element={<SubfolderList />} />
               <Route path="/course/:courseID" element={<SingleCourse />} />
               <Route path='/forget-password' element={<ForgetPassword/>}/>
               <Route path='/ai' element={<Chatai/>}/>
-              <Route path="/course/watch/:courseID" element={<WatchingPage />} />
+              <Route path="/course/watch/:courseID" element={<FolderList />} />
               <Route path='/login' element={<Login/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/pay/:courseID/:userID' element={<Payment/>}/>
