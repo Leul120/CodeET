@@ -39,11 +39,11 @@ const SubfolderList = () => {
   return (
     <div className='pt-10 bg-slate-900 text-white'>
       <button onClick={() => navigate(-1)}>Back</button>
-      <div className='h-1/2'>
+      <div className='h-1/2' style={{height:"50rem"}}>
         <ReactPlayer
           url={courseUrl}
           width="100%"
-          height="70%"
+          height="50%"
           controls
           AutoPlay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
