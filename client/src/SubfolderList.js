@@ -49,7 +49,7 @@ const SubfolderList = () => {
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
       </div>
-      <ul className='w-1/3'>
+      <ul className='w-1/2'>
         {filtered.map((cour, index) => (
           <li key={index} className='border border-blue-700 my-1 hover:bg-blue-600 rounded-lg hover:text-white h-10 flex items-center cursor-pointer' onClick={() => handleItemClick(cour)}>
             {cour.key.split('/')[2]}
