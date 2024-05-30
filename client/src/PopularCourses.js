@@ -78,7 +78,7 @@ console.log(process.env.REACT_APP_URL)
             const date= course?.Released.slice(0,4)
             return(
                 // <div className='p-1 mt-1 w-44 h-48 xs:h-64 xs:w-auto border-spacing-1 border border-border rounded-lg bg-slate-800 shadow-md shadow-slate-600 flex justify-center object-fill'>
-                <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between w-28 sm:w-auto '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-28 xs:w-96 rounded-lg' loading='lazy'/>
+                <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between w-28 xs:w-auto '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-28 xs:w-96 rounded-lg' loading='lazy'/>
                 <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text' key={Math.random()}>{course.Title}</p>
                 <p className='text-red-300 text-sm bg-gradient-to-r from-stone-200 to-orange-400 text-transparent bg-clip-text' key={Math.random()}>Released: {date}</p>
                 <p className='text-red-200 text-sm' key={Math.random()}>Rating: {course.Rating}</p>
