@@ -73,7 +73,7 @@ console.log(process.env.REACT_APP_URL)
         <section className='pl-16 sm:pl-24 bg-gradient-to-t from-slate-700 to-slate-100'>
     <Description/>
    
-    <div className='xs:grid gap-5 flex flex-row flex-wrap xs:grid-cols-2  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4 '>
+    <div className='xs:grid gap-5 flex flex-row flex-wrap xs:grid-cols-3  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4 '>
         {courses?.map((course,index)=>{
             const date= course?.Released.slice(0,4)
             return(
