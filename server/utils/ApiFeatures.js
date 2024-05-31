@@ -9,7 +9,6 @@ class ApiFeatures{
         excludeFields.forEach(el=>delete queryObj[el])
         let queryStr=JSON.stringify(queryObj);
         queryStr=queryStr.replace(/\b(gte|gt|lte|lt)\b/g,(match)=> `$${match}`)
-        console.log(queryObj)
         this.query.find(JSON.parse(queryStr))
         return this
     }
@@ -42,7 +41,6 @@ class ApiFeatures{
     }
    search(){
       if(this.queryString.search){
-        console.log(this.queryString.search)
         // this.queryString=(this.queryString.search)
         this.query = this.query.find({ Title: { $regex: this.queryString.search, $options: 'i' } });
       }
