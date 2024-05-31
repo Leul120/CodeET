@@ -10,15 +10,11 @@ const Dashboard = () => {
     let [course,setCourse]=useState([])
     const storedUser=JSON.parse(window.localStorage.getItem('user'))
     const userID=storedUser?._id
-    console.log(userID)
     let token= atob(window.localStorage.getItem('token'))
-    console.log(token)
     useEffect(() => {
       setMenu('Dashboard')
         setUser(JSON.parse(window.localStorage.getItem('user')));
       }, [setUser]);
-      console.log(storedUser)
-      console.log(user)
       useEffect(()=>{
         setIsLoading(true)
     },[setIsLoading])
@@ -37,14 +33,12 @@ useEffect(() => {
           setCourse(res.data.courses);
         setIsLoading(false);
       }catch(error){
-        console.log(error)
       }
       }
   
     fetchCourses();
   }, []);
   
-    console.log("hello")
   return (
     <div >
         {storedUser?isLoading? (<div className='w-full  mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(<div className='pt-24 bg-gradient-to-t from-slate-950 to-slate-100 h-screen' ><h1 className='text-white'> </h1>
