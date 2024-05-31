@@ -6,10 +6,9 @@ import PopularCourses from './PopularCourses';
 export const fetchCourses = async (page,search,sort) => {
   try{
     const res = await axios.get(`${process.env.REACT_APP_URL}/api/course/?page=${page}&search=${search}&sort=${sort}`);
-    console.log(res.data);
     return res.data.courses;
   }catch(error){
-    console.log(error)
+    
   }
   };
 
