@@ -20,11 +20,11 @@ const emailSender=(req,res)=>{
   }
   transporter.sendMail(mailOptions,(error,info)=>{
     if(error){
-      console.log(error)
+
       // res.send("error")
     }
     else{
-      console.log("Email sent")
+     
       // res.send("success")
     }
   })
@@ -44,7 +44,7 @@ const postUser =catchAsync(async (req, res) => {
         const user = await User.create(req.body);
         res.status(201).json(user._id);
     } catch (error) {
-        console.error(error);
+       
         res.status(500).json({ error: 'Internal server error' });
     }
 })
