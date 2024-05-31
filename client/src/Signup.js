@@ -16,7 +16,7 @@ function Signup() {
      const [loading,setLoading]=useState(false)
     let load= `<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
     const user=JSON.parse(window.localStorage.getItem('user'))
-    console.log(type)
+ 
     useEffect(()=>{
       if(user){
         navigate('/')
@@ -43,7 +43,6 @@ const poster=async (data)=>{
   try{
     setLoading(true)
     const response=await axios.post(`${process.env.REACT_APP_URL}/users/signup`,data)
-    console.log(response)
     if(response?.data.status==='success'){
       setLoading(false)
       message.success('Signed Up Successfully. Please Login with your signed up account')
@@ -53,20 +52,18 @@ const poster=async (data)=>{
   navigate('/login')
 }
     return (
-        <h1 className='white'>{console.log(response.data.status)}</h1>
+        <h1 className='white'></h1>
     )
 
 }catch(error){
-  console.log(error.response.data.message)
   setLoading(false)
   setErrored([true,"Email already exists. Please try again!"])
 }}
-console.log(errored[0])
 const submitForm=async (value)=>{
-    console.log(value)
+
     // mutate(value)
     
-    console.log(poster(value))
+  poster(value)
     
 
 }
