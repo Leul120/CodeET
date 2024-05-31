@@ -52,7 +52,6 @@ const Login = () => {
          navigate(-1)
         }
       }catch(error){
-        console.log(error.response)
           setErrored(error.response.data.message)
           setLoading(false)
         }}
@@ -60,7 +59,6 @@ const Login = () => {
         resolver:yupResolver(loginSchema)
     })
     const submitData=async (value)=>{
-        console.log(value)
         dataPost(value)
         
         
