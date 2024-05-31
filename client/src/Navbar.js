@@ -37,7 +37,6 @@ const Navbar = () => {
 const Logout=async ()=>{
   try{
   const response=await axios.get(`${process.env.REACT_APP_URL}/users/logout/${user._id}`)
-  console.log(response.data)
   Cookies.remove('authorization')
   window.localStorage.removeItem('user')
   setUser(null)
@@ -60,7 +59,7 @@ const cancel = (e) => {
   };
   const select=(e)=>{
     setMenu(e.key)
-    console.log(e.key)
+
   }
 
   return (<>
@@ -87,7 +86,6 @@ const cancel = (e) => {
       <IoIosMenu/>
       </button>
       <Drawer title="Menu" className='h-1/2 w-40' onSelect={()=>{
-        console.log("selected")
       }} onClose={onClose} open={open}>
       <Menu defaultSelectedKeys={[menu]} onSelect={select} className='w-40 bg-transparent flex-col   md:flex '>
       <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
