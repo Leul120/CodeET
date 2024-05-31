@@ -140,10 +140,10 @@ const sendEmail = async (req, res) => {
 
   try {
     const emailSent = await ses.sendEmail(params);
-    console.log(emailSent);
+
     res.json({ ok: true });
   } catch (err) {
-    console.log(err);
+   
     res.status(500).json({ error: "Failed to send email" });
   }
 };
@@ -181,9 +181,8 @@ async function s3Get(req,res){
         url:"https://d105f0jjk1ob12.cloudfront.net/"+content.Key
       }
     }))
-    console.log("yes")
   }catch(error){
-    console.log(error)
+
     // res.send({
     //   status:"fail",
     //   message:"error"
