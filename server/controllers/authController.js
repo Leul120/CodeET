@@ -144,7 +144,7 @@ exports.verifyEmail=async (req,res)=>{
             res.status(404).json("Email verification failed,invalid token!")
         }
     }catch(error){
-            console.log(error)
+     
             res.status(500).json(error.message)
         }
 }
