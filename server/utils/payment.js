@@ -19,8 +19,6 @@ exports.pay= async (req, res) => {
         // const course=await Course.findById(courseID)
         
         const userID=req.params.userID
-        console.log(userID)
-        console.log(courseID)
         // const user=await User.findById(req.params.userID)
          // chapa redirect you to this url when payment is successful
         const CALLBACK_URL = `${process.env.MAIN_URL}/api/verify-payment/${courseID}/${userID}/`
@@ -42,7 +40,6 @@ exports.pay= async (req, res) => {
            
         }
 
-    console.log(data)
         try{
         const response=await axios.post("https://api.chapa.co/v1/transaction/initialize", data, {
     headers: {
@@ -51,7 +48,6 @@ exports.pay= async (req, res) => {
     timeout: 10000 // increase timeout to 10 seconds
 })
         const responsed=response.data
-        console.log(response.data.data.checkout_url)
         res.status(200).json({
             responsed
             
@@ -70,7 +66,6 @@ exports.pay= async (req, res) => {
 exports.verifyPayment= async (req, res) => {
         const courseID=req.params.courseID.toString()
         const userID=req.params.userID.toString()
-        console.log("verifying")
         //verify the transaction 
         await axios.get("https://api.chapa.co/v1/transaction/verify/" + req.params.id,{
             headers: {
@@ -79,16 +74,14 @@ exports.verifyPayment= async (req, res) => {
         } )
             .then(async (response) => {
                 const responsed=response.data
-                console.log("Payment was successfully verified")
                 const user=await User.findByIdAndUpdate(userID, { $push: { courses: courseID } });
-                console.log(user)
                 await Course.findByIdAndUpdate(courseID, { $inc: { bought: 1 } });
                 res.status(200).json({
                     status:"success",
                     responsed
                 })
             }) 
-            .catch((err) => console.log("Payment can't be verfied", err))
+            .catch((err) => console.log("Payment can't be verfied"))
 }
 exports.success=(req,res)=>{
     res.status(200).json({
