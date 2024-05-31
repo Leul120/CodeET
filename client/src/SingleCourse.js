@@ -35,14 +35,12 @@ const SingleCourse = () => {
    token=atob(token)
   
   const navigate=useNavigate()
-  console.log(token)
   const filter = async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(`${process.env.REACT_APP_URL}/api/course/?_id=${courseID}`);
       if (response.data.courses) {
         setError(false)
-        console.log(response.data.courses);
         setIsLoading(false);
       }
       setCourse(response.data.courses[0]);
