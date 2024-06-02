@@ -38,7 +38,7 @@ const FolderList = () => {
     {!isLoading && (<div className='pt-16'>
       <ul>
         {uniqueFolders.map((folder, index) => (
-          <li key={index} className='border border-blue-700 my-1 hover:bg-blue-600 rounded-lg h-10 hover:text-white flex items-center cursor-pointer' onClick={() => navigate(`/subfolder/${folder}`)}>
+          <li key={index} className=' shadow my-1 hover:bg-blue-600  h-10 hover:text-white flex items-center cursor-pointer' onClick={() => navigate(`/subfolder/${folder}`)}>
             {folder}
           </li>
         ))}
