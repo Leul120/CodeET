@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState} from 'react'
 import { CiHeart, CiHome, CiSearch } from "react-icons/ci";
 import { IoIosLogIn, IoIosMenu, IoMdContact } from "react-icons/io";
 import { RxAvatar, RxDashboard } from "react-icons/rx";
-import { Menu, Popconfirm ,Drawer} from 'antd';
+import { Menu, Popconfirm ,Drawer,Input} from 'antd';
 import { AppContext } from './App';
 import { Link } from 'react-router-dom';
 
@@ -65,14 +65,15 @@ const cancel = (e) => {
   return (<>
   {errored && <h1>Error occured</h1>}
     {!isLoading && !errored &&(<>
-    <div className='bg-gradient-to-t fixed w-full from-slate-300 to-slate-700  shadow-emerald-300 z-50  flex justify-between  items-center h-16'>
+    <div className='bg-slate-300 fixed w-full   shadow-emerald-300 z-50  flex justify-between  items-center h-16'>
       <ToastContainer theme='dark'/>
       <div className='flex justify-between absolute left-1 '>
-      <p className='-rotate-90 pr-1 pt-0 bg-gradient-to-r from-blue-800 to-yellow-400 text-transparent bg-clip-text'>CodeEt</p>
-      <div className='   sm:flex  border rounded-lg justify-between sm:justify-start  xs:w-auto  border-gradient-to-r from-blue-600 to-yellow-700 '>
+      <p className='-rotate-90 pr-1 pt-0 bg-gradient-to-r from-blue-800 to-yellow-400 text-transparent bg-clip-text'>CodeET</p>
       
-      <input className='bg-transparent focus:ring-0 ring-black pl-2 sm:ml-2 text-slate-200  rounded-lg h-8 w-32 xs:w-40 sm:w-auto ml-5 ' list='course-list'  placeholder='Search Courses Here'  onChange={(e)=>{
-        
+      <div className='   sm:flex  border rounded-lg justify-between sm:justify-start  xs:w-auto  border-gradient-to-r from-blue-600 to-yellow-700 '>
+     
+      <input className='bg-transparent focus:ring-0 ring-black pl-2 text-slate-700 sm:ml-2 text-slate-200  rounded-lg h-8 w-32 xs:w-40 sm:w-auto ml-5 ' list='course-list'  placeholder='Search Courses Here' onChange={(e)=>{
+        console.log(e)
         setTx(e.target.value.toLowerCase())
       }} /><button onClick={()=>{setPage(1)
         fetcher()}} className='pl-1  items-center flex float-right text-white text-2xl hover:text-xl '><CiSearch/></button>
