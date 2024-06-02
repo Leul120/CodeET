@@ -95,7 +95,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
         </div>
         <button className='border border-blue-600 flex items-center p-1 rounded-lg' onClick={()=>{
           setRead(!read)
-        }}>{!read?"Read More":"Show Less"}</button>
+        }}>{!read?`Read More`:"Show Less"}</button>
     </div>)}
     </div>
   )}
