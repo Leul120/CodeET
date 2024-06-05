@@ -69,15 +69,18 @@ const cancel = (e) => {
       <ToastContainer theme='dark'/>
       <div className='flex justify-between absolute left-1 '>
       <p className='-rotate-90 pr-1 pt-0 bg-gradient-to-r from-blue-800 to-yellow-400 text-transparent bg-clip-text'>CodeET</p>
-      
-      <div className='   sm:flex  border rounded-lg justify-between sm:justify-start  xs:w-auto  border-gradient-to-r from-blue-600 to-yellow-700 '>
      
-      <input className='bg-transparent focus:ring-0 ring-black pl-2 text-slate-700 sm:ml-2 text-slate-200  rounded-lg h-8 w-32 xs:w-40 sm:w-auto ml-5 ' list='course-list'  placeholder='Search Courses Here' onChange={(e)=>{
+      <Input className='bg-transparent focus:ring-0 ring-black pl-2 text-slate-700 sm:ml-2  rounded-lg h-8 w-32 xs:w-40 sm:w-auto ml-5 ' list='course-list'  placeholder='Search Courses Here' onChange={(e)=>{
         console.log(e)
         setTx(e.target.value.toLowerCase())
-      }} /><button onClick={()=>{setPage(1)
-        fetcher()}} className='pl-1  items-center flex float-right text-white text-2xl hover:text-xl '><CiSearch/></button>
-      </div>
+      }} onKeyDown={(e)=>{
+        console.log(e.key)
+        if(e.key==="Enter"){
+          setPage(1)
+        fetcher()
+        }
+      }}/><button onClick={()=>{}} className='pl-1  items-center flex float-right text-white text-2xl hover:text-xl '><CiSearch/></button>
+      
       </div>
       {/* <div className={count} >
       
