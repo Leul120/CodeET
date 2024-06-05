@@ -67,7 +67,7 @@ const PopularCourses = () => {
 
           
         </div>
-        <section className='pl-16 sm:pl-24 bg-slate-300'>
+        <section className='pl-16 sm:pl-24 bg-slate-100'>
     <Description/>
    
     <div className='xs:grid gap-9 xs:gap-5 flex flex-row flex-wrap xs:grid-cols-3  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4 '>
