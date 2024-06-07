@@ -44,7 +44,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path='/signup' element={<Signup/>}/>
               
-        <Route path="/subfolder/:folderName" element={<SubfolderList />} />
+        <Route path="/subfolder/:folderName/:courseID" element={<SubfolderList />} />
               <Route path="/course/:courseID" element={<SingleCourse />} />
               <Route path='/forget-password' element={<ForgetPassword/>}/>
               <Route path='/ai' element={<Chatai/>}/>
