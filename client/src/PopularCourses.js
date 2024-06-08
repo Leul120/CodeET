@@ -31,7 +31,7 @@ const PopularCourses = () => {
 }, [text,page,sort]);
     
     
-   
+   console.log(courses)
     
     const onChange=(e)=>{
       setSort(e.key)
@@ -86,7 +86,7 @@ const PopularCourses = () => {
             )
         })}</div>
     
-        <Pagination count={4}  color='primary' page={page} shape="rounded" className='m-3  p-0  rounded-lg bg-transparent flex justify-center' onChange={async (e,i)=>{
+        <Pagination count={5}  color='primary' page={page} shape="rounded" className='m-3  p-0  rounded-lg bg-transparent flex justify-center' onChange={async (e,i)=>{
            await setPage(i)
            setRefetcher(true)
            
