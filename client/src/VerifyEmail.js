@@ -11,7 +11,7 @@ const VerifyEmail = () => {
     useEffect(()=>{
         const verifier=async ()=>{
         try{
-        const response=await axios.post(`http://localhost:8021/users/verifyEmail/${token}`,users)
+        const response=await axios.post(`${process.env.REACT_APP_URL}/users/verifyEmail/${token}`,users)
         console.log(response.data)
         const custom=btoa(response.data.token)
          window.localStorage.setItem('token',custom)
