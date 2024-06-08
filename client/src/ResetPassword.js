@@ -6,12 +6,14 @@ import { Input } from 'antd'
 import { message } from 'antd'
 const ResetPassword = () => {
     const emailToken=useParams().resetToken
-    const {email}=useContext(AppContext)
     const [status,setStatus]=useState()
     const [password,setPassword]=useState("")
+
+    const email=window.localStorage.getItem("resetEmail")
+    console.log(email)
  const verify=async()=>{
     try{
-    const response=await axios.get(`${process.env.REACT_APP_URL}/resetPassword/${emailToken}`)
+    const response=await axios.get(`${process.env.REACT_APP_URL}/users/resetPassword/${emailToken}`)
     console.log(response.data)
     setStatus(response.data.status)
     }catch(error){
@@ -25,6 +27,7 @@ const ResetPassword = () => {
  const updatePassword=async()=>{
     try{
         const response=await axios.post(`${process.env.REACT_APP_URL}/users/updatePassword/${email}`,{
+            email:email,
             password:password,
         })
         console.log(response.data)
@@ -37,13 +40,14 @@ const ResetPassword = () => {
   return (
     <div>
         {status===200?(
-            <div>
-            <Input  placeholder='your new password' onChange={(e)=>{
+            <div className='flex justify-center'>
+            <div className='mt-44 w-96 flex flex-col justify-center gap-4 '>
+            <Input  placeholder='your new password' className='rounded-md' onChange={(e)=>{
                 console.log(e.target.value)
                 setPassword(e.target.value)
             }}/>
-            <Input  type='submit' onClick={updatePassword}  />
-            </div>
+            <Input  type='submit' value="Submit" onClick={updatePassword}  />
+            </div></div>
         ):(<p className='text-center'>failed</p>)}
     </div>
   )
