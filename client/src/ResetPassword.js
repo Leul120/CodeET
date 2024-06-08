@@ -26,7 +26,7 @@ const ResetPassword = () => {
  },[])
  const updatePassword=async()=>{
     try{
-        const response=await axios.post(`${process.env.REACT_APP_URL}/users/updatePassword/${email}`,{
+        const response=await axios.post(`${process.env.REACT_APP_URL}/users/updatePassword`,{
             email:email,
             password:password,
         })
