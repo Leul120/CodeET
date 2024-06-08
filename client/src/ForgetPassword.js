@@ -16,9 +16,8 @@ const ForgetPassword = () => {
     console.log(response.data)
     setStatus(response.data.message)
     api.open({
-      message: 'Notification Title',
-      description:
-        'I will never close automatically. This is a purposely very very long description that has many many characters and words.',
+      message: 'Email sent',
+      description:response.data.message,
       duration: 0,
     });
     
