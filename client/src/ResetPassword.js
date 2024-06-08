@@ -16,6 +16,7 @@ const ResetPassword = () => {
     setStatus(response.data.status)
     }catch(error){
         console.log(error)
+        message.error("error occured")
     }
  }
  useEffect(()=>{
@@ -43,7 +44,7 @@ const ResetPassword = () => {
             }}/>
             <Input  type='submit' onClick={updatePassword}  />
             </div>
-        ):(<p>failed</p>)}
+        ):(<p className='text-center'>failed</p>)}
     </div>
   )
 }
