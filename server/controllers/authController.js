@@ -183,11 +183,12 @@ exports.resetPassword=catchAsync(async (req,res,next)=>{
 
     })
 exports.updateForgottenPassword=catchAsync(async(req,res)=>{
-    const user=await User.findOne({email:req.body.email})
-    user.password = await bcrypt.hash(req.body.newPassword, 12);
-        user.passwordResetToken = undefined;
-        user.passwordResetExpires = undefined;
-        await user.save();
+    const user=await User.findOneAndUpdate({email:req.body.email},{
+        password:await bcrypt.hash(req.body.password, 12),
+        passwordResetToken:undefined,
+        passwordResetExpires:undefined
+    },{ new: true })
+
         res.status(200).json({message:"Password Reset Successfully"})
 })     
    
