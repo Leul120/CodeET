@@ -25,9 +25,9 @@ const Navbar = () => {
   useEffect(()=>{
     setUser(JSON.parse(window.localStorage.getItem('user')))
     
-  },[page])
+  },[])
  
-
+console.log(user)
   const fetcher=async ()=>{
     setIsLoading(true)
     setText(tx)
@@ -40,10 +40,9 @@ const Logout=async ()=>{
   Cookies.remove('authorization')
   window.localStorage.removeItem('user')
   setUser(null)
-  
-
   message.success('Logged out Successfully');
   }catch(error){
+    console.log(error)
     setErrored(true)
   }
 }
@@ -63,7 +62,7 @@ const cancel = (e) => {
   }
 
   return (<>
-  {errored && <h1>Error occured</h1>}
+ 
     {!isLoading && !errored &&(<>
     <div className='bg-white fixed w-full   shadow-emerald-300 z-50  flex justify-between  items-center h-16'>
       <ToastContainer theme='dark'/>
