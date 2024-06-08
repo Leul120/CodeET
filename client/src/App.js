@@ -15,6 +15,7 @@ import Payment from './Payment';
 import Dashboard from './Dashboard';
 import FolderList from './FolderList';
 import SubfolderList from './SubfolderList';
+import ResetPassword from './ResetPassword';
 
 
 export const AppContext = createContext();
@@ -34,10 +35,11 @@ function App() {
   const [isLoading,setIsLoading]=useState(true)
   const [sort,setSort]=useState("-Released")
   const [menu,setMenu]=useState('home')
+  const [email,setEmail]=useState("")
   return (
     <div className="App">
       <QueryClientProvider client={client}>
-        <AppContext.Provider value={{ courses, text, setText ,setCourses,count,setCount,page,setPage,isLoading,setIsLoading,tokens,setTokens,name,setName,user,setUser,enrolled,setEnrolled,course,setCourse,refetcher,setRefetcher,setSort,sort,menu,setMenu}}>
+        <AppContext.Provider value={{ courses, text, setText ,setCourses,count,setCount,page,setPage,isLoading,setIsLoading,tokens,setTokens,name,setName,user,setUser,enrolled,setEnrolled,course,setCourse,refetcher,setRefetcher,setSort,sort,menu,setMenu,email,setEmail}}>
           <Router>
             <Navbar />
             <Routes>
@@ -52,10 +54,10 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/pay/:courseID/:userID' element={<Payment/>}/>
-              <Route path='dashboard'
- element={<Dashboard/>}/>            </Routes>
-            
-          </Router>
+              <Route path='dashboard' element={<Dashboard/>}/>   
+              <Route path='/resetPassword/:resetToken' element={<ResetPassword/>}/>         </Routes>
+                        
+              </Router>
         </AppContext.Provider>
       </QueryClientProvider>
     </div>
