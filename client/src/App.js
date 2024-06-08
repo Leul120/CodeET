@@ -16,6 +16,7 @@ import Dashboard from './Dashboard';
 import FolderList from './FolderList';
 import SubfolderList from './SubfolderList';
 import ResetPassword from './ResetPassword';
+import VerifyEmail from './VerifyEmail';
 
 
 export const AppContext = createContext();
@@ -52,10 +53,10 @@ function App() {
               <Route path='/ai' element={<Chatai/>}/>
               <Route path="/course/watch/:courseID" element={<FolderList />} />
               <Route path='/login' element={<Login/>}/>
-              <Route path='/login' element={<Login/>}/>
               <Route path='/pay/:courseID/:userID' element={<Payment/>}/>
               <Route path='dashboard' element={<Dashboard/>}/>   
-              <Route path='/resetPassword/:resetToken' element={<ResetPassword/>}/>         </Routes>
+              <Route path='/resetPassword/:resetToken' element={<ResetPassword/>}/>  
+              <Route path='verifyEmail/:token' element={<VerifyEmail/>} />     </Routes>
                         
               </Router>
         </AppContext.Provider>
