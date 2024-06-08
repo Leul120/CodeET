@@ -8,6 +8,7 @@ const authSchema=Joi.object({
     passwordChangedAt:Joi.date(),
     passwordResetToken:Joi.string(),
     passwordResetExpires:Joi.date(),
+    verifyToken:Joi.string()
 })
 module.exports={
     authSchema
