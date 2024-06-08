@@ -1,6 +1,6 @@
 const express=require('express')
 const { postUser, getUsers, getUser } = require('../controllers/userController')
-const { signup,login, verifyEmail, logout } = require('../controllers/authController')
+const { signup,login, logout, forgetPassword, resetPassword, updateForgottenPassword } = require('../controllers/authController')
 const router=express.Router()
 
 router.route('/users').post(postUser).get(getUsers)
@@ -8,8 +8,10 @@ router.route('/users/:userID').get(getUser)
 router.route('/users/signup').post(signup)
 router.route('/users/login').post(login)
 router.route('/users/forget-password').post(login)
-router.route('/verify-email').post(verifyEmail)
 router.route('/users/logout/:userID').get(logout)
+router.route('/users/forgetPassword').post(forgetPassword)
+router.route('/users/resetPassword/:resetToken').get(resetPassword)
+router.route('/users/updatePassword/:email').post(updateForgottenPassword)
 router.get('/', (req, res) => {
   res.status(200).json({
     status: 'success',
