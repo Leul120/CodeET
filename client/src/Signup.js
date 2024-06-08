@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import {message} from 'antd'
 import { LoadingOutlined } from '@ant-design/icons';
+import randomString from 'random-string-generator';
 
 function Signup() {
   const navigate=useNavigate()
@@ -42,21 +43,17 @@ function Signup() {
 const poster=async (data)=>{
   try{
     setLoading(true)
-    const response=await axios.post(`${process.env.REACT_APP_URL}/users/signup`,data)
-    if(response?.data.status==='success'){
+    data.verifyToken=randomString(32)
+    window.localStorage.setItem("users",JSON.stringify(data))
+    const response=await axios.post(`http://localhost:8021/users/signup`,data)
+    console.log(response.data)
+    if(response.data.status===200){
       setLoading(false)
-      message.success('Signed Up Successfully. Please Login with your signed up account')
-      const expirationDate = new Date();
-  expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
-  
-  navigate('/login')
-}
-    return (
-        <h1 className='white'></h1>
-    )
-
-}catch(error){
+      
+      message.success(response.data.message)
+}}catch(error){
   setLoading(false)
+  console.log(error)
   setErrored([true,"Email already exists. Please try again!"])
 }}
 const submitForm=async (value)=>{
@@ -76,20 +73,20 @@ const submitForm=async (value)=>{
     <form className="max-w-sm mx-auto border text-white border-border bg-slate-300 p-10 shadow-blue-700 rounded-lg shadow-lg" onSubmit={handleSubmit(submitForm)}>
         <div className='flex flex-col py-1'>
           <p className='text-red-950'>{errored[1]}</p>
-      <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='Eg. Full Name' {...register("name")} />
+      <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='Full Name' {...register("name")} />
       <p className='text-red-400 text-sm '>{errors.name?.message}</p>
       </div>
       <div className='flex flex-col py-1'>
-      <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='Eg. email@gmail.com' {...register("email")}/>
+      <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='email' {...register("email")}/>
       <p className='text-red-400 text-sm'>{errors.email?.message}</p>
       </div>
       <div className='flex flex-col py-1'>
       <div className='border bg-white border-border flex justify-between items-center   rounded-lg'>
-      <input type={type} className=' border-white text-black pl-2 h-10 w-full focus:ring-0 focus-visible:ring-0 ring-0 rounded-lg ' placeholder='Eg. okrior349340930' {...register("password")}/> <button onClick={clicker} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
+      <input type={type} className=' border-white text-black pl-2 h-10 w-full focus:ring-0 focus-visible:ring-0 ring-0 rounded-lg ' placeholder='password' {...register("password")}/> <button onClick={clicker} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
       <p className='text-red-400 text-sm'>{errors.password?.message}</p></div>
       <div className='flex flex-col py-1'>
       <div className='border border-border flex  bg-white justify-between items-center   rounded-lg'>
-      <input type={types}  className=' border-white text-black focus:ring-0 focus-visible:ring-0 ring-0 pl-2 h-10 w-full   rounded-lg ' placeholder='Eg. okrior349340930' {...register("passwordConfirm")}/> <button onClick={(e)=>{
+      <input type={types}  className=' border-white text-black focus:ring-0 focus-visible:ring-0 ring-0 pl-2 h-10 w-full   rounded-lg ' placeholder='confirm password' {...register("passwordConfirm")}/> <button onClick={(e)=>{
         e.preventDefault();
         if (types === 'text') {
           setTypes('password');
