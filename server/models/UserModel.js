@@ -40,7 +40,10 @@ const userSchema=new mongoose.Schema({
     passwordChangedAt:Date,
     passwordResetToken:String,
     passwordResetExpires:Date,
-    isLogged:{type:Boolean,default:false}
+    isLogged:{
+        type:Boolean,
+        default:false
+    },
 })
 
 // Middleware to hash the password before saving
