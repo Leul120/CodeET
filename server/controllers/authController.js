@@ -53,7 +53,7 @@ exports.signup=catchAsync(async (req,res,next)=>{
         <p>Hi ${req.body.name},</p>
         <p>Welcome to CodeET! Please verify your email address by clicking the button below:</p>
         <p>
-            <a href="http://localhost:3000/verifyEmail/${verifyToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Verify</a>
+            <a href="http://code-et.vercel.app/verifyEmail/${verifyToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Verify</a>
         </p>
         <p>If you didn't create an account with CodeET, please ignore this email.</p>
         <p>Thanks, CodeET Team</p>
