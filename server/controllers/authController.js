@@ -144,7 +144,15 @@ exports.forgetPassword=catchAsync(async(req,res,next)=>{
     to: req.body.email, // List of recipients
     subject: 'Reset Your Password', // Subject line
     text: 'Greetings from the team.', // Plain text body
-    html: `<p>Hi ${user.name},</p><p>We received a request to reset your password. Click the link below to reset it:</p><button><a href="http://code-et.vercel.app/resetPassword/${resetToken}">Reset Password</a></button> <p>If you didn't request a password reset, please ignore this email.</p><p>Thanks, Team</p>`
+    html: `
+        <p>Hi ${user.name},</p>
+        <p>We received a request to reset your password. Click the button below to reset it:</p>
+        <p>
+            <a href="http://code-et.vercel.app/resetPassword/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Reset Password</a>
+        </p>
+        <p>If you didn't request a password reset, please ignore this email.</p>
+        <p>Thanks, Team</p>
+    `
 };
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
