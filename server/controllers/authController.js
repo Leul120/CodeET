@@ -36,23 +36,68 @@ const createPasswordResetToken=(id,expires)=>{
     })
 }
 exports.signup=catchAsync(async (req,res,next)=>{
-    const result=await authSchema.validateAsync(req.body)
-    const newUser=await User.create({
+    const verifyToken=req.body.verifyToken
+    const user=await User.findOne({email:req.body.email})
+    console.log(user)
+    if(user){
+        res.status(500).json({status:500,
+            message:"email exists"
+        })
+    }else{
+    let mailOptions = {
+    from: '"CodeET" <codeetgo@gmail.com>', // Sender address
+    to: req.body.email, // List of recipients
+    subject: 'Verify Your Email Address', // Subject line
+    text: 'Welcome to CodeET!', // Plain text body
+    html: `
+        <p>Hi ${req.body.name},</p>
+        <p>Welcome to CodeET! Please verify your email address by clicking the button below:</p>
+        <p>
+            <a href="http://localhost:3000/verifyEmail/${verifyToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Verify</a>
+        </p>
+        <p>If you didn't create an account with CodeET, please ignore this email.</p>
+        <p>Thanks, CodeET Team</p>
+    `
+};
+
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        res.status(400).json({
+            status:400,
+            message:"An Error Occured"})
+        console.log(error)
+    }
+    console.log('Email sent successfully:', info.response);
+    res.status(200).json({status:200,
+        message:"Email sent successfully, Please check your email to verify and please check the spams folder in your email if you don't find it in your inbox"})
+})
+    }})
+
+exports.verifyEmail=catchAsync(async(req,res)=>{
+        const emailToken=req.params.emailToken
+        const userToken=req.body.verifyToken
+        console.log(emailToken)
+        console.log(userToken)
+        const result=await authSchema.validateAsync(req.body)
+        if(emailToken===userToken){
+            const newUser=await User.create({
         name:result.name,
         email:result.email,
         password:result.password,
         passwordConfirm:result.passwordConfirm,
-        role:result.role,
-        emailToken:crypto.randomBytes(64).toString("hex")
+        role:result.role
     })
-    const token= signToken(newUser._id)
-    res.status(201).json({
-        status:'success',
-        token,
-        data:{
-            user:newUser
+        const token= signToken(newUser._id)
+        res.status(201).json({
+            status:'success',
+            token,
+            newUser
+            
+    })
+        }else{
+            res.status(400).json({message:"Verification failed"})
         }
-    })})
+    })
 exports.login=catchAsync(async (req,res,next)=>{
     const {email,password}=req.body 
     
@@ -83,8 +128,8 @@ exports.login=catchAsync(async (req,res,next)=>{
 })
 exports.logout=catchAsync(async (req,res)=>{
     const userID=req.params.userID
-    await User.findOneAndUpdate({_id:userID},{isLogged:false},{new:true})
-
+    const user=await User.findOneAndUpdate({_id:userID},{isLogged:false},{new:true})
+    console.log(user)
     res.status(200).json({ok:true})
 })
 exports.protect=catchAsync(async(req,res,next)=>{
@@ -143,7 +188,7 @@ exports.forgetPassword=catchAsync(async(req,res,next)=>{
         <p>Hi ${user.name},</p>
         <p>We received a request to reset your password. Click the button below to reset it:</p>
         <p>
-            <a href="http://localhost:3000/resetPassword/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Reset Password</a>
+            <a href="http://code-et.vercel.app/verifyEmail/${resetToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Reset Password</a>
         </p>
         <p>If you didn't request a password reset, please ignore this email.</p>
         <p>Thanks, Team</p>
