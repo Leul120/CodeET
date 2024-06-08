@@ -30,9 +30,9 @@ let transporter = nodemailer.createTransport({
         pass: "ajtr hgyi yqsz tkgv"
     }
 });
-const createPasswordResetToken=(id)=>{
+const createPasswordResetToken=(id,expires)=>{
     return jwt.sign({id:id},process.env.JWT_SECRET,{
-        expiresIn:process.env.JWT_EXPIRES_IN
+        expiresIn:expires
     })
 }
 exports.signup=catchAsync(async (req,res,next)=>{
@@ -69,11 +69,6 @@ exports.login=catchAsync(async (req,res,next)=>{
     const token= signToken(user._id)
     user=await User.findOneAndUpdate({email:email}, {  isLogged: true  },{ new: true });
     
-    // res.setHeader('Access-Control-Allow-Credentials', 'true');
-    // res.cookie("authorization",token,{
-    //     path:'/'
-    // })
-    // res.setHeader('Set-Cookie', 'authorization==lmmlmlkm; Path=/');
     res.status(200).json({
         status:"success",
         token,
@@ -133,7 +128,7 @@ exports.forgetPassword=catchAsync(async(req,res,next)=>{
     if(!user){
         return next(new AppError('There is no user with this email address',404));
     }
-    const resetToken=createPasswordResetToken(user._id)
+    const resetToken=createPasswordResetToken(user._id,Date.now() + 10 * 60 * 1000)
     const hashedToken=crypto.createHash('sha256').update(resetToken).digest('hex')
     await User.findByIdAndUpdate(user._id, {
         passwordResetToken: hashedToken,
@@ -183,11 +178,14 @@ exports.resetPassword=catchAsync(async (req,res,next)=>{
 
     })
 exports.updateForgottenPassword=catchAsync(async(req,res)=>{
-    const user=await User.findOneAndUpdate({email:req.body.email},{
-        password:await bcrypt.hash(req.body.password, 12),
+    const email=req.body.email
+    const password=await bcrypt.hash(req.body.password, 12)
+    const user=await User.findOneAndUpdate({email:email},{
+        password:password,
         passwordResetToken:undefined,
         passwordResetExpires:undefined
     },{ new: true })
+    console.log(user)
 
         res.status(200).json({message:"Password Reset Successfully"})
 })     
