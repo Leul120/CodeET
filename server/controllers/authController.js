@@ -183,7 +183,7 @@ exports.resetPassword=catchAsync(async (req,res,next)=>{
 
     })
 exports.updateForgottenPassword=catchAsync(async(req,res)=>{
-    const user=await User.findOne({email:req.params.email})
+    const user=await User.findOne({email:req.body.email})
     user.password = await bcrypt.hash(req.body.newPassword, 12);
         user.passwordResetToken = undefined;
         user.passwordResetExpires = undefined;
