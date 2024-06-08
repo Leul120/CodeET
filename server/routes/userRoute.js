@@ -11,7 +11,7 @@ router.route('/users/forget-password').post(login)
 router.route('/users/logout/:userID').get(logout)
 router.route('/users/forgetPassword').post(forgetPassword)
 router.route('/users/resetPassword/:resetToken').get(resetPassword)
-router.route('/users/updatePassword/:email').post(updateForgottenPassword)
+router.route('/users/updatePassword').post(updateForgottenPassword)
 router.get('/', (req, res) => {
   res.status(200).json({
     status: 'success',
