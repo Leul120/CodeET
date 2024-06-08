@@ -11,6 +11,8 @@ const Recipient = require("mailersend").Recipient;
 const EmailParams = require("mailersend").EmailParams;
 const MailerSend = require("mailersend");
 const bcrypt=require('bcrypt')
+
+const nodemailer = require('nodemailer');
 const signToken=id=>{
     return jwt.sign({id:id},process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRES_IN
@@ -120,7 +122,6 @@ exports.restrictTo=(...roles)=>{
     }
 }
 
-const nodemailer = require('nodemailer');
 
 
 
