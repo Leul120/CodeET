@@ -134,7 +134,7 @@ exports.forgetPassword=catchAsync(async(req,res,next)=>{
         return next(new AppError('There is no user with this email address',404));
     }
     const resetToken=createPasswordResetToken(user._id)
-    const hashedToken=crypto.createHash('sha256').update(token).digest('hex')
+    const hashedToken=crypto.createHash('sha256').update(resetToken).digest('hex')
     await User.findByIdAndUpdate(user._id, {
         passwordResetToken: hashedToken,
         passwordResetExpires: Date.now() + 10 * 60 * 1000 // Token expires in 10 minutes
