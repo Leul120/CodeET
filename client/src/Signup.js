@@ -45,7 +45,7 @@ const poster=async (data)=>{
     setLoading(true)
     data.verifyToken=randomString(32)
     window.localStorage.setItem("users",JSON.stringify(data))
-    const response=await axios.post(`http://localhost:8021/users/signup`,data)
+    const response=await axios.post(`${process.env.REACT_APP_URL}/users/signup`,data)
     console.log(response.data)
     if(response.data.status===200){
       setLoading(false)
