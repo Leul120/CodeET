@@ -4,7 +4,10 @@ import { useParams } from 'react-router-dom'
 import { AppContext } from './App'
 import { Input } from 'antd'
 import { message } from 'antd'
+import { useNavigate } from 'react-router-dom'
+
 const ResetPassword = () => {
+    const navigate=useNavigate()
     const emailToken=useParams().resetToken
     const [status,setStatus]=useState()
     const [password,setPassword]=useState("")
@@ -32,6 +35,7 @@ const ResetPassword = () => {
         })
         console.log(response.data)
         message.success(response.data.message)
+        navigate('/login')
     }catch(error){
         console.log(error)
     }
