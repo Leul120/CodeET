@@ -48,7 +48,7 @@ exports.signup=catchAsync(async (req,res,next)=>{
     })
     const token= signToken(newUser._id)
     await User.findOneAndUpdate({_id:newUser._id},{token:token})
-    if(new Date(newUser.created_at)>=new Date(Date.now()-2*60*1000) &&!newUser.isVerified){
+    if(new Date(newUser.created_at)>=new Date(Date.now()+2*60*1000) &&!newUser.isVerified){
         await User.findOneAndDelete({_id:newUser._id})
         console.log("deleted")
     }
