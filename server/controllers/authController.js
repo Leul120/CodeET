@@ -86,7 +86,8 @@ async function removeUnverifiedUsers() {
     });
     console.log(unverifiedUsers)
     for (let i=0;i<unverifiedUsers.length;i++) {
-      await unverifiedUsers[i].delete();
+        const id=unverifiedUsers[i]._id
+      await User.findOneAndDelete({_id:id})
       console.log(`Deleted user: `);
     }
   } catch (err) {
