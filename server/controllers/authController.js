@@ -99,6 +99,7 @@ exports.verifyEmail=catchAsync(async(req,res)=>{
     const t=await User.findOneAndUpdate({_id:user._id},{token:""})
     console.log(t)
 }  else{
+    console.log("incorrect")
     res.status(400).json({
         message:"Incorrect Code. Please try again"
     })
