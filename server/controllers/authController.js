@@ -86,12 +86,13 @@ exports.verifyEmail=catchAsync(async(req,res)=>{
        const verificationCode=req.body.verificationCode
        const user=await User.findOne({_id:req.params.userID})
         if(verificationCode===user.verificationCode){
+            await User.findOneAndUpdate({_id:user._id},{isVerified:true}) 
         res.status(201).json({
             status:'success',
             message:"Email verified successfully!",
             user      
     })
-    await User.findOneAndUpdate({_id:newUser._id},{token:""})
+    await User.findOneAndUpdate({_id:user._id},{token:""})
 }  else{
     res.status(400).json({
         message:"Incorrect Code. Please try again"
