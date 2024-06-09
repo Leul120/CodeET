@@ -25,7 +25,7 @@ const VerifyEmail = () => {
 
   return (
     <div className='flex h-screen justify-center flex-col items-center bg-slate-200'>
-      <Input placeholder='Your verification code' className='w-44' onChange={(e)=>{
+      <Input placeholder='Your verification code' className='w-44 my-3' onChange={(e)=>{
         setVerificationCode(e.target.value)
       }}/>
       <Input type='submit' value='Submit' className='w-32' onClick={verifier}/>
