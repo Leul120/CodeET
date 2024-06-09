@@ -88,7 +88,6 @@ exports.verifyEmail=catchAsync(async(req,res)=>{
         res.status(201).json({
             status:'success',
             message:"Email verified successfully!",
-            token,
             user
             
     })
