@@ -48,10 +48,6 @@ exports.signup=catchAsync(async (req,res,next)=>{
     })
     const token= signToken(newUser._id)
     await User.findOneAndUpdate({_id:newUser._id},{token:token})
-    if(new Date(newUser.created_at)>=new Date(Date.now()+2*60*1000) &&!newUser.isVerified){
-        await User.findOneAndDelete({_id:newUser._id})
-        console.log("deleted")
-    }
     let mailOptions = {
     from: '"CodeET" <codeetgo@gmail.com>', // Sender address
     to: req.body.email, // List of recipients
@@ -82,7 +78,21 @@ transporter.sendMail(mailOptions, (error, info) => {
             newUser})
 })
     })
-
+async function removeUnverifiedUsers() {
+  try {
+    const unverifiedUsers = await User.find({
+      isVerified: false,
+      created_at: { $lte: new Date(Date.now() - 2 * 60 * 1000) },
+    });
+    for (const user of unverifiedUsers) {
+      await user.delete();
+      console.log(`Deleted user: ${user.email}`);
+    }
+  } catch (err) {
+    console.error('Error removing unverified users:', err);
+  }
+}
+setInterval(removeUnverifiedUsers, 2 * 60 * 1000);
 exports.verifyEmail=catchAsync(async(req,res)=>{
        const verificationCode=req.body.verificationCode
        const user=await User.findOne({_id:req.params.userID})
@@ -114,7 +124,7 @@ exports.login=catchAsync(async (req,res,next)=>{
         return next(new AppError('Please provide email and password!',400))
     }else{
         let user= await User.findOne({email:email}).select('+password')
-        if(!user || !await user.correctPassword(password,user.password)){
+        if(!user || !await user.correctPassword(password,user.password) ||!user.isVerified){
             return next(new AppError('Incorrect email or password',401))
         }else{
             if(!user.isLogged){
