@@ -7,7 +7,7 @@ const VerifyEmail = () => {
   const navigate=useNavigate()
     const newID=useParams().newID
     const [verificationCode,setVerificationCode]=useState("")
-    useEffect(()=>{
+  
         const verifier=async ()=>{
         try{
         const response=await axios.post(`${process.env.REACT_APP_URL}/users/verifyEmail/${newID}`,{verificationCode:verificationCode})
@@ -21,15 +21,14 @@ const VerifyEmail = () => {
           console.log(error)
             message.error("error occured!")
         }}
-        verifier()
-    },[])
+       
 
   return (
     <div className='flex justify-center'>
       <Input variant='borderLess' className='w-44' onChange={(e)=>{
         setVerificationCode(e.target.value)
       }}/>
-      <Input type='submit' value='Submit' className='w-32'/>
+      <Input type='submit' value='Submit' className='w-32' onClick={verifier}/>
     </div>
   )
 }
