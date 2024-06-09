@@ -36,21 +36,15 @@ const createPasswordResetToken=(id,expires)=>{
     })
 }
 exports.signup=catchAsync(async (req,res,next)=>{
-    const user=await User.findOne({email:req.body.email})
     
-    console.log(user)
-    if(user){
-        res.status(500).json({status:500,
-            message:"email exists"
-        })
-    }else{
     const result=await authSchema.validateAsync(req.body)
     const newUser=await User.create({
         name:result.name,
         email:result.email,
         password:result.password,
         passwordConfirm:result.passwordConfirm,
-        role:result.role
+        role:result.role,
+        verificationCode:result.verificationCode
     })
     const token= signToken(newUser._id)
     if(new Date(newUser.created_at)>=new Date(Date.now()-2*60*1000) &&!newUser.isVerified){
@@ -85,7 +79,7 @@ transporter.sendMail(mailOptions, (error, info) => {
             token,
             newUser})
 })
-    }})
+    })
 
 exports.verifyEmail=catchAsync(async(req,res)=>{
        const verificationCode=req.body.verificationCode
