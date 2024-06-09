@@ -37,10 +37,11 @@ function App() {
   const [sort,setSort]=useState("-Released")
   const [menu,setMenu]=useState('home')
   const [email,setEmail]=useState("")
+  const [newID,setNewID]=useState("")
   return (
     <div className="App">
       <QueryClientProvider client={client}>
-        <AppContext.Provider value={{ courses, text, setText ,setCourses,count,setCount,page,setPage,isLoading,setIsLoading,tokens,setTokens,name,setName,user,setUser,enrolled,setEnrolled,course,setCourse,refetcher,setRefetcher,setSort,sort,menu,setMenu,email,setEmail}}>
+        <AppContext.Provider value={{ courses, text, setText ,setCourses,count,setCount,page,setPage,isLoading,setIsLoading,tokens,setTokens,name,setName,user,setUser,enrolled,setEnrolled,course,setCourse,refetcher,setRefetcher,setSort,sort,menu,setMenu,email,setEmail,newID,setNewID}}>
           <Router>
             <Navbar />
             <Routes>
@@ -56,7 +57,7 @@ function App() {
               <Route path='/pay/:courseID/:userID' element={<Payment/>}/>
               <Route path='dashboard' element={<Dashboard/>}/>   
               <Route path='/resetPassword/:resetToken' element={<ResetPassword/>}/>  
-              <Route path='verifyEmail/:token' element={<VerifyEmail/>} />     </Routes>
+              <Route path='verifyEmail/:newID' element={<VerifyEmail/>} />     </Routes>
                         
               </Router>
         </AppContext.Provider>
