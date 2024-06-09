@@ -85,14 +85,18 @@ transporter.sendMail(mailOptions, (error, info) => {
 exports.verifyEmail=catchAsync(async(req,res)=>{
        const verificationCode=req.body.verificationCode
        const user=await User.findOne({_id:req.params.userID})
+       console.log(verificationCode)
+       console.log(user)
         if(verificationCode===user.verificationCode){
+            console.log("true")
             await User.findOneAndUpdate({_id:user._id},{isVerified:true}) 
         res.status(201).json({
             status:'success',
             message:"Email verified successfully!",
             user      
     })
-    await User.findOneAndUpdate({_id:user._id},{token:""})
+    const t=await User.findOneAndUpdate({_id:user._id},{token:""})
+    console.log(t)
 }  else{
     res.status(400).json({
         message:"Incorrect Code. Please try again"
