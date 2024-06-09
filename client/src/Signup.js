@@ -5,7 +5,6 @@ import { FaRegEye } from "react-icons/fa6";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import {message,notification} from 'antd'
 import { LoadingOutlined } from '@ant-design/icons';
 import { AppContext } from './App';
 
@@ -17,7 +16,7 @@ function Signup() {
     let [errored,setErrored]=useState([false,""])
     const {setNewID}=useContext(AppContext)
      const [loading,setLoading]=useState(false)
-     const [api, contextHolder] = notification.useNotification();
+     
     let load= `<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
     const user=JSON.parse(window.localStorage.getItem('user'))
  
@@ -57,11 +56,7 @@ const poster=async (data)=>{
     if(response.data.status===200){
       setLoading(false)
       
-       api.open({
-      message: 'Email sent',
-      description:response.data.message,
-      duration: 0,
-    });
+      
     
 }}catch(error){
   setLoading(false)
@@ -78,7 +73,7 @@ const submitForm=async (value)=>{
   return (
     <div
     className='pt-20 h-screen bg-slate-200'>
-    {contextHolder}
+    
         <h1 className='text-green-700 text-center ' >Sign-Up</h1>
 
     <form className="max-w-sm mx-auto border text-white border-border bg-slate-300 p-10 shadow-blue-700 rounded-lg shadow-lg" onSubmit={handleSubmit(submitForm)}>
