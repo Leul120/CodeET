@@ -82,7 +82,7 @@ async function removeUnverifiedUsers() {
   try {
     const unverifiedUsers = await User.find({
       isVerified: false,
-      created_at: { $lte: new Date(Date.now() - 2 * 60 * 1000) },
+      created_at: { $lte: new Date(Date.now() - 5 * 60 * 1000) },
     });
     for (let i=0;i<unverifiedUsers.length;i++) {
         const id=unverifiedUsers[i]._id
@@ -92,7 +92,7 @@ async function removeUnverifiedUsers() {
     console.error('Error removing unverified users:', err);
   }
 }
-setInterval(removeUnverifiedUsers, 2 * 60 * 1000);
+setInterval(removeUnverifiedUsers, 5 * 60 * 1000);
 exports.verifyEmail=catchAsync(async(req,res)=>{
        const verificationCode=req.body.verificationCode
        const user=await User.findOne({_id:req.params.userID})
@@ -106,7 +106,7 @@ exports.verifyEmail=catchAsync(async(req,res)=>{
             message:"Email verified successfully!",
             user      
     })
-    const t=await User.findOneAndUpdate({_id:user._id},{token:""})
+    const t=await User.findOneAndUpdate({_id:user._id},{token:"",isLogged:true})
     console.log(t)
 }  else{
     console.log("incorrect")
