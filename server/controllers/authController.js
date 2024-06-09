@@ -36,14 +36,26 @@ const createPasswordResetToken=(id,expires)=>{
     })
 }
 exports.signup=catchAsync(async (req,res,next)=>{
-    const verifyToken=req.body.verifyToken
     const user=await User.findOne({email:req.body.email})
+    
     console.log(user)
     if(user){
         res.status(500).json({status:500,
             message:"email exists"
         })
     }else{
+    const result=await authSchema.validateAsync(req.body)
+    const newUser=await User.create({
+        name:result.name,
+        email:result.email,
+        password:result.password,
+        passwordConfirm:result.passwordConfirm,
+        role:result.role
+    })
+    const token= signToken(newUser._id)
+    if(new Date(newUser.created_at)>=new Date(Date.now()-2*60*1000) &&!newUser.isVerified){
+        await User.findOneAndDelete({_id:newUser._id})
+    }
     let mailOptions = {
     from: '"CodeET" <codeetgo@gmail.com>', // Sender address
     to: req.body.email, // List of recipients
@@ -51,9 +63,9 @@ exports.signup=catchAsync(async (req,res,next)=>{
     text: 'Welcome to CodeET!', // Plain text body
     html: `
         <p>Hi ${req.body.name},</p>
-        <p>Welcome to CodeET! Please verify your email address by clicking the button below:</p>
+        <p>Welcome to CodeET! Please verify your email address by inserting this code in your verifying page:</p>
         <p>
-            <a href="http://code-et.vercel.app/verifyEmail/${verifyToken}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Verify</a>
+           ${req.body.verificationCode}
         </p>
         <p>If you didn't create an account with CodeET, please ignore this email.</p>
         <p>Thanks, CodeET Team</p>
@@ -69,34 +81,28 @@ transporter.sendMail(mailOptions, (error, info) => {
     }
     console.log('Email sent successfully:', info.response);
     res.status(200).json({status:200,
-        message:"Email sent successfully, Please check your email to verify and please check the spams folder in your email if you don't find it in your inbox"})
+        message:"Email sent successfully, Please check your email to verify and please check the spams folder in your email if you don't find it in your inbox",
+            token,
+            newUser})
 })
     }})
 
 exports.verifyEmail=catchAsync(async(req,res)=>{
-        const emailToken=req.params.emailToken
-        const userToken=req.body.verifyToken
-        console.log(emailToken)
-        console.log(userToken)
-        const result=await authSchema.validateAsync(req.body)
-        if(emailToken===userToken){
-            const newUser=await User.create({
-        name:result.name,
-        email:result.email,
-        password:result.password,
-        passwordConfirm:result.passwordConfirm,
-        role:result.role
-    })
-        const token= signToken(newUser._id)
+       const verificationCode=req.body.verificationCode
+       const user=await User.findOne({_id:req.params.userID})
+        if(verificationCode===user.verificationCode){
         res.status(201).json({
             status:'success',
+            message:"Email verified successfully!",
             token,
-            newUser
+            user
             
     })
-        }else{
-            res.status(400).json({message:"Verification failed"})
-        }
+}  else{
+    res.status(400).json({
+        message:"Incorrect Code. Please try again"
+    })
+}
     })
 exports.login=catchAsync(async (req,res,next)=>{
     const {email,password}=req.body 
