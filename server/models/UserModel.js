@@ -46,6 +46,7 @@ const userSchema=new mongoose.Schema({
         type:Boolean,
         default:false
     },
+    token:String
 })
 
 // Middleware to hash the password before saving
