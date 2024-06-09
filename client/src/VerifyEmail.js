@@ -6,12 +6,20 @@ import { LoadingOutlined } from '@ant-design/icons';
 const VerifyEmail = () => {
   const navigate=useNavigate()
     const newID=useParams().newID
-  const [api, contextHolder] = notification.useNotification();
+    const [api, contextHolder] = notification.useNotification();
+    const lll= ()=>{
+      
      api.open({
       message: 'Email sent',
       description:`Please check your email to verify and please check the spams folder in your email if you don't find it in your inbox`,
       duration: 0,
     });
+    }
+    useEffect(()=>{
+      lll()
+    },[])
+  
+     
     const [verificationCode,setVerificationCode]=useState("")
   
         const verifier=async ()=>{
