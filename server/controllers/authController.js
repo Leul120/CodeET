@@ -47,6 +47,7 @@ exports.signup=catchAsync(async (req,res,next)=>{
         verificationCode:result.verificationCode
     })
     const token= signToken(newUser._id)
+    await User.findOneAndUpdate({_id:newUser._id},{token:token})
     if(new Date(newUser.created_at)>=new Date(Date.now()-2*60*1000) &&!newUser.isVerified){
         await User.findOneAndDelete({_id:newUser._id})
     }
@@ -88,9 +89,9 @@ exports.verifyEmail=catchAsync(async(req,res)=>{
         res.status(201).json({
             status:'success',
             message:"Email verified successfully!",
-            user
-            
+            user      
     })
+    await User.findOneAndUpdate({_id:newUser._id},{token:""})
 }  else{
     res.status(400).json({
         message:"Incorrect Code. Please try again"
