@@ -42,13 +42,13 @@ const PopularCourses = () => {
     {isLoading?(<div role="status" className='flex justify-center items-center mt-56 text-3xl bg-transparent'>
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
-        <div className='flex  '>
-        <div className='flex flex-col fixed w-16 sm:w-24 text-black h-full bg-transparent'>
-         
+        <div className='flex  flex-col'>
+        
+         <Description/>
           
-          <Menu onChange={onChange} value={sort} onSelect={onChange} className='text-white bg-transparent '>
+          <Menu onChange={onChange} value={sort} onSelect={onChange} className='text-white bg-transparent w-24'>
          
-          <Menu.SubMenu key="odd" title="sort" className='text-black  mt-10 border  shadow-md   '>
+          <Menu.SubMenu key="odd" title="sort" className='text-black  mt-1 border  shadow-md   '>
             <Menu.SubMenu  title="Released">
             <Menu.Item key="Released" className='text-2xl w-6 text-center'><IoIosArrowRoundUp/></Menu.Item>
             <Menu.Item key='-Released' className='text-2xl w-6 text-center' ><IoIosArrowRoundDown /></Menu.Item>
@@ -64,11 +64,11 @@ const PopularCourses = () => {
           </Menu.SubMenu>
        
         </Menu>
-        </div>
-        <section className='pl-16 sm:pl-24 bg-slate-100'>
-    <Description/>
+       
+       
+    
    
-    <div className='xs:grid gap-9 xs:gap-5 flex flex-row flex-wrap xs:grid-cols-3  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4 '>
+    <div className='xs:grid gap-9 xs:gap-5 flex flex-row flex-wrap xs:grid-cols-3  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4  '>
         {courses?.map((course,index)=>{
             const date= course?.Released.slice(0,4)
             return(
@@ -93,7 +93,7 @@ const PopularCourses = () => {
             }} />
         
     <Footer/>
-    </section>
+ 
     </div>
     )}
     </>
