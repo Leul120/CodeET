@@ -25,7 +25,12 @@ const VerifyEmail = () => {
         navigate('/')
         }catch(error){
           console.log(error)
-            message.error("error occurred!")
+            
+            api.open({
+      message: 'error',
+      description:`The Verification page has expired. Please try signing up again.`,
+      duration: 0,
+    });
         }}
        
 
