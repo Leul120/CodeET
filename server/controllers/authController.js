@@ -85,9 +85,9 @@ async function removeUnverifiedUsers() {
       created_at: { $lte: new Date(Date.now() - 2 * 60 * 1000) },
     });
     console.log(unverifiedUsers)
-    for (const user of unverifiedUsers) {
-      await user.delete();
-      console.log(`Deleted user: ${user.email}`);
+    for (let i=0;i<unverifiedUsers.length;i++) {
+      await unverifiedUsers[i].delete();
+      console.log(`Deleted user: `);
     }
   } catch (err) {
     console.error('Error removing unverified users:', err);
