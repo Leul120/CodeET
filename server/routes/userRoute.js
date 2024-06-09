@@ -12,7 +12,7 @@ router.route('/users/logout/:userID').get(logout)
 router.route('/users/forgetPassword').post(forgetPassword)
 router.route('/users/resetPassword/:resetToken').get(resetPassword)
 router.route('/users/updatePassword').post(updateForgottenPassword)
-router.route('/users/verifyEmail/:emailToken').post(verifyEmail)
+router.route('/users/verifyEmail/:userID').post(verifyEmail)
 router.get('/', (req, res) => {
   res.status(200).json({
     status: 'success',
