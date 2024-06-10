@@ -47,7 +47,7 @@ const Login = () => {
           
           window.localStorage.setItem('token',custom)
           window.localStorage.setItem('user',JSON.stringify(response.data.user))
-         navigate(-1)
+         navigate('/')
         }
       }catch(error){
           setErrored(error.response.data.message)
