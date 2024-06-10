@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from './App'
 import { Link } from 'react-router-dom'
-import { useQuery } from 'react-query'
+
 import { fetchCourses } from './Home'
 import Description from './Description'
 import Footer from './Footer'
@@ -46,20 +46,20 @@ const PopularCourses = () => {
         
          <Description/>
           
-          <Menu onChange={onChange} value={sort} onSelect={onChange} className='text-white bg-transparent w-24'>
+          <Menu onChange={onChange} value={sort}  onSelect={onChange} className='text-white bg-transparent border-none shadow-none w-24'>
          
-          <Menu.SubMenu key="odd" title="sort" className='text-black  mt-1 border  shadow-md   '>
+          <Menu.SubMenu key="odd" title="sort" className='text-sky-700  mt-1 itemIcon={<DownOutlined />} '>
             <Menu.SubMenu  title="Released">
-            <Menu.Item key="Released" className='text-2xl w-6 text-center'><IoIosArrowRoundUp/></Menu.Item>
-            <Menu.Item key='-Released' className='text-2xl w-6 text-center' ><IoIosArrowRoundDown /></Menu.Item>
+            <Menu.Item key="Released" className=''><p className='flex flex-row items-center'><IoIosArrowRoundUp className='text-2xl'/>Lower-To-Higher</p></Menu.Item>
+            <Menu.Item key='-Released' className='' ><p className='flex flex-row items-center'><IoIosArrowRoundDown className='text-2xl'/>Higher-To-Lower</p></Menu.Item>
             </Menu.SubMenu>
             <Menu.SubMenu title="Price">
-              <Menu.Item key='Price'  className='text-2xl w-6 text-center'><IoIosArrowRoundUp/></Menu.Item>
-            <Menu.Item key="-Price"  className='text-2xl w-6 text-center'><IoIosArrowRoundDown /></Menu.Item>
+              <Menu.Item key='Price'  className=''><p className='flex flex-row items-center'><IoIosArrowRoundUp className='text-2xl'/>Lower-To-Higher</p></Menu.Item>
+            <Menu.Item key="-Price"  className=''><p className='flex flex-row items-center'><IoIosArrowRoundDown className='text-2xl'/>Higher-To-Lower</p></Menu.Item>
             </Menu.SubMenu>
             <Menu.SubMenu title="Rating">
-              <Menu.Item key='Rating'  className='text-2xl w-6 text-center'><IoIosArrowRoundUp/></Menu.Item>
-            <Menu.Item key='-Rating'  className='text-2xl w-6 text-center'><IoIosArrowRoundDown /></Menu.Item>
+              <Menu.Item key='Rating'  className=''><p className='flex flex-row items-center'><IoIosArrowRoundUp className='text-2xl'/>Lower-To-Higher</p></Menu.Item>
+            <Menu.Item key='-Rating'  className=''><p className='flex flex-row items-center'><IoIosArrowRoundDown className='text-2xl'/>Higher-To-Lower</p></Menu.Item>
             </Menu.SubMenu>
           </Menu.SubMenu>
        
@@ -70,7 +70,6 @@ const PopularCourses = () => {
    
     <div className='xs:grid gap-9 xs:gap-5 flex flex-row flex-wrap xs:grid-cols-3  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4  '>
         {courses?.map((course,index)=>{
-            const date= course?.Released.slice(0,4)
             return(
                 <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between w-28 xs:w-auto '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-28 xs:w-96 rounded-lg' loading='lazy'/>
                 <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text font-bold' key={Math.random()}>{course.Title}</p>
