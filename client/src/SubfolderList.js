@@ -42,7 +42,7 @@ const SubfolderList = () => {
    console.log(uniqueFolder)
   return (
     <div className='pt-10'>
-      <button onClick={() => navigate(-1)}>Back</button>
+
       <div className='' >
         <ReactPlayer
           url={courseUrl}
