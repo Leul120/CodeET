@@ -46,7 +46,7 @@ const ResetPassword = () => {
   return (
     <div>
         {status===200?(
-            <div className='flex justify-center bg-stone-100 h-screen'>
+            <div className='flex justify-center items-center bg-stone-100 h-screen'>
             <div className='mt-44 w-96 flex flex-col bg-white rounded-3xl  justify-center gap-4 p-10 '>
             <Input  placeholder='your new password' className='rounded-md' onChange={(e)=>{
                 console.log(e.target.value)
