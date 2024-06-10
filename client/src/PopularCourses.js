@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from './App'
 import { Link } from 'react-router-dom'
-
+import sample from './2887463-hd_1920_1080_25fps.mp4'
 import { fetchCourses } from './Home'
 import Description from './Description'
 import Footer from './Footer'
@@ -42,9 +42,9 @@ const PopularCourses = () => {
     {isLoading?(<div role="status" className='flex justify-center items-center mt-56 text-3xl bg-transparent'>
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
-        <div className='flex  flex-col  overflow-hidden'>
+        <div className='  overflow-hidden'>
         <video autoPlay loop muted playsInline className="min-w-full min-h-full w-auto h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1]">
-        <source src="2887463-hd_1920_1080_25fps.mp4" type="video/mp4" />
+        <source src={sample} type="video/mp4" />
       </video><div className='relative z-10'>
          <Description/>
           
