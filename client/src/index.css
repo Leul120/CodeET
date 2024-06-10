@@ -2,16 +2,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body,html{
-  font-family:'Poppins',sans-serif;
-  font-weight:400;
-  /* background-color:rgb(28, 90, 170); */
-  /* background-image: url("C:\Users\PC\Desktop\react\my-react-app\client\src\coding image.jpeg");
-  object-fit: contain;
-  background-repeat: no-repeat; */
-  background-size: 100vw;
+body, html {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  /* Set height to 100% of viewport */
   
+  background-size: cover; /* Cover entire viewport */
+  background-repeat: no-repeat;
 }
+
 .ant-menu-item-selected {
   background-color: #e6f7ff; /* Replace with your desired background color */
 }
