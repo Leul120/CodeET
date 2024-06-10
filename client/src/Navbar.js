@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState} from 'react'
-import { CiHeart, CiHome, CiSearch } from "react-icons/ci";
+import { CiHome, CiSearch } from "react-icons/ci";
 import { IoIosLogIn, IoIosMenu, IoMdContact } from "react-icons/io";
 import { RxAvatar, RxDashboard } from "react-icons/rx";
 import { Menu, Popconfirm ,Drawer,Input} from 'antd';
@@ -14,7 +14,7 @@ import axios from 'axios';
 
 
 const Navbar = () => {
-  const {courses,setText,user,setUser,page,setPage,isLoading,setIsLoading,menu,setMenu}=useContext(AppContext)
+  const {courses,setText,user,setUser,setPage,isLoading,setIsLoading,menu,setMenu}=useContext(AppContext)
   const [open, setOpen] = useState(false);
   const [tx,setTx]=useState("")
   const [errored,setErrored]=useState(false)
@@ -36,7 +36,7 @@ console.log(user)
 
 const Logout=async ()=>{
   try{
-  const response=await axios.get(`${process.env.REACT_APP_URL}/users/logout/${user._id}`)
+  await axios.get(`${process.env.REACT_APP_URL}/users/logout/${user._id}`)
   Cookies.remove('authorization')
   window.localStorage.removeItem('user')
   setUser(null)
