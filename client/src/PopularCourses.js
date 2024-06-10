@@ -48,7 +48,7 @@ const PopularCourses = () => {
           
           <Menu onChange={onChange} value={sort}  onSelect={onChange} className='text-white bg-transparent border-none shadow-none w-24'>
          
-          <Menu.SubMenu key="odd" title="sort" className='text-white  mt-1 itemIcon={<DownOutlined />} ' style={{color:"white"}}>
+          <Menu.SubMenu key="odd" title="sort" className='text-white bg-white/20 backdrop-blur-xl w-24 mt-1 ml-4 itemIcon={<DownOutlined />} ' style={{color:"white"}}>
             <Menu.SubMenu  title="Released">
             <Menu.Item key="Released" className=''><p className='flex flex-row items-center'><IoIosArrowRoundUp className='text-2xl'/>Lower-To-Higher</p></Menu.Item>
             <Menu.Item key='-Released' className='' ><p className='flex flex-row items-center'><IoIosArrowRoundDown className='text-2xl'/>Higher-To-Lower</p></Menu.Item>
