@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from './App'
 import { Link } from 'react-router-dom'
-import sample from './2887463-hd_1920_1080_25fps.mp4'
+
 import { fetchCourses } from './Home'
 import Description from './Description'
 import Footer from './Footer'
@@ -42,10 +42,8 @@ const PopularCourses = () => {
     {isLoading?(<div role="status" className='flex justify-center items-center mt-56 text-3xl bg-transparent'>
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
-        <div className='  overflow-hidden'>
-        <video autoPlay loop muted playsInline className="min-w-full min-h-full w-auto h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1]">
-        <source src={sample} type="video/mp4" />
-      </video><div className='relative z-10'>
+        <div className='flex  flex-col'>
+        
          <Description/>
           
           <Menu onChange={onChange} value={sort}  onSelect={onChange} className='text-white bg-transparent border-none shadow-none w-24'>
@@ -73,7 +71,7 @@ const PopularCourses = () => {
     <div className='xs:grid gap-9 xs:gap-5 flex flex-row flex-wrap xs:grid-cols-3  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4  '>
         {courses?.map((course,index)=>{
             return(
-                <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between w-28 xs:w-auto '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-3xl xs:h-48 w-28 xs:w-96 rounded-2xl' loading='lazy'/>
+                <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between w-28 xs:w-auto '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-28 xs:w-96 rounded-lg' loading='lazy'/>
                 <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text font-bold' key={Math.random()}>{course.Title}</p>
                 
                 <p className='text-red-200 text-sm bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text' key={Math.random()}><Rate disabled allowHalf defaultValue={course.Rating/2} /> {course.Rating}</p>
@@ -94,7 +92,6 @@ const PopularCourses = () => {
             }} />
         
     <Footer/>
- </div>
     </div>
     )}
     </>
