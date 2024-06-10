@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState} from 'react'
 import { CiHome, CiSearch } from "react-icons/ci";
-import { IoIosLogIn, IoIosMenu, IoMdContact } from "react-icons/io";
+import { IoIosLogIn, IoIosMenu, IoMdContact, IoMdLogOut } from "react-icons/io";
 import { RxAvatar, RxDashboard } from "react-icons/rx";
-import { Menu, Popconfirm ,Drawer,Input} from 'antd';
+import { Menu, Popconfirm ,Drawer,Input, Dropdown, Button} from 'antd';
 import { AppContext } from './App';
 import { Link } from 'react-router-dom';
 
@@ -63,13 +63,13 @@ const cancel = (e) => {
 
   return (<>
  
-    {!isLoading && !errored &&(<>
-    <div className='bg-white fixed w-full   shadow-emerald-300 z-50  flex justify-between  items-center h-16'>
+    {!errored &&(<>
+    <div className={`  fixed w-full   shadow-emerald-300 z-50  flex justify-between  items-center h-16 ${isLoading?"hidden":""}`}>
       <ToastContainer theme='dark'/>
       <div className='flex justify-between absolute left-1 '>
       <p className='-rotate-90 pr-1 pt-0 bg-gradient-to-r from-blue-800 to-yellow-400 text-transparent bg-clip-text'>CodeET</p>
      
-      <Input className='bg-transparent focus:ring-0 ring-black pl-2 text-slate-700 sm:ml-2  rounded-lg h-8 w-32 xs:w-40 sm:w-auto ml-5 ' list='course-list'  placeholder='Search Courses Here' onChange={(e)=>{
+      <Input className='bg-transparent focus:ring-0  ring-black border-white pl-2 text-black sm:ml-2  rounded-lg h-8 w-32 xs:w-40 sm:w-96 ml-5 focus:bg-transparent' allowClear   placeholder='Search Courses Here' onChange={(e)=>{
         console.log(e)
         setTx(e.target.value.toLowerCase())
       }} onKeyDown={(e)=>{
@@ -78,7 +78,7 @@ const cancel = (e) => {
           setPage(1)
         fetcher()
         }
-      }}/><button onClick={()=>{}} className='pl-1  items-center flex float-right text-white text-2xl hover:text-xl '><CiSearch/></button>
+      }}/><button onClick={()=>{}} className='pl-1  items-center flex float-right text-sky-600 text-2xl hover:text-xl '><CiSearch/></button>
       
       </div>
       {/* <div className={count} >
@@ -106,32 +106,24 @@ const cancel = (e) => {
      </Menu>
       </Drawer>
 
-      <datalist className='bg-white text-border h-48 overflow-hidden' id='course-list'>
-        {courses.map((course,index)=>{
-          
-          
-          return(
-            <option className='bg-white text-border' key={index} value={course.Title}></option>
-          )
-
-        })
-         
-      }
-      </datalist>
-     <Menu mode='horizontal' defaultSelectedKeys={[menu]} onSelect={select} className='w-1/2 bg-transparent h-12 hidden md:flex justify-start items-center overflow-x-auto '>
-      <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
-      <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
-      <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
-      {!user && <Menu.Item key="login" icon={<IoIosLogIn/>}><Link to='/login'>Login</Link></Menu.Item>}
-      {user && <Menu.SubMenu key='logout' icon={<RxAvatar/>} title={user.name}><Menu.Item ><Popconfirm
+    
+     <div className='flex flex-row gap-10 mr-32 text-serif p-2 text-sm rounded-2xl bg-white/20 backdrop-blur-2xl'>
+     {/* <div className='backdrop-blur-2xl absolute inset-1 pt-6 h-12 '></div> */}
+      <Link className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' to='/'><CiHome/>Home</Link>
+      <Link to='/dashboard' className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><RxDashboard/>Dashboard</Link>
+      <Link className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><IoMdContact/>Contact Us</Link>
+      {!user && <Link to='/login' className='flex flex-row justify-center items-center gap-1  hover:text-sky-500' >Login<IoIosLogIn/></Link>}
+      {user && (<Dropdown menu={{key:<Popconfirm
     title="Log Out"
     description="Are you sure to Log Out?"
     onConfirm={Logout}
     onCancel={cancel}
     okText="Yes"
     cancelText="No"
-  ><button className='w-full h-full ring-0  hover:ring-0'>Log Out</button></Popconfirm></Menu.Item></Menu.SubMenu>}
-     </Menu>
+  ><button className='w-full h-full ring-0  hover:ring-0 flex flex-row justify-center items-center gap-1 hover:text-sky-500'>Log Out<IoMdLogOut/></button></Popconfirm>}}><Button>{user.name}</Button>
+      
+      </Dropdown>)}
+    </div>
 
 
       
