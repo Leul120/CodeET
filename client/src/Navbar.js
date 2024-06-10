@@ -69,7 +69,7 @@ const cancel = (e) => {
       <div className='flex justify-between absolute left-1 '>
       <p className='-rotate-90 pr-1 pt-0 bg-gradient-to-r from-blue-800 to-yellow-400 text-transparent bg-clip-text'>CodeET</p>
      
-      <Input className='bg-transparent focus:ring-0  ring-black border-white pl-2 text-black sm:ml-2  rounded-lg h-8 w-32 xs:w-40 sm:w-96 ml-5 focus:bg-transparent' allowClear   placeholder='Search Courses Here' onChange={(e)=>{
+      <Input className='bg-transparent focus:ring-0  ring-black border-white pl-2 text-black sm:ml-2  rounded-lg h-8 w-32 xs:w-40 md:w-96 ml-5 focus:bg-transparent' allowClear   placeholder='Search Courses Here' onChange={(e)=>{
         console.log(e)
         setTx(e.target.value.toLowerCase())
       }} onKeyDown={(e)=>{
