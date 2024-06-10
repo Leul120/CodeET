@@ -84,13 +84,13 @@ const PopularCourses = () => {
                 // </div>
             )
         })}</div>
-    
-        <Pagination count={5}  color='primary' page={page} shape="rounded" className='m-3  p-0 text-white rounded-lg bg-transparent flex justify-center' onChange={async (e,i)=>{
+    <div className='flex justify-center'>
+        <Pagination count={5}  color='secondary'  page={page} shape="rounded" className='m-3 w-72 p-0 text-white rounded-lg bg-white/30 flex justify-center backdrop-blur-2xl' onChange={async (e,i)=>{
            await setPage(i)
            setRefetcher(true)
            
             }} />
-        
+        </div>
     <Footer/>
     </div>
     )}
