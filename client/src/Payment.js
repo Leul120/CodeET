@@ -9,15 +9,14 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { AppContext } from './App'
 
 const Payment = () => {
-    let load=`<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
     const navigate=useNavigate()
     const {course,user}=useContext(AppContext)
     const [loading,setLoading]=useState(false)
-    useEffect(()=>{
-        if(!user){
-            navigate('/login')
-        }
-    },[])
+    // useEffect(()=>{
+    //     if(!user){
+    //         navigate('/login')
+    //     }
+    // },[navigate,user])
     const paymentSchema=yup.object().shape({
         first_name:yup.string().required(),
         last_name:yup.string().required(),
@@ -43,17 +42,18 @@ const paymentData=async (data)=>{
     }) 
 }
   return (
-    <div className='flex justify-center pt-44 bg-slate-200 h-screen pb-44'>
-        <form onSubmit={handleSubmit(paymentData)} className='flex flex-col justify-center bg-slate-400 rounded-md  p-10 mt-3 w-72 items-center gap-3 shadow-lg shadow-slate-800'>
-            <input type='text' className="text-black h-9 mt-1 pl-2 rounded-md " placeholder='First Name' {...register('first_name')}/>
-            <input type='text' className="text-black h-9 mt-1 pl-2 rounded-md " placeholder='Last Name' {...register('last_name')}/>
-            <input type='text' className="text-black h-9 mt-1 pl-2 rounded-md " placeholder='email' {...register('email')}/>
-            <div className='border flex flex-row items-center h-9 bg-white w-56 rounded-lg'>
+    <div className='flex justify-center items-center bg-stone-100 h-screen pb-44'>
+        <form onSubmit={handleSubmit(paymentData)} className='flex flex-col justify-center bg-white rounded-3xl  p-10 mt-3  items-center gap-3 shadow-lg'>
+        <h1 className='text-serif font-bold text-sky-500'>Buy Course</h1>
+            <input type='text' className="text-black h-9 mt-1 pl-2 rounded-3xl " placeholder='First Name' {...register('first_name')}/>
+            <input type='text' className="text-black h-9 mt-1 pl-2 rounded-3xl " placeholder='Last Name' {...register('last_name')}/>
+            <input type='text' className="text-black h-9 mt-1 pl-2 rounded-3xl " placeholder='email' {...register('email')}/>
+            <div className='border border-sky-500 flex flex-row items-center h-9 bg-white  rounded-lg'>
             <p className=' text-black h-full rounded-lg pl-2 bg-white flex items-center'>Amount :</p>
-            <input type='text' className="text-black h-9   w-16 border-0 ring-0 outline-0 rounded-md "  {...register('amount')} placeholder='amount' prefix="amount : " value={course.Price}/>
+            <input type='text' className="text-stone-400 h-6   w-16 border-0 ring-0 outline-0 rounded-3xl "  {...register('amount')}  prefix="amount : " defaultValue='500' value={course.Price? course.Price:"500"}/>
             </div>
-            {loading && <button type='submit' disabled className="w-full h-8 text-sm rounded-lg p-1 text-white flex items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/></button>}
-            {!loading && <button type='submit' className="w-full h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600 text-sm">pay</button> }
+            {loading && <button type='submit' disabled className="w-full h-9 text-sm rounded-3xl p-1 text-white flex items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/></button>}
+            {!loading && <button type='submit' className="w-full h-9 rounded-3xl p-1 text-white flex items-center justify-center bg-blue-600 text-sm">Buy</button> }
         </form>
     </div>
   )
