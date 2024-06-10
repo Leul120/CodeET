@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from './App'
 import { Link } from 'react-router-dom'
-
+import './popular.css'
 import { fetchCourses } from './Home'
 import Description from './Description'
 import Footer from './Footer'
@@ -39,16 +39,16 @@ const PopularCourses = () => {
     }
   return (
     <>
-    {isLoading?(<div role="status" className='flex justify-center items-center mt-56 text-3xl bg-transparent'>
+    {isLoading?(<div role="status" className='flex justify-center items-center text-3xl bg-white h-screen'>
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
-        <div className='flex  flex-col'>
+        <div className='flex main flex-col ' >
         
          <Description/>
           
           <Menu onChange={onChange} value={sort}  onSelect={onChange} className='text-white bg-transparent border-none shadow-none w-24'>
          
-          <Menu.SubMenu key="odd" title="sort" className='text-sky-700  mt-1 itemIcon={<DownOutlined />} '>
+          <Menu.SubMenu key="odd" title="sort" className='text-white  mt-1 itemIcon={<DownOutlined />} ' style={{itemColor:"white"}}>
             <Menu.SubMenu  title="Released">
             <Menu.Item key="Released" className=''><p className='flex flex-row items-center'><IoIosArrowRoundUp className='text-2xl'/>Lower-To-Higher</p></Menu.Item>
             <Menu.Item key='-Released' className='' ><p className='flex flex-row items-center'><IoIosArrowRoundDown className='text-2xl'/>Higher-To-Lower</p></Menu.Item>
@@ -85,7 +85,7 @@ const PopularCourses = () => {
             )
         })}</div>
     
-        <Pagination count={5}  color='primary' page={page} shape="rounded" className='m-3  p-0  rounded-lg bg-transparent flex justify-center' onChange={async (e,i)=>{
+        <Pagination count={5}  color='primary' page={page} shape="rounded" className='m-3  p-0 text-white rounded-lg bg-transparent flex justify-center' onChange={async (e,i)=>{
            await setPage(i)
            setRefetcher(true)
            
