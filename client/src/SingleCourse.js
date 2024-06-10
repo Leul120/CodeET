@@ -71,7 +71,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
   return (
     <div>
       {isLoading? (<div className='w-full h-1/2 mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(
-    <div className='flex flex-row pt-10 items-center flex-wrap bg-slate-100 pl-3 min-h-screen'>
+    <div className='flex flex-row pt-10 items-center flex-wrap bg-stone-100 pl-3 min-h-screen'>
     
 
     
