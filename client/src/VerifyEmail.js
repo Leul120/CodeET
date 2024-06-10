@@ -54,7 +54,7 @@ const VerifyEmail = () => {
       <Input variant='borderLess' placeholder='Your verification code'  className='w-48 ml-3  border-0 underline decoration-indigo-500 underline-offset-2 focus:underline-offset-6' onChange={(e)=>{
         setVerificationCode(e.target.value)
       }}/>
-      {!loading &&(<button type='submit' value='Submit' className='w-32 mt-3 ml-9 bg-indigo-500 text-serif text-white rounded-3xl h-9 text-sm' onClick={verifier}>Submit</button>)}
+      {!loading &&(<button type='submit' value='Submit' className='w-32 mt-3 ml-9 bg-indigo-500 text-serif text-white hover:bg-white hover-text-indigo-500 hover:border rounded-3xl h-9 text-sm' onClick={verifier}>Submit</button>)}
       {loading &&(<button type='submit' value='Submit' className='w-32 mt-3 ml-9 bg-indigo-500 text-serif text-white rounded-3xl h-9 text-sm flex flex-row justify-center items-center gap-2 ' onClick={verifier}><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/>Verifying</button>)}
       </div>
     </div>
