@@ -42,7 +42,7 @@ const PopularCourses = () => {
     {isLoading?(<div role="status" className='flex justify-center items-center mt-56 text-3xl bg-transparent'>
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
-        <div className='flex  flex-col'>
+        <div className='flex  flex-col bg-stone-100'>
         
          <Description/>
           
@@ -77,7 +77,7 @@ const PopularCourses = () => {
                 <p className='text-red-200 text-sm bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text' key={Math.random()}><Rate disabled allowHalf defaultValue={course.Rating/2} /> {course.Rating}</p>
                 <p className='text-red-300 text-sm bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text' key={Math.random()}>{course.bought} {" "} people bought</p>
                 </div>
-                <button type="button" className="text-white mb-1 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 w-28 xs:w-full dark:focus:ring-cyan-800 text-xs xs:font-medium xs:rounded-lg rounded-md px-5 py-2.5 h-6 xs:h-auto   me-2 pt-1  xs:text-center xs:text-nowrap overflow-hidden max-w-96"> {course.Price-0.01}Birrs only</button>
+                <button type="button" className="text-white   bg-purple-500 flex items-center justify-center text-xs xs:font-medium xs:rounded-lg rounded-md px-5 py-2.5 h-6 xs:h-auto   me-2  xs:text-center xs:text-nowrap overflow-hidden max-w-96"> {course.Price-0.01}Birrs only</button>
 
                 
                 </Link>
