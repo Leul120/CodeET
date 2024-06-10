@@ -42,7 +42,7 @@ const PopularCourses = () => {
     {isLoading?(<div role="status" className='flex justify-center items-center mt-56 text-3xl bg-transparent'>
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
-        <div className='flex  flex-col h-screen overflow-hidden'>
+        <div className='flex  flex-col  overflow-hidden'>
         <video autoPlay loop muted playsInline className="min-w-full min-h-full w-auto h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1]">
         <source src="client\src\2887463-hd_1920_1080_25fps.mp4" type="video/mp4" />
       </video><div className='relative z-10'>
