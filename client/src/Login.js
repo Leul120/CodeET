@@ -1,8 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 // import {AppContext} from './App'
 import axios from 'axios'
-
-import 'react-toastify/dist/ReactToastify.css';
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
@@ -20,14 +18,14 @@ const Login = () => {
     const [loading,setLoading]=useState(false)
     const navigate=useNavigate()
      const user=JSON.parse(window.localStorage.getItem('user'))
-    let load= `<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
+    
      
     useEffect(()=>{
       
       if(user){
         navigate('/')
       }
-    },[])
+    },[navigate,user])
     
     const loginSchema=yup.object().shape({
         email:yup.string().email('Please Provide A Valid Email').required("Email Required"),
@@ -65,14 +63,14 @@ const Login = () => {
     }
 
   return (<>
-    <div className='justify-center flex items-center bg-slate-200 h-screen'>
-        <form onSubmit={handleSubmit(submitData)} className={`border  rounded-lg p-10 flex flex-col shadow-slate-800 shadow-lg bg-slate-300 `}>
-        
+    <div className=' pt-20 bg-stone-100 h-screen'>
+        <form onSubmit={handleSubmit(submitData)} className={`max-w-sm mx-auto border mt-10  bg-white p-10  rounded-3xl shadow-lg `}>
+        <h1 className='text-green-700 pb-3 font-bold ' >Log In</h1>
           <p className='text-red-800 '>{errored}</p>
-        <input type='text' className='rounded-lg my-1' placeholder='email '{...register('email')}/>
+        <input type='text' className='rounded-3xl my-1 w-full' placeholder='Email '{...register('email')}/>
         <p className='text-red-400 text-sm'>{errors.email?.message}</p>
-        <div className='border bg-white border-border flex justify-between items-center   rounded-lg mt-1'>
-      <input type={types} className=' border-white text-black pl-2 h-10 w-full  focus:ring-0 focus-visible:ring-0 ring-0 rounded-lg ' placeholder='password' {...register("password")}/> <button onClick={(e)=>{
+        <div className='border bg-white border-border flex justify-between items-center   rounded-3xl mt-1'>
+      <input type={types} className=' border-white text-black pl-2 h-10 w-full  focus:outline-none rounded-3xl focus:border-0' placeholder='password' {...register("password")}/> <button onClick={(e)=>{
         e.preventDefault();
         if (types === 'text') {
           setTypes('password');
@@ -80,13 +78,13 @@ const Login = () => {
           setTypes('text');
         }
     
-    }} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
+    }} className='pr-2 mr-1 bg-white text-black pl-2'><FaRegEye /></button></div>
         <p className='text-red-400 text-sm'>{errors.password?.message}</p>
-        <Link to='/forget-Password' className='text-blue-600 text-end p-2'>Forget Password</Link>
-        {loading && <button type='submit' disabled className="w-full h-8 rounded-lg p-1 text-white flex gap-2 text-sm items-center justify-center bg-blue-600"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/>Login</button>}
-            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600 text-sm">Log In</button> }
-        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-8 text-white rounded-lg my-1 bg-blue-600 text-sm">Sign Up</button></Link>
         
+        {loading && <button type='submit' disabled className="w-full h-9 mt-3 rounded-3xl p-1 text-white flex gap-2 text-sm items-center justify-center bg-purple-700"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/>Login</button>}
+            {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center justify-center bg-purple-700 text-sm">Log In</button> }
+        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-9  rounded-3xl mt-3 mb-5 text-purple-700 text-sm">Sign Up</button></Link>
+        <Link to='/forget-Password' className='text-blue-600  text-center p-2 pl-24'>Forget Password</Link>
         </form>
         
     </div></>
