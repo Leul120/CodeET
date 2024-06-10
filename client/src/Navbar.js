@@ -113,7 +113,7 @@ const cancel = (e) => {
       <Link to='/dashboard' className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><RxDashboard/>Dashboard</Link>
       <Link className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><IoMdContact/>Contact Us</Link>
       {!user && <Link to='/login' className='flex flex-row justify-center items-center gap-1  hover:text-sky-500' >Login<IoIosLogIn/></Link>}
-      {user && (<div><p>{user.name}</p>
+      {user && (<div className='flex flex-row gap-10'><p>{user.name}</p>
       <Popconfirm
     title="Log Out"
     description="Are you sure to Log Out?"
