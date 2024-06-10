@@ -44,7 +44,7 @@ const PopularCourses = () => {
     </div>):(
         <div className='flex  flex-col  overflow-hidden'>
         <video autoPlay loop muted playsInline className="min-w-full min-h-full w-auto h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1]">
-        <source src="./2887463-hd_1920_1080_25fps.mp4" type="video/mp4" />
+        <source src="2887463-hd_1920_1080_25fps.mp4" type="video/mp4" />
       </video><div className='relative z-10'>
          <Description/>
           
