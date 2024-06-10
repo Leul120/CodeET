@@ -42,7 +42,7 @@ const PopularCourses = () => {
     {isLoading?(<div role="status" className='flex justify-center items-center text-3xl bg-white h-screen'>
         <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
     </div>):(
-        <div className='flex main flex-col ' >
+        <div className='flex main flex-col' >
         
          <Description/>
           
@@ -72,7 +72,7 @@ const PopularCourses = () => {
         {courses?.map((course,index)=>{
             return(
                 <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between w-28 xs:w-auto '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-28 xs:w-96 rounded-lg' loading='lazy'/>
-                <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text font-bold' key={Math.random()}>{course.Title}</p>
+                <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full text-slate-300 font-bold' key={Math.random()}>{course.Title}</p>
                 
                 <p className='text-red-200 text-sm bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text' key={Math.random()}><Rate disabled allowHalf defaultValue={course.Rating/2} /> {course.Rating}</p>
                 <p className='text-red-300 text-sm bg-gradient-to-r from-green-600 to-purple-600 text-transparent bg-clip-text' key={Math.random()}>{course.bought} {" "} people bought</p>
