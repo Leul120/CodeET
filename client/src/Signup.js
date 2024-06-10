@@ -1,12 +1,11 @@
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaRegEye } from "react-icons/fa6";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { LoadingOutlined } from '@ant-design/icons';
-import { AppContext } from './App';
 
 
 function Signup() {
@@ -14,17 +13,14 @@ function Signup() {
     let [type,setType]=useState("password")
     let [types,setTypes]=useState("password")
     let [errored,setErrored]=useState([false,""])
-    const {setNewID}=useContext(AppContext)
      const [loading,setLoading]=useState(false)
-     
-    let load= `<LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/>`
     const user=JSON.parse(window.localStorage.getItem('user'))
  
     useEffect(()=>{
       if(user){
         navigate('/')
       }
-    },[])
+    },[navigate,user])
     const clicker = (e) => {
         e.preventDefault();
         if (type === 'text') {
@@ -72,27 +68,28 @@ const submitForm=async (value)=>{
 
   return (
     <div
-    className='pt-20 h-screen bg-slate-200'>
+    className='pt-20 h-screen bg-stone-100'>
     
-        <h1 className='text-green-700 text-center ' >Sign-Up</h1>
+        
 
-    <form className="max-w-sm mx-auto border text-white border-border bg-slate-300 p-10 shadow-blue-700 rounded-lg shadow-lg" onSubmit={handleSubmit(submitForm)}>
+    <form className="max-w-sm mx-auto border mt-10 text-white bg-white p-10  rounded-3xl shadow-lg" onSubmit={handleSubmit(submitForm)}>
+    <h1 className='text-green-700 pb-3 font-bold ' >Sign Up</h1>
         <div className='flex flex-col py-1'>
           <p className='text-red-950'>{errored[1]}</p>
-      <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='Full Name' {...register("name")} />
+      <input type="text" className='rounded-3xl text-black focus:border-green-200 ' placeholder='Full Name' {...register("name")} />
       <p className='text-red-400 text-sm '>{errors.name?.message}</p>
       </div>
       <div className='flex flex-col py-1'>
-      <input type="text" className='rounded-lg text-black focus:border-green-200 ' placeholder='email' {...register("email")}/>
+      <input type="text" className='rounded-3xl text-black focus:border-green-200 ' placeholder='Email' {...register("email")}/>
       <p className='text-red-400 text-sm'>{errors.email?.message}</p>
       </div>
       <div className='flex flex-col py-1'>
-      <div className='border bg-white border-border flex justify-between items-center   rounded-lg'>
-      <input type={type} className=' border-white text-black pl-2 h-10 w-full focus:ring-0 focus-visible:ring-0 ring-0 rounded-lg ' placeholder='password' {...register("password")}/> <button onClick={clicker} className='pr-2 bg-white text-black pl-2'><FaRegEye /></button></div>
+      <div className='border bg-white border-border flex justify-between items-center   rounded-3xl'>
+      <input type={type} className=' border-white focus:border-0 text-black pl-2 h-10 w-full  focus:outline-0 ring-0 rounded-3xl ' placeholder='password' {...register("password")}/> <button onClick={clicker} className='pr-2 mr-1 bg-white text-black pl-2'><FaRegEye /></button></div>
       <p className='text-red-400 text-sm'>{errors.password?.message}</p></div>
       <div className='flex flex-col py-1'>
-      <div className='border border-border flex  bg-white justify-between items-center   rounded-lg'>
-      <input type={types}  className=' border-white text-black focus:ring-0 focus-visible:ring-0 ring-0 pl-2 h-10 w-full   rounded-lg ' placeholder='confirm password' {...register("passwordConfirm")}/> <button onClick={(e)=>{
+      <div className='border border-border flex  bg-white justify-between items-center   rounded-3xl'>
+      <input type={types}  className=' border-white text-black focus:border-0  pl-2 h-10 w-full   rounded-3xl ' placeholder='Confirm Password' {...register("passwordConfirm")}/> <button onClick={(e)=>{
         e.preventDefault();
         if (types === 'text') {
           setTypes('password');
@@ -100,12 +97,12 @@ const submitForm=async (value)=>{
           setTypes('text');
         }
     
-    }} className='pr-2 pl-2 bg-white   text-black'><FaRegEye /></button></div>
+    }} className='pr-2 pl-2 mr-1 bg-white   text-black'><FaRegEye /></button></div>
     <p className='text-red-400 text-sm'>{errors.passwordConfirm?.message}</p>
       </div>
-      {loading && <button type='submit' disabled className="w-full h-8 rounded-lg p-1 text-white flex gap-2 items-center justify-center bg-blue-600 text-sm"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black"}}/> Sign Up</button>}
-            {!loading && <button type='submit' className="w-full my-1 h-8 rounded-lg p-1 text-white flex items-center justify-center bg-blue-600 text-sm">Sign Up</button> }
-      {/* <input type="submit" className='text-white' /> */}
+      {loading && <button type='submit' disabled className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex gap-2 items-center justify-center bg-purple-700 text-sm"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/> Sign Up</button>}
+            {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center justify-center bg-purple-700 text-sm">Sign Up</button> }
+      <p className='text-slate-500 text-sm pt-1 pl-1'>By clicking sign up you agree to our user <em className='underline underline-offset-2'>Terms of Service</em> and <em className='underline underline-offset-2'>Privacy Policy</em></p>
     </form>
     <div className='text-white'>{poster}</div>
     </div>
