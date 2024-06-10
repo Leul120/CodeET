@@ -107,8 +107,8 @@ const cancel = (e) => {
       </Drawer>
 
     
-     <div className='flex flex-row gap-10 mr-32 text-serif p-2 text-sm rounded-2xl bg-white/20 backdrop-blur-2xl'>
-     {/* <div className='backdrop-blur-2xl absolute inset-1 pt-6 h-12 '></div> */}
+     <div className=' flex-row gap-10 mr-32 text-serif p-2 text-sm hidden md:flex rounded-2xl bg-white/20 backdrop-blur-2xl'>
+     
       <Link className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' to='/'><CiHome/>Home</Link>
       <Link to='/dashboard' className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><RxDashboard/>Dashboard</Link>
       <Link className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><IoMdContact/>Contact Us</Link>
