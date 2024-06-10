@@ -101,7 +101,7 @@ const submitForm=async (value)=>{
     <p className='text-red-400 text-sm'>{errors.passwordConfirm?.message}</p>
       </div>
       {loading && <button type='submit' disabled className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex gap-2 items-center justify-center bg-purple-700 text-sm"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/> Sign Up</button>}
-            {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center justify-center bg-purple-700 text-sm">Sign Up</button> }
+            {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center hover:bg-white hover:text-purple-700 hover:border justify-center bg-purple-700 text-sm">Sign Up</button>}
       <p className='text-slate-500 text-sm pt-1 pl-1'>By clicking sign up you agree to our user <em className='underline underline-offset-2'>Terms of Service</em> and <em className='underline underline-offset-2'>Privacy Policy</em></p>
     </form>
     <div className='text-white'>{poster}</div>
