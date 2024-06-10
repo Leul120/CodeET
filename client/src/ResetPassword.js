@@ -11,15 +11,19 @@ const ResetPassword = () => {
     const [status,setStatus]=useState()
     const [password,setPassword]=useState("")
     const [loading,setLoading]=useState(false)
+    const [isLoading,setIsLoading]=useState(false)
     const email=window.localStorage.getItem("resetEmail")
     console.log(email)
  const verify=async()=>{
     try{
+        setIsLoading(true)
     const response=await axios.get(`${process.env.REACT_APP_URL}/users/resetPassword/${emailToken}`)
     console.log(response.data)
+    setIsLoading(false)
     setStatus(response.data.status)
     }catch(error){
         console.log(error)
+        setIsLoading(false)
         message.error("error occured")
     }
  }
@@ -45,6 +49,7 @@ const ResetPassword = () => {
 
   return (
     <div>
+    {isLoading&&(<div className='w-full  mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>)}
         {status===200?(
             <div className='flex justify-center items-center bg-stone-100 h-screen'>
             <div className=' w-96 flex flex-col bg-white rounded-3xl  justify-center gap-4 p-10 '>
