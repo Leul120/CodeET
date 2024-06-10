@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom'
 import { Input } from 'antd'
 import { message } from 'antd'
 import { useNavigate } from 'react-router-dom'
-
+import { LoadingOutlined } from '@ant-design/icons';
 const ResetPassword = () => {
     const navigate=useNavigate()
     const emailToken=useParams().resetToken
     const [status,setStatus]=useState()
     const [password,setPassword]=useState("")
-
+    const [loading,setLoading]=useState(false)
     const email=window.localStorage.getItem("resetEmail")
     console.log(email)
  const verify=async()=>{
@@ -28,14 +28,17 @@ const ResetPassword = () => {
  },[])
  const updatePassword=async()=>{
     try{
+        setLoading(true)
         const response=await axios.post(`${process.env.REACT_APP_URL}/users/updatePassword`,{
             email:email,
             password:password,
         })
         console.log(response.data)
+        setLoading(false)
         message.success(response.data.message)
         navigate('/login')
     }catch(error){
+        setLoading(false)
         console.log(error)
     }
  }
@@ -43,15 +46,16 @@ const ResetPassword = () => {
   return (
     <div>
         {status===200?(
-            <div className='flex justify-center'>
-            <div className='mt-44 w-96 flex flex-col justify-center gap-4 '>
+            <div className='flex justify-center bg-stone-100'>
+            <div className='mt-44 w-96 flex flex-col bg-shite justify-center gap-4 p-10 '>
             <Input  placeholder='your new password' className='rounded-md' onChange={(e)=>{
                 console.log(e.target.value)
                 setPassword(e.target.value)
             }}/>
-            <Input  type='submit' value="Submit" onClick={updatePassword}  />
+            {!loading&&( <button  type='submit' value="Submit" onClick={updatePassword} className='bg-indigo-500 h-9 text-white hover:bg-white hover:text-indigo-500 text-serif text-sm' >Reset</button>)}
+            {loading&&(<button  type='submit' disabled value="Submit" onClick={updatePassword} className='bg-indigo-500 h-9 text-white flex flex-row justify-center items-center gap-2 text-serif text-sm' ><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/>Reseting</button>)}
             </div></div>
-        ):(<p className='text-center'>failed</p>)}
+        ):(<p className='text-center'>Verification Failed</p>)}
     </div>
   )
 }
