@@ -95,7 +95,7 @@ const cancel = (e) => {
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
       <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
       {!user && <Menu.Item key="login" icon={<IoIosLogIn/>}><Link to='/login'>Login</Link></Menu.Item>}
-      {user && <Menu.SubMenu key='logout'  icon={<RxAvatar/>} title={user.name}><Menu.Item mode="inline"><Popconfirm
+      {user && <Menu.SubMenu key='logout'  icon={<RxAvatar/>} className='capitalize' title={user.name}><Menu.Item mode="inline"><Popconfirm
     title="Log Out"
     description="Are you sure to Log Out?"
     onConfirm={Logout}
@@ -113,7 +113,7 @@ const cancel = (e) => {
       <Link to='/dashboard' className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><RxDashboard/>Dashboard</Link>
       <Link className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><IoMdContact/>Contact Us</Link>
       {!user && <Link to='/login' className='flex flex-row justify-center items-center gap-1  hover:text-sky-500' >Login<IoIosLogIn/></Link>}
-      {user && (<div className='flex flex-row gap-10'><p>{user.name}</p>
+      {user && (<div className='flex flex-row gap-10 capitalize'><p>{user.name}</p>
       <Popconfirm
     title="Log Out"
     description="Are you sure to Log Out?"
