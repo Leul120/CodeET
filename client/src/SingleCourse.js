@@ -86,7 +86,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
         <h2 className='text-stone-300'>{course.DTitle}</h2>
         <div className='text-slate-400'>Year: {course.Year}</div>
         <div className='text-slate-400'>Language: {course.Language}</div><br/>
-        <div className={`backdrop-blur-lg bg-white/30 rounded-3xl p-2 mr-2 ${!read?"h-56 bg-gradient-to-b from-stone-300 to-slate-600 text-transparent bg-clip-text":"h-full"}`}>
+        <div className={`backdrop-blur-lg bg-white/30 rounded-3xl p-2 mr-2 ${!read?"h-56 bg-gradient-to-b from-stone-300 to-slate-500 text-transparent bg-clip-text":"h-full text-stone-300"}`}>
         <div style={{whiteSpace:"pre-wrap"}} className=''> <br/>{course.Description}</div><br />
         <div style={{whiteSpace:"pre-wrap"}} className=''> <br />{course.Requirements}</div><br />
         <div style={{whiteSpace:"pre-wrap"}} className=''>{course.Learn}</div><br />
