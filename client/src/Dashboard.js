@@ -41,8 +41,7 @@ useEffect(() => {
   return (
     <div >
         {storedUser?isLoading? (<div className='w-full  mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(<div className='flex dashboard'>
-        <div className='bg-slate-800'></div>
-        <div className='pt-24 bg-slate-100 h-screen' ><h1 className='text-white'> </h1>
+        <div className='pt-24 h-screen' ><h1 className='text-white'> </h1>
         <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
         
         { 
