@@ -71,7 +71,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
   return (
     <div>
       {isLoading? (<div className='w-full h-1/2 mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(
-    <div className='flex flex-row pt-10 items-center flex-wrap backdrop-blur-sm bg-white/20 pl-3 min-h-screen single'>
+    <div className='flex flex-row pt-10 items-center flex-wrap  pl-3 min-h-screen single'>
     
 
     
@@ -86,7 +86,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
         <h2 className='text-stone-300'>{course.DTitle}</h2>
         <div className='text-slate-400'>Year: {course.Year}</div>
         <div className='text-slate-400'>Language: {course.Language}</div><br/>
-        <div className={` p-2 ${!read?"h-56 bg-gradient-to-b from-black to-slate-300 text-transparent bg-clip-text":"h-full"}`}>
+        <div className={`backdrop-blur-lg bg-white/30 p-2 ${!read?"h-56 bg-gradient-to-b from-black to-slate-300 text-transparent bg-clip-text":"h-full"}`}>
         <div style={{whiteSpace:"pre-wrap"}} className='text-stone-300'> <br/>{course.Description}</div><br />
         <div style={{whiteSpace:"pre-wrap"}} className='text-stone-300'> <br />{course.Requirements}</div><br />
         <div style={{whiteSpace:"pre-wrap"}} className='text-stone-300'>{course.Learn}</div><br />
