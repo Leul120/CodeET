@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LoadingOutlined } from '@ant-design/icons';
 import { AppContext } from './App';
-
+import './popular.css'
 const Dashboard = () => {
     const {setUser,isLoading,setIsLoading,setMenu}=useContext(AppContext)
     let [course,setCourse]=useState([])
@@ -40,7 +40,7 @@ useEffect(() => {
   
   return (
     <div >
-        {storedUser?isLoading? (<div className='w-full  mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(<div className='flex'>
+        {storedUser?isLoading? (<div className='w-full  mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(<div className='flex dashboard'>
         <div className='bg-slate-800'></div>
         <div className='pt-24 bg-slate-100 h-screen' ><h1 className='text-white'> </h1>
         <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
