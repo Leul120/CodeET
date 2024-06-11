@@ -48,7 +48,7 @@ useEffect(() => {
            course?.map((course)=>{
             const date= course?.Released.slice(0,4)
             return(
-                <Link to={`/course/${course?._id}`} className='flex flex-col pb-5 justify-between backdrop-blur-md bg-white/20'><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-40 xs:w-96 rounded-lg ' loading='lazy'/>
+                <Link to={`/course/${course?._id}`} className='flex flex-col pb-5 justify-between backdrop-blur-md bg-white/20 rounded-3xl'><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-40 xs:w-96 rounded-lg ' loading='lazy'/>
                 <p className='text-red-400 h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden ' key={Math.random()}>{course.Title}</p>
                 <p className='text-red-300 text-sm' key={Math.random()}>Released: {date} </p>
                 <p className='text-red-200 text-sm' key={Math.random()}>Rating: {course.Rating}</p>
