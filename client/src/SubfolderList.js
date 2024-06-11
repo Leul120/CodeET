@@ -57,7 +57,7 @@ const SubfolderList = () => {
       </div>
       <ul className='bg-slate-100'>
         {uniqueFolder.map((cour, index) => {
-          const a=cour.split('.')
+          const a=cour.key.split('/')[2].split('.')
           if(a.includes("mp4")){
           return(
           <li  key={index} className='shadow my-1 p-1 text-sm hover:bg-blue-600  hover:text-white h-10 flex items-center cursor-pointer' onClick={() => handleItemClick(cour)}>
