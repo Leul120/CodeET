@@ -8,7 +8,7 @@
     background-size: cover; /* Cover the entire container */
     background-position: center;
 }
-.dasboard{
+.dashboard{
     background-image: url("/vercel/path0/client/src/dashboard.jpg");
     background-repeat: no-repeat;
     height: 100;
