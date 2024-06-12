@@ -76,7 +76,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
     
 
     
-        {isLoading?(<div className='w-80 pt-16'><Skeleton className='h-80' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>):(<div className='h-80 rounded-xl pt-16 inline'><img alt={course.Title} src={course.Poster} className=' rounded-lg  w-80  '/></div>)}
+        {isLoading?(<div className='w-80 pt-16'><Skeleton className='h-80' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>):(<div className='h-80 rounded-xl pt-16 inline'><img alt={course.Title} src={course.Poster} className=' rounded-lg h-full w-80  '/></div>)}
         
        {isLoading?(<div className='w-96 ml-4'><Skeleton className='h-8 mr-6 mb-4 flex justify-center' baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b'/>
        <div className='w-28 ml-5'><Skeleton className='h-10' baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b'/></div></div>):(<div className='pl-4 text-slate-200' ><h1 className='mb-4 flex justify-center bg-gradient-to-r from-blue-400 to-gray-100 text-transparent bg-clip-text' style={{whiteSpace:"pre-wrap"}}>{course.Title}</h1>
