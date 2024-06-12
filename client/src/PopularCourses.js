@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from './App'
+import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import './popular.css'
 import { fetchCourses } from './Home'
@@ -8,7 +9,7 @@ import Footer from './Footer'
 import Pagination from '@mui/material/Pagination';
 import {LoadingOutlined} from '@ant-design/icons'
 import { Menu, Rate } from 'antd'
-
+import 'react-loading-skeleton/dist/skeleton.css'
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io'
 
 
@@ -39,9 +40,7 @@ const PopularCourses = () => {
     }
   return (
     <>
-    {isLoading?(<div role="status" className='flex justify-center items-center text-3xl bg-white h-screen'>
-        <LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:80}}/>
-    </div>):(
+    
         <div className='flex main flex-col' >
         
          <Description/>
@@ -69,7 +68,58 @@ const PopularCourses = () => {
     
    
     <div className='xs:grid gap-9 xs:gap-5 flex flex-row flex-wrap xs:grid-cols-3  sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 p-4  '>
-        {courses?.map((course,index)=>{
+    {isLoading?(<><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
+    <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    <div className='max-w-56'>
+    <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    </div></>):(<>
+        {courses.map((course,index)=>{
             return(
                 <Link to={`/course/${course._id}`} className='flex flex-col pb-5 justify-between w-28 xs:w-auto '><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-28 xs:w-96 rounded-lg' loading='lazy'/>
                 <p className=' h-5 text-wrap mr-1 pt-1 pb-1 text-sm overflow-hidden w-32 xs:w-full text-slate-300 font-bold' key={Math.random()}>{course.Title}</p>
@@ -83,7 +133,7 @@ const PopularCourses = () => {
                 </Link>
                 // </div>
             )
-        })}</div>
+        })}</>)}</div>
     <div className='flex justify-center'>
         <Pagination count={5}  color='secondary'  page={page} shape="rounded" className='m-3 w-72 p-0 text-white rounded-lg bg-white/30 flex justify-center backdrop-blur-2xl' onChange={async (e,i)=>{
            await setPage(i)
