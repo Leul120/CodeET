@@ -72,52 +72,74 @@ const PopularCourses = () => {
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div>
+    <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div>
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div><div><Skeleton baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' className='h-56 bg-white'/>
     <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
     <div className='max-w-56'>
     <Skeleton className='h-7 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44'>
-    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>
+    <Skeleton className='h-7 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div> <div className=''>
+    <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+    </div> 
     </div></>):(<>
         {courses.map((course,index)=>{
             return(
@@ -143,7 +165,7 @@ const PopularCourses = () => {
         </div>
     <Footer/>
     </div>
-    )}
+    
     </>
   )
 }
