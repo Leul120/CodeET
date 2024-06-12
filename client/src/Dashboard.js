@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { LoadingOutlined } from '@ant-design/icons';
 import { AppContext } from './App';
 import './popular.css'
+import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from 'react-loading-skeleton'
 const Dashboard = () => {
     const {setUser,isLoading,setIsLoading,setMenu}=useContext(AppContext)
     let [course,setCourse]=useState([])
@@ -30,7 +32,7 @@ useEffect(() => {
             },
           });
           setCourse(res.data.courses);
-        setIsLoading(false);
+        // setIsLoading(false);
       }catch(error){
       }
       }
@@ -40,11 +42,41 @@ useEffect(() => {
   
   return (
     <div >
-        {storedUser?isLoading? (<div className='w-full  mt-64 flex items-center justify-center text-3xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>):(<div className='flex dashboard '>
+        {storedUser?(<div className='flex dashboard '>
         <div className='pt-24 h-screen '  ><h1 className='text-white'> </h1>
         <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-        
-        { 
+        {isLoading?(<><div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div>
+        <div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div>
+        <div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div>
+        <div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div>
+        <div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div>
+        <div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div>
+        <div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div>
+        <div className='max-w-56'><Skeleton className='h-44' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        <Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10-x' highlightColor='#4a4f4b'/>
+        </div></>):(<>{ 
            course?.map((course)=>{
             const date= course?.Released.slice(0,4)
             return(
@@ -55,7 +87,7 @@ useEffect(() => {
                 </div></Link>
                 )
             })   
-        }
+        }</>)}
         </div></div></div>):(<h1 className='text-slate-400 text-center'>You Haven't Logged In </h1>)}
     </div>
   )
