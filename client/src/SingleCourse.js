@@ -5,7 +5,7 @@ import './popular.css'
 import axios from 'axios';
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from 'react-loading-skeleton'
-
+import errorPic from './error.avif'
 
 
 
@@ -64,15 +64,13 @@ const response=await axios.get(`${process.env.REACT_APP_URL}/users/${userID}`)
 setError(false)
 window.localStorage.setItem('user',JSON.stringify(response.data.user))
     }catch(error){
-        return(
-          setError(true)
-        )
+        console.log(error)
     }
 }
   return (
     <div>
       {!error&&(
-    <div className='flex flex-row pt-10 items-center flex-wrap  pl-3 min-h-screen single'>
+    <div className='flex flex-row pt-10 items-center flex-wrap  pl-3 min-h-screen single '>
     
 
     
@@ -101,7 +99,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
           setRead(!read)
         }}>{!read?`Read More`:"Show Less"}</button>)}
     </div>)}
-    {error && (<h1 className='pt-8'>Network Error</h1>)}
+    {error && (<div className='h-screen '><img src={errorPic}/></div>)}
     </div>
   )}
 
