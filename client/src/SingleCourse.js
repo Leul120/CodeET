@@ -5,8 +5,7 @@ import './popular.css'
 import axios from 'axios';
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from 'react-loading-skeleton'
-import { LoadingOutlined } from '@ant-design/icons';
-import { FaAngleDown, FaArrowDown, FaArrowDownWideShort } from 'react-icons/fa6';
+
 
 
 
@@ -62,16 +61,17 @@ const SingleCourse = () => {
     try{
         
 const response=await axios.get(`${process.env.REACT_APP_URL}/users/${userID}`)
+setError(false)
 window.localStorage.setItem('user',JSON.stringify(response.data.user))
     }catch(error){
         return(
-          <h1>Network Error</h1>
+          setError(true)
         )
     }
 }
   return (
     <div>
-      
+      {!error&&(
     <div className='flex flex-row pt-10 items-center flex-wrap  pl-3 min-h-screen single'>
     
 
@@ -100,7 +100,8 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
         {isLoading?(<div className='w-32 ml-5 mt-2'><Skeleton className='h-7' baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b'/></div>):(<button className='pl-5 flex items-center p-1 rounded-lg text-stone-200' onClick={()=>{
           setRead(!read)
         }}>{!read?`Read More`:"Show Less"}</button>)}
-    </div>
+    </div>)}
+    {error && (<h1 className='pt-8'>Network Error</h1>)}
     </div>
   )}
 
