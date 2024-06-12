@@ -85,13 +85,13 @@ const cancel = (e) => {
       
       </div> */}
       
-      <button  className='border-red bg-transparent border-0 hover:bg-slate-300 flex justify-center h-6 w-7 md:hidden  font-bold text-slate-200 rounded-2xl text-2xl text-center  mx-9 text ' onClick={showDrawer}>
+      <button  className='border-red  text-stone-800 border-0 hover:bg-slate-300 flex justify-center h-8 w-8 lg:hidden  font-bold rounded-2xl text-2xl text-center items-center  mx-9 backdrop-blur-xl bg-white/30 text ' onClick={showDrawer}>
       <IoIosMenu/>
       </button>
-      <Drawer title="Menu" className='h-1/2 w-40' onSelect={()=>{
+      <Drawer title="Menu" theme='dark' style={{backgroundColor:"black"}} className='h-1/2 bg-stone-700 w-40' onSelect={()=>{
       }} onClose={onClose} open={open}>
-      <Menu defaultSelectedKeys={[menu]} onSelect={select} className='w-40 bg-transparent flex-col   md:flex '>
-      <Menu.Item className='focus:bg-white ' key="home"  icon={<CiHome/>}><Link className='text-white ' to='/'>Home</Link></Menu.Item>
+      <Menu theme='dark' defaultSelectedKeys={[menu]} itemColor="black" onSelect={select} className='w-40 bg-transparent flex-col   md:flex '>
+      <Menu.Item className=' ' key="home"  icon={<CiHome/>}><Link className=' ' to='/'>Home</Link></Menu.Item>
       <Menu.Item key="Dashboard" icon={<RxDashboard/>}><Link to='/dashboard'>Dashboard</Link></Menu.Item>
       <Menu.Item key="contactus" icon={<IoMdContact/>}><Link>Contact Us</Link></Menu.Item>
       {!user && <Menu.Item key="login" icon={<IoIosLogIn/>}><Link to='/login'>Login</Link></Menu.Item>}
@@ -107,7 +107,7 @@ const cancel = (e) => {
       </Drawer>
 
     
-     <div className=' flex-row gap-10 mr-32 text-serif p-2 text-sm hidden md:flex rounded-2xl bg-white/20 backdrop-blur-2xl'>
+     <div className=' flex-row gap-10 mr-32 text-serif p-2 text-sm hidden lg:flex rounded-2xl bg-white/20 backdrop-blur-2xl'>
      
       <Link className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' to='/'><CiHome/>Home</Link>
       <Link to='/dashboard' className='flex flex-row justify-center items-center gap-1 hover:text-sky-500' ><RxDashboard/>Dashboard</Link>
