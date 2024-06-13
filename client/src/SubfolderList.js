@@ -41,20 +41,20 @@ const SubfolderList = () => {
    const uniqueFolder= filtered.sort((a, b) => a.key.split('/')[2].split('.')[0]-b.key.split('/')[2].split('.')[0])
    console.log(uniqueFolder)
   return (
-    <div className='pt-16'>
+    <div className='pt-16 flex flex-row flex-wra'>
 
-      <div className='flex flex-row flex-wrap' >
+      <div className='' >
         <ReactPlayer
           url={courseUrl}
-          width="700px"
-          height="500px"
+          width="800px"
+          height="600px"
           controls
           AutoPlay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
         <h1 className="font-bold p-2">{courseTitle}</h1>
       </div>
-      <ul className='bg-slate-100'>
+    
         {uniqueFolder.map((cour, index) => {
           const a=cour.key.split('/')[2].split('.')
           if(a.includes("mp4")){
@@ -63,7 +63,7 @@ const SubfolderList = () => {
            <p className="p-1 mr-1 rounded-3xl text-center text-md bg-slate-300 w-8 h-8">{cour.key.split('/')[2].split('.')[0]}</p> {cour.key.split('/')[2].split('.')[1]}
           </li>
         )}})}
-      </ul>
+  
     </div>
   );
 };
