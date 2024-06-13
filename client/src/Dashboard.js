@@ -50,7 +50,7 @@ useEffect(() => {
         {storedUser?(<div className='flex dashboard '>
         <div className='pt-24 h-screen '  ><h1 className='text-white'> </h1>
         <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-        {!isLoading?(<>{(() => {
+        {isLoading?(<>{(() => {
         const components = [];
         for (let i = 0; i <10; i++) {
           components.push(<div key={i}><Skeleton baseColor='#2a2b2a' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white'/>
