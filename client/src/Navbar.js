@@ -64,7 +64,7 @@ const cancel = (e) => {
   return (<>
  
     {!errored &&(<>
-    <div className={`  fixed w-full   shadow-emerald-300 z-50  flex justify-between  items-center h-16 `}>
+    <div className={`  fixed w-full  shadow-emerald-300 z-50  flex justify-between  items-center h-16 `}>
       <ToastContainer theme='dark'/>
       <div className='flex justify-between absolute left-1 '>
       <p className='-rotate-90 pr-1 pt-0 bg-gradient-to-r from-blue-800 to-yellow-400 text-transparent bg-clip-text'>CodeET</p>
