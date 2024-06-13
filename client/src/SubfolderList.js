@@ -43,13 +43,13 @@ const SubfolderList = () => {
   return (
     <div className='pt-16'>
 
-      <div className=' vid' >
+      <div  >
         <ReactPlayer
           url={courseUrl}
           width="100%"
           height="50%"
           controls
-
+    className=' vid'
           AutoPlay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
