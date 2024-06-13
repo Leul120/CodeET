@@ -6,10 +6,6 @@ const AppError=require('../utils/appError')
 const {promisify}=require('util')
 const crypto=require('crypto')
 const {authSchema}=require('../models/validateSchema')
-const UserModel = require('../models/UserModel')
-const Recipient = require("mailersend").Recipient;
-const EmailParams = require("mailersend").EmailParams;
-const MailerSend = require("mailersend");
 const bcrypt=require('bcrypt')
 
 const nodemailer = require('nodemailer');
@@ -68,7 +64,7 @@ transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
         res.status(400).json({
             status:400,
-            message:"An Error Occured"})
+            message:"An Error Occurred"})
         console.log(error)
     }
     console.log('Email sent successfully:', info.response);
