@@ -49,7 +49,7 @@ const SubfolderList = () => {
           width="100%"
           height="600px"
           controls
-          AutoPlay
+          autoPlay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
         <h1 className="font-bold p-2">{courseTitle}</h1>
