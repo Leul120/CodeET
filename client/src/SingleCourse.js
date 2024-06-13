@@ -70,14 +70,14 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
   return (
     <div>
       {!error&&(
-    <div className='flex flex-row pt-10 items-center flex-wrap  pl-3 min-h-screen single '>
+    <div className='flex flex-row pt-10 backdrop-blur-2xl items-center flex-wrap  pl-3 min-h-screen single '>
     
 
     
         {isLoading?(<div className='w-80 pt-16'><Skeleton className='h-80' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div>):(<div className='h-80 rounded-xl pt-16 inline'><img alt={course.Title} src={course.Poster} className=' rounded-lg h-full w-80  '/></div>)}
         
        {isLoading?(<div className='w-96 ml-4'><Skeleton className='h-8 mr-6 mb-4 flex justify-center' baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b'/>
-       <div className='w-28 ml-5'><Skeleton className='h-10' baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b'/></div></div>):(<div className='pl-4 text-slate-200' ><h1 className='mb-4 flex justify-center bg-gradient-to-r from-blue-400 to-gray-100 text-transparent bg-clip-text' style={{whiteSpace:"pre-wrap"}}>{course.Title}</h1>
+       <div className='w-28 ml-5'><Skeleton className='h-10' baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b'/></div></div>):(<div className='pl-4 text-slate-200' ><h1 className='mb-4 flex justify-center text-slate-100' style={{whiteSpace:"pre-wrap"}}>{course.Title}</h1>
         
        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={user?enrolled?()=>{navigate(`/course/watch/${courseID}`)}: ()=>{navigate(`/pay/${course._id}/${userID}`)}:()=>{navigate('/login')}}>
         {user? enrolled?"Go to Course" :"Enroll Now":"Login To Enroll"}
@@ -87,7 +87,7 @@ window.localStorage.setItem('user',JSON.stringify(response.data.user))
         <div className='text-slate-400'>Year: {course.Year}</div>
         <div className='text-slate-400'>Language: {course.Language}</div></>)}<br/>
         
-        <div className={`backdrop-blur-lg bg-white/30 rounded-3xl p-2 mr-2 ${!read?"h-56 bg-gradient-to-b from-stone-300 to-slate-500 text-transparent bg-clip-text":"h-full text-stone-300"}`}>
+        <div className={`backdrop-blur-lg bg-white/10 rounded-3xl p-2 mr-2 ${!read?"h-56 bg-gradient-to-b from-stone-300 to-slate-500 text-transparent bg-clip-text":"h-full text-stone-300"}`}>
         {isLoading?(<div className='w-screen mr-3 '><Skeleton className='h-7' count={20} baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b'/></div>):(<>
         <div style={{whiteSpace:"pre-wrap"}} className=''> <br/>{course.Description}</div><br />
         <div style={{whiteSpace:"pre-wrap"}} className=''> <br />{course.Requirements}</div><br />
