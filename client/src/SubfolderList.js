@@ -41,7 +41,7 @@ const SubfolderList = () => {
    const uniqueFolder= filtered.sort((a, b) => a.key.split('/')[2].split('.')[0]-b.key.split('/')[2].split('.')[0])
    console.log(uniqueFolder)
   return (
-    <div className='pt-16 flex flex-row flex-wra'>
+    <div className='pt-16 flex flex-row flex-wrap'>
 
       <div className='' >
         <ReactPlayer
