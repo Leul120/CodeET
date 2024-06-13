@@ -41,15 +41,15 @@ const SubfolderList = () => {
    const uniqueFolder= filtered.sort((a, b) => a.key.split('/')[2].split('.')[0]-b.key.split('/')[2].split('.')[0])
    console.log(uniqueFolder)
   return (
-    <div className='pt-10'>
+    <div className='pt-16'>
 
-      <div className='max-h-100 vid' >
+      <div className=' vid' >
         <ReactPlayer
           url={courseUrl}
           width="100%"
           height="50%"
           controls
-          className='size-1/2'
+
           AutoPlay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
