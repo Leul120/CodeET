@@ -4,7 +4,7 @@ import axios from 'axios';
 import { AppContext } from './App';
 import ReactPlayer from 'react-player';
 import { Radio } from 'antd';
-
+import './popular.css'
 const SubfolderList = () => {
   const [data, setData] = useState([]);
   const [courseUrl, setCourseUrl] = useState("");
@@ -43,12 +43,13 @@ const SubfolderList = () => {
   return (
     <div className='pt-10'>
 
-      <div className='max-h-3/4' >
+      <div className='max-h-100 vid' >
         <ReactPlayer
           url={courseUrl}
           width="100%"
           height="50%"
           controls
+          className='size-1/2'
           AutoPlay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
