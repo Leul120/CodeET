@@ -46,8 +46,8 @@ const SubfolderList = () => {
       <div  >
         <ReactPlayer
           url={courseUrl}
-          width="100%"
-          height="400px"
+          width="700px"
+          height="500px"
           controls
           AutoPlay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
