@@ -46,7 +46,6 @@ const SubfolderList = () => {
       <div className='w-3/4' >
         <ReactPlayer
           url={courseUrl}
-          width=""
           height="600px"
           controls
           AutoPlay
