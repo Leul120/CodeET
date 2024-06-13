@@ -1,5 +1,5 @@
 .main{
-    background-image: url("/vercel/path0/client/src/gre.jpg");
+    background-image: url("/vercel/path0/client//gre.jpg");
     background-repeat: no-repeat;
     height: 100;
     min-height: 200%;
@@ -9,7 +9,7 @@
     background-position: center;
 }
 .dashboard{
-    background-image: url("/vercel/path0/client/src/single.jpg");
+    background-image: url("/vercel/path0/client//trt.jpg");
     background-repeat: no-repeat;
     height: 100;
     min-height: 200%;
@@ -19,7 +19,7 @@
     background-position: center;
 }
 .single{
-    background-image: url("/vercel/path0/client/src/machine.jpg");
+    background-image: url("/vercel/path0/client//her.jpg");
     background-repeat: no-repeat;
     height: 100;
     min-height: 200%;
