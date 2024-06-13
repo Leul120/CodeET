@@ -43,7 +43,7 @@ const SubfolderList = () => {
   return (
     <div className='pt-16'>
 
-      <div  >
+      <div className='flex flex-row flex-wrap' >
         <ReactPlayer
           url={courseUrl}
           width="700px"
