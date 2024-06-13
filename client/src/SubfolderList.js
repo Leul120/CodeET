@@ -46,6 +46,7 @@ const SubfolderList = () => {
       <div className='w-3/4' >
         <ReactPlayer
           url={courseUrl}
+          width="100%"
           height="600px"
           controls
           AutoPlay
@@ -53,7 +54,7 @@ const SubfolderList = () => {
         />
         <h1 className="font-bold p-2">{courseTitle}</h1>
       </div>
-    
+    <ul className='flex flex-col'>
         {uniqueFolder.map((cour, index) => {
           const a=cour.key.split('/')[2].split('.')
           if(a.includes("mp4")){
@@ -62,7 +63,7 @@ const SubfolderList = () => {
            <p className="p-1 mr-1 rounded-3xl text-center text-md bg-slate-300 w-8 h-8">{cour.key.split('/')[2].split('.')[0]}</p> {cour.key.split('/')[2].split('.')[1]}
           </li>
         )}})}
-  
+  </ul>
     </div>
   );
 };
