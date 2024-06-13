@@ -43,10 +43,10 @@ const SubfolderList = () => {
   return (
     <div className='pt-10 flex flex-row flex-wrap'>
 
-      <div className='' >
+      <div className='w-3/4' >
         <ReactPlayer
           url={courseUrl}
-          width="800px"
+          width=""
           height="600px"
           controls
           AutoPlay
@@ -59,7 +59,7 @@ const SubfolderList = () => {
           const a=cour.key.split('/')[2].split('.')
           if(a.includes("mp4")){
           return(
-          <li  key={index} className='shadow my-1 p-1 text-sm hover:bg-blue-600  hover:text-white h-10 flex items-center cursor-pointer' onClick={() => handleItemClick(cour)}>
+          <li  key={index} className='shadow my-1 p-1 text-sm hover:bg-blue-600  hover:text-white h-10 min-w-96 flex items-center cursor-pointer' onClick={() => handleItemClick(cour)}>
            <p className="p-1 mr-1 rounded-3xl text-center text-md bg-slate-300 w-8 h-8">{cour.key.split('/')[2].split('.')[0]}</p> {cour.key.split('/')[2].split('.')[1]}
           </li>
         )}})}
