@@ -39,7 +39,7 @@ const FolderList = () => {
       <ul className='bg-slate-100'>
         {uniqueFolder.map((folder, index) => (
           <li key={index} className=' shadow my-1 hover:bg-blue-600  h-10 pl-1 hover:text-white flex items-center cursor-pointer' onClick={() => navigate(`/subfolder/${folder}/${courseID}`)}>
-           <p className='p-1 mr-1 rounded-3xl text-center bg-slate-300 w-8 h-8'>{folder.split('.')[0]}</p> {folder.split('.')[1]}
+           <p className='p-1 mr-1 rounded-3xl text-center bg-slate-300 w-8 h-8'></p> {folder}
           </li>
         ))}
       </ul>
