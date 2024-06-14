@@ -31,7 +31,7 @@ const FolderList = () => {
   }, [courseID]);
 
   const uniqueFolders = Array.from(new Set(data.map(cour => cour.key.split('/')[1])));
-  const uniqueFolder= uniqueFolders.sort((a, b) => a.split('.')[0]-b.split('.')[0])
+  // const uniqueFolder= uniqueFolders.sort((a, b) => a.split('.')[0]-b.split('.')[0])
   console.log(uniqueFolder)
   return (<>
     {isLoading && (<div className='h-screen flex justify-center items-center text-4xl'><LoadingOutlined spinning allowFullScreen size="large" style={{color:"black",font:50}}/></div>)}
