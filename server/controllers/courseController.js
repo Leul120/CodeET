@@ -175,6 +175,7 @@ async function s3Get(req,res){
     const bucketData=await getVideos('codeet',folderName)
     const {Contents=[]}=bucketData
     res.send(Contents.map(content=>{
+      console.log(content.key)
       return {
         key:content.Key,
         lastModified:content.LastModified,
