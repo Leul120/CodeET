@@ -163,7 +163,8 @@ const getVideos=(bucketName,folderName)=>{
   const s3=createS3Instance();
   const params={
     Bucket:bucketName,
-    Prefix: folderName + '/'
+    Prefix: folderName + '/',
+    MaxKeys: 100000
   }
   const bucketData=s3.listObjects(params).promise()
   return bucketData || {}
