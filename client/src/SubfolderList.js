@@ -60,8 +60,7 @@ const SubfolderList = () => {
           if(a.includes("mp4")){
           return(
           <li  key={index} className='shadow my-1 p-1 text-sm hover:bg-blue-600  hover:text-white h-10 min-w-96 flex items-center cursor-pointer' onClick={() => handleItemClick(cour)}>
-           <p className="p-1 mr-1 rounded-3xl text-center text-md bg-slate-300 w-8 h-8"></p> {cour.key.split('/')[2].split('.')[0]}{cour.key.split('/')[2].split('.')[1]}{cour.key.split('/')[2].split('.')[2]}
-          </li>
+           <p className="p-1 mr-1 rounded-3xl text-center text-md bg-slate-300 w-8 h-8"></p> {cour.key.split('/')[2].split('.')[0]}{cour.key.split('/')[2].split('.')[1]}
         )}})}
   </ul>
     </div>
