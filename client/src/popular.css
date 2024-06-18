@@ -1,5 +1,5 @@
 .main{
-    background-image: url("/vercel/path0/client/src/gre.jpg");
+    background-image: url("https://res-console.cloudinary.com/dbzebdg6r/thumbnails/v1/image/upload/v1718688529/Z3JlX3poMG9tOA==/drilldown");
     background-repeat: no-repeat;
     height: 100;
     min-height: 200%;
@@ -9,7 +9,7 @@
     background-position: center;
 }
 .dashboard{
-    background-image: url("/vercel/path0/client/src/trt.jpg");
+    background-image: url("https://res-console.cloudinary.com/dbzebdg6r/thumbnails/v1/image/upload/v1718688529/MTc4MzQ4X2ljdno5MQ==/drilldown");
     background-repeat: no-repeat;
     height: 100;
     min-height: 200%;
@@ -19,7 +19,7 @@
     background-position: center;
 }
 .single{
-    background-image: url("/vercel/path0/client/src/her.jpg");
+    background-image: url("https://res-console.cloudinary.com/dbzebdg6r/thumbnails/v1/image/upload/v1718688536/aGVyX3Y2cXJoNw==/drilldown");
     background-repeat: no-repeat;
     height: 100;
     min-height: 200%;
