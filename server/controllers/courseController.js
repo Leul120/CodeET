@@ -164,7 +164,7 @@ const getVideos=(bucketName,folderName)=>{
   const params={
     Bucket:bucketName,
     Prefix: folderName + '/',
-    MaxKeys: 100000
+    MaxKeys: 10000
   }
   const bucketData=s3.listObjects(params).promise()
   return bucketData || {}
