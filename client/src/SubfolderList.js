@@ -75,11 +75,12 @@ import axios from 'axios';
 import { AppContext } from './App';
 import ReactPlayer from 'react-player';
 import './popular.css';
+import Skeleton from 'react-loading-skeleton';
 
 const SubfolderList = () => {
   const [data, setData] = useState([]);
   const [courseUrl, setCourseUrl] = useState("");
-  const { user, enrolled } = useContext(AppContext);
+  const { user, enrolled,isLoading,setIsLoading } = useContext(AppContext);
   const [courseTitle, setCourseTitle] = useState("");
   const navigate = useNavigate();
   const { folderName } = useParams();
@@ -93,11 +94,14 @@ const SubfolderList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true)
       try {
         const response = await axios.get(`${process.env.REACT_APP_URL}/api/course/get-course/${courseID}`);
         setData(response.data);
+        setIsLoading(false)
       } catch (error) {
         console.error(error);
+        setIsLoading(false)
       }
     };
     fetchData();
@@ -118,18 +122,21 @@ let uniqueFolders=[]
     uniqueFolders.push(filtered[i].key.split('/')[2])
   }
   console.log(uniqueFolders[0])
-
+console.log(uniqueFolders[0]?.split('-')[0])
   if(uniqueFolders[0]?.split('.')[2]==='mp4'){
   uniqueFolders.sort((a, b) => {
-return a?.split('.')[0]-b?.split('.')[0]})}
+return a?.split('.')[0]*1-b?.split('.')[0]*1})}
 else if(uniqueFolders[0]?.split('-')[1]==='mp4'){
-  uniqueFolders.sort((a, b) => {
-return a?.split('-')[0]*1-b?.split('-')[0]*1})
+  
+  uniqueFolders?.sort((a, b) => {
+return (a?.split('-')[0]*1)-(b?.split('-')[0]*1)})
 }
 console.log(uniqueFolders)
 console.log(courseUrl)
+console.log(uniqueFolders.filter((abc)=>{return abc.split('.').includes('mp4')}).length===0)
   return (
     <div className='pt-16 h-full  min-h-screen bg-slate-900'>
+    {isLoading?(<div className='w-screen mr-3 '><Skeleton className='h-7' count={10} baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b' /></div>):(<>
       <div className={``}>
         <ReactPlayer
           url={courseUrl}
@@ -142,6 +149,9 @@ console.log(courseUrl)
         <h1 className="font-bold p-2 text-white ">{courseTitle}</h1>
       </div>
       <ul className={` flex-col w-full  h-full pt-10`}>
+      {uniqueFolders.filter((abc)=>{return abc.split('.').includes('mp4')}).length===0?(
+        <li className='text-white text-center pt-10 h-8 '>I know but there is no course in this section move to the next one</li>
+      ):(<>
       
         {uniqueFolders.map((cour, index) => {
           const bb=cour.split('.')
@@ -155,8 +165,8 @@ console.log(courseUrl)
               </li>
             )
           }
-        })}
-      </ul>
+        })}</>)}
+      </ul></>)}
     </div>
   );
 };
