@@ -103,7 +103,7 @@ console.log(uniqueFolders)
             {uniqueFolders.map((folder, index) => (
               <li 
                 key={index} 
-                className='shadow my-2 p-2 text-white bg-slate-500 rounded-md hover:bg-blue-600 hover:text-white flex items-center cursor-pointer transition-colors duration-200'
+                className='shadow my-2 p-2 text-white bg-indigo-600 rounded-md hover:bg-blue-600 hover:text-white flex items-center cursor-pointer transition-colors duration-200'
                 onClick={() => navigate(`/subfolder/${folder}/${courseID}`)}
               >
                 <span className=''></span>
