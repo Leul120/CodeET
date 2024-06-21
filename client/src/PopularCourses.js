@@ -76,7 +76,7 @@
 //     {(() => {
 //         const components = [];
 //         for (let i = 0; i <10; i++) {
-//           components.push(<div key={i}><Skeleton baseColor='#2a2b2a' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white'/>
+//           components.push(<div key={i}><Skeleton baseColor='#ebf0ec' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white'/>
 //     <Skeleton className='h-5' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
 //     <div className='max-w-56'>
 //     <Skeleton className='h-4 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44 '>
@@ -173,16 +173,16 @@ const PopularCourses = () => {
     for (let i = 0; i < 10; i++) {
       skeletons.push(
         <div key={i}>
-          <Skeleton baseColor='#2a2b2a' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white' />
-          <Skeleton className='h-5' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' />
+          <Skeleton baseColor='#ebf0ec' borderRadius='0.7rem' highlightColor='#cfd4d1' className='h-48 bg-white' />
+          <Skeleton className='h-5' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
           <div className='max-w-56'>
-            <Skeleton className='h-4' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' />
+            <Skeleton className='h-4' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
           </div>
           <div className='max-w-44'>
-            <Skeleton className='h-4 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' />
+            <Skeleton className='h-4 w-32' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
           </div>
           <div className='h-8'>
-            <Skeleton className='h-8' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b' />
+            <Skeleton className='h-8' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
           </div>
         </div>
       );
@@ -193,9 +193,9 @@ const PopularCourses = () => {
   return (
     <>
       {!error ? (
-        <div className='flex main flex-col'>
+        <div className='flex main flex-col min-h-screen'>
           <Description />
-          <Menu onSelect={onChange} selectedKeys={[sort]} className='text-white bg-transparent border-none shadow-none w-24'>
+          <Menu onSelect={onChange}  className='text-white bg-transparent border-none shadow-none w-24'>
             <Menu.SubMenu key='sort' title='Sort' className='text-white bg-white/20 backdrop-blur-xl w-24 mt-1 ml-4'>
               <Menu.SubMenu title='Released'>
                 <Menu.Item key='Released'><p className='flex items-center'><IoIosArrowRoundUp className='text-2xl' />Lower-To-Higher</p></Menu.Item>
