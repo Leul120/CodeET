@@ -56,7 +56,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from './App';
 import { LoadingOutlined } from '@ant-design/icons';
-
+import Skeleton from 'react-loading-skeleton';
 const FolderList = () => {
   const [data, setData] = useState([]);
   const { user, enrolled, isLoading, setIsLoading } = useContext(AppContext);
@@ -94,16 +94,14 @@ console.log(uniqueFolders)
   return (
     <>
       {isLoading ? (
-        <div className='flex justify-center items-center h-screen'>
-          <LoadingOutlined style={{ fontSize: 50, color: 'black' }} spin />
-        </div>
+        <div className='w-screen mr-3 pt-24 '><Skeleton className='h-10' count={200} baseColor='#ebf0ec' borderRadius='10px' highlightColor='#cfd4d1' /></div>
       ) : (
         <div className='pt-16 bg-slate-800'>
           <ul className='bg-gray-800 p-4 rounded-lg shadow-md'>
             {uniqueFolders.map((folder, index) => (
               <li 
                 key={index} 
-                className='shadow my-2 p-2 text-white bg-indigo-600 rounded-md hover:bg-blue-600 hover:text-white flex items-center cursor-pointer transition-colors duration-200'
+                className='shadow-lg my-2 p-2 text-white  rounded-md hover:bg-slate-300 hover:text-black flex items-center cursor-pointer transition-colors duration-200'
                 onClick={() => navigate(`/subfolder/${folder}/${courseID}`)}
               >
                 <span className=''></span>
