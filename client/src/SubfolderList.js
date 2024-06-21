@@ -136,7 +136,7 @@ console.log(courseUrl)
 console.log(uniqueFolders.filter((abc)=>{return abc.split('.').includes('mp4')}).length===0)
   return (
     <div className='pt-16 h-full  min-h-screen bg-slate-900'>
-    {isLoading?(<div className='w-screen mr-3 '><Skeleton className='h-7' count={10} baseColor='#2a2b2a' borderRadius='10px' highlightColor='#4a4f4b' /></div>):(<>
+    {isLoading?(<div className='w-screen mr-3 pt-10'><Skeleton className='h-10' count={20} baseColor='#ebf0ec' borderRadius='10px' highlightColor='#cfd4d1' /></div>):(<>
       <div className={``}>
         <ReactPlayer
           url={courseUrl}
@@ -160,7 +160,7 @@ console.log(uniqueFolders.filter((abc)=>{return abc.split('.').includes('mp4')})
             console.log(bb)
             console.log(cour)
             return (
-              <li key={index} className='shadow my-1 p-1 text-white pl-2 text-sm hover:bg-blue-600 bg-sky-800 rounded-2xl hover:text-white h-10  flex items-center cursor-pointer ' onClick={() => handleItemClick(cour,bb)}>
+              <li key={index} className=' shadow-lg my-1 p-1 text-white pl-2 text-sm hover:bg-slate-200  rounded-lg hover:text-black h-10  flex items-center cursor-pointer ' onClick={() => handleItemClick(cour,bb)}>
                  {bb[0]}.{bb[1]}
               </li>
             )
