@@ -80,12 +80,12 @@ import Skeleton from 'react-loading-skeleton';
 const SubfolderList = () => {
   const [data, setData] = useState([]);
   const [courseUrl, setCourseUrl] = useState("");
-  const { user, enrolled,isLoading,setIsLoading } = useContext(AppContext);
+  const { enrolled,isLoading,setIsLoading } = useContext(AppContext);
   const [courseTitle, setCourseTitle] = useState("");
   const navigate = useNavigate();
   const { folderName } = useParams();
   const courseID = useParams().courseID;
-
+   const user = JSON.parse(window.localStorage.getItem('user'));
   useEffect(() => {
     if (!user || !enrolled) {
       navigate('/');
