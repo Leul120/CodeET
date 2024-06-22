@@ -134,7 +134,7 @@ const Dashboard = () => {
     const renderSkeletons = () => {
         const skeletons = Array.from({ length: 10 }, (_, i) => (
             <div key={i} className=''>
-                <div className='w-60'><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#ebf0ec' className='h-48 w-64 bg-white'/></div>
+                <div className='w-60 pb-2'><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#ebf0ec' className='h-48 w-64 bg-white'/></div>
                 <Skeleton className='h-5' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
                 <div className=' w-48'>
                     <Skeleton className='h-4' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
@@ -142,9 +142,7 @@ const Dashboard = () => {
                 <div className='max-w-44'>
                     <Skeleton className='h-4 w-32' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
                 </div>
-                <div className='h-8'>
-                    <Skeleton className='h-8' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
-                </div>
+                
             </div>
         ));
         return skeletons;
