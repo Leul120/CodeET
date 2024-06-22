@@ -107,21 +107,21 @@ const Payment = () => {
         <h1 className="text-serif font-bold text-sky-500">Buy Course</h1>
         <input
           type="text"
-          className="text-black h-9 mt-1 pl-2 rounded-3xl"
+          className="text-black h-9 w-72 mt-1 pl-2 rounded-3xl"
           placeholder="First Name"
           {...register('first_name')}
         />
         {errors.first_name && <p className="text-red-500 text-sm">{errors.first_name.message}</p>}
         <input
           type="text"
-          className="text-black h-9 mt-1 pl-2 rounded-3xl"
+          className="text-black h-9 w-72 mt-1 pl-2 rounded-3xl"
           placeholder="Last Name"
           {...register('last_name')}
         />
         {errors.last_name && <p className="text-red-500 text-sm">{errors.last_name.message}</p>}
         <input
           type="text"
-          className="text-black h-9 mt-1 pl-2 rounded-3xl"
+          className="text-black h-9 w-72 mt-1 pl-2 rounded-3xl"
           placeholder="Email"
           {...register('email')}
         />
@@ -130,7 +130,7 @@ const Payment = () => {
           <p className="text-black h-full rounded-lg pl-2 bg-white flex items-center">Amount:</p>
           <input
             type="text"
-            className="text-stone-400 h-6 w-16 border-0 ring-0 outline-0 rounded-3xl"
+            className="text-stone-400 h-6  w-16 border-0 ring-0 outline-0 rounded-3xl"
             {...register('amount')}
             defaultValue={course.Price ? course.Price : '500'}
           />
