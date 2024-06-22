@@ -143,7 +143,8 @@ console.log(uniqueFolders.filter((abc)=>{return abc.split('.').includes('mp4')})
           width="100%"
           height={`${courseUrl===""?"0px":"600px"}`}
           controls
-          autoPlay
+          playing
+          autoplay
           config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
         <h1 className="font-bold p-2 text-white ">{courseTitle}</h1>
