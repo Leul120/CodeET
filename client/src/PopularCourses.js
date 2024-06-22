@@ -174,15 +174,15 @@ const PopularCourses = () => {
       skeletons.push(
         <div key={i}>
           <Skeleton baseColor='#ebf0ec' borderRadius='0.7rem' highlightColor='#cfd4d1' className='h-48 bg-white' />
-          <Skeleton className='h-5' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
+          <Skeleton className='h-5' baseColor='#ebf0ec' borderRadius='0.5rem' highlightColor='#cfd4d1' />
           <div className='max-w-56'>
-            <Skeleton className='h-4' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
+            <Skeleton className='h-4' baseColor='#ebf0ec' borderRadius='0.4rem' highlightColor='#cfd4d1' />
           </div>
           <div className='max-w-44'>
-            <Skeleton className='h-4 w-32' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
+            <Skeleton className='h-4 w-32' baseColor='#ebf0ec' borderRadius='0.7rem' highlightColor='#cfd4d1' />
           </div>
           <div className='h-8'>
-            <Skeleton className='h-8' baseColor='#ebf0ec' borderRadius='1rem' highlightColor='#cfd4d1' />
+            <Skeleton className='h-9' baseColor='#ebf0ec' borderRadius='0.5rem' highlightColor='#cfd4d1' />
           </div>
         </div>
       );
