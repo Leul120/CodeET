@@ -52,7 +52,7 @@
 //         {isLoading?(<>{(() => {
 //         const components = [];
 //         for (let i = 0; i <10; i++) {
-//           components.push(<div key={i}><Skeleton baseColor='#2a2b2a' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white'/>
+//           components.push(<div key={i}><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white'/>
 //     <Skeleton className='h-5' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
 //     <div className='max-w-56'>
 //     <Skeleton className='h-4 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44 '>
@@ -133,17 +133,17 @@ const Dashboard = () => {
 
     const renderSkeletons = () => {
         const skeletons = Array.from({ length: 10 }, (_, i) => (
-            <div key={i}>
-                <Skeleton baseColor='#2a2b2a' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white'/>
-                <Skeleton className='h-5' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
-                <div className='max-w-56'>
-                    <Skeleton className='h-4' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+            <div key={i} className=''>
+                <div className='w-60'><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#ebf0ec' className='h-48 w-64 bg-white'/></div>
+                <Skeleton className='h-5' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
+                <div className=' w-48'>
+                    <Skeleton className='h-4' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
                 </div>
                 <div className='max-w-44'>
-                    <Skeleton className='h-4 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+                    <Skeleton className='h-4 w-32' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
                 </div>
                 <div className='h-8'>
-                    <Skeleton className='h-8' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
+                    <Skeleton className='h-8' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
                 </div>
             </div>
         ));
@@ -173,9 +173,12 @@ const Dashboard = () => {
                     {storedUser ? (
                         <div className='flex dashboard'>
                             <div className='pt-24 h-screen'>
-                                <h1 className='text-white'></h1>
+                                <h1 className='text-white'>Bought Courses</h1>
                                 <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
                                     {isLoading ? renderSkeletons() : renderCourses()}
+                                </div>
+                                <div><h1 className='text-white'>To Be Bought</h1>
+                                
                                 </div>
                             </div>
                         </div>
