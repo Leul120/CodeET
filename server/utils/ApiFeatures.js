@@ -22,7 +22,7 @@ class ApiFeatures{
       return this
     }
     limitFields(){
-      if(this.queryString.fields && this.queryString.fields!=="VideoLink"){
+      if(this.queryString.fields){
         const fields=this.queryString.fields.split(',').join(' ')
         this.query=this.query.select(fields)
       }else{
