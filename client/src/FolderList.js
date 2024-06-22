@@ -55,14 +55,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from './App';
-import { LoadingOutlined } from '@ant-design/icons';
 import Skeleton from 'react-loading-skeleton';
 const FolderList = () => {
   const [data, setData] = useState([]);
-  const { user, enrolled, isLoading, setIsLoading } = useContext(AppContext);
+  const {  enrolled, isLoading, setIsLoading } = useContext(AppContext);
   const navigate = useNavigate();
   const { courseID } = useParams();
+  const user = JSON.parse(window.localStorage.getItem('user'));
 
+
+ 
   useEffect(() => {
     if (!user || !enrolled) {
       navigate('/');
