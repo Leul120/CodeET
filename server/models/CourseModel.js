@@ -19,7 +19,7 @@ const CourseSchema=new mongoose.Schema({
     Poster:String,
     bought:{type:Number,
         default:0},
-    VideoLink:{type:String},
+    VideoLink:String,
     Price:Number,
     Difficulty:String,
     Learn:String,
