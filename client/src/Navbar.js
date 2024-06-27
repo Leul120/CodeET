@@ -227,7 +227,7 @@ const Navbar = () => {
               <Menu theme="dark" defaultSelectedKeys={["menu"]} onSelect={select} className="w-40 bg-transparent flex-col md:flex">
                 <Menu.Item key="home" icon={<CiHome />}><Link to="/">Home</Link></Menu.Item>
                 <Menu.Item key="Dashboard" icon={<RxDashboard />}><Link to="/dashboard">Dashboard</Link></Menu.Item>
-                <Menu.Item key="contactus" icon={<IoMdContact />}><Link to="/">Contact Us</Link></Menu.Item>
+                <Menu.Item key="contactus" icon={<IoMdContact />}><Link to="/contact-us">Contact Us</Link></Menu.Item>
                 {!user && <Menu.Item key="login" icon={<IoIosLogIn />}><Link to="/login">Login</Link></Menu.Item>}
                 {user && (
                   <Menu.SubMenu key="logout" icon={<RxAvatar />} title={user.name}>
