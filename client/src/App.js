@@ -17,6 +17,7 @@ import FolderList from './FolderList';
 import SubfolderList from './SubfolderList';
 import ResetPassword from './ResetPassword';
 import VerifyEmail from './VerifyEmail';
+import ContactUs from './ContactUs';
 
 
 export const AppContext = createContext();
@@ -57,8 +58,8 @@ function App() {
               <Route path='/pay/:courseID/:userID' element={<Payment/>}/>
               <Route path='dashboard' element={<Dashboard/>}/>   
               <Route path='/resetPassword/:resetToken' element={<ResetPassword/>}/>  
-              <Route path='verifyEmail/:newID' element={<VerifyEmail/>} />     </Routes>
-                        
+              <Route path='verifyEmail/:newID' element={<VerifyEmail/>} />  <Route path='/contact-us'  element={<ContactUs/>}/>     </Routes>
+                   
               </Router>
         </AppContext.Provider>
       </QueryClientProvider>
