@@ -95,21 +95,17 @@ import './popular.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Skeleton from 'react-loading-skeleton';
 import errorPic from './error.avif';
-
 const Dashboard = () => {
     const { setUser, isLoading, setIsLoading, setMenu } = useContext(AppContext);
     const [error, setError] = useState(false);
     const [courses, setCourses] = useState([]);
-
     const storedUser = JSON.parse(window.localStorage.getItem('user'));
     const userID = storedUser?._id;
     const token = atob(window.localStorage.getItem('token'));
-
     useEffect(() => {
         setMenu('Dashboard');
         setUser(storedUser);
     }, [setMenu, setUser, storedUser]);
-
     useEffect(() => {
         const fetchCourses = async () => {
             setIsLoading(true);
@@ -127,14 +123,12 @@ const Dashboard = () => {
                 setIsLoading(false);
             }
         };
-
         fetchCourses();
     }, [userID, token, setIsLoading]);
-
     const renderSkeletons = () => {
         const skeletons = Array.from({ length: 10 }, (_, i) => (
-            <div key={i} className=''>
-                <div className='w-60 pb-2'><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#ebf0ec' className='h-48 w-64 bg-white'/></div>
+            <div key={i} className='pb-5 pl-2'>
+                <div className='w-60'><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#ebf0ec' className='h-48 w-64 bg-white'/></div>
                 <Skeleton className='h-5' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
                 <div className=' w-48'>
                     <Skeleton className='h-4' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
@@ -142,12 +136,13 @@ const Dashboard = () => {
                 <div className='max-w-44'>
                     <Skeleton className='h-4 w-32' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
                 </div>
-                
+                <div className='h-8'>
+                    <Skeleton className='h-8' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
+                </div>
             </div>
         ));
         return skeletons;
     };
-
     const renderCourses = () => {
         return courses.map(course => {
             const date = course.Released.slice(0, 4);
@@ -163,34 +158,32 @@ const Dashboard = () => {
             );
         });
     };
-
     return (
         <div>
             {!error ? (
-                <>
+                <div className='min-h-screen h-full'>
                     {storedUser ? (
-                        <div className='flex dashboard'>
+                        <div className='flex min-h-screen dashboard'>
+                            
                             <div className='pt-24 min-h-screen h-full'>
-                                <h1 className='text-white'>Bought Courses</h1>
+                                <h1 className='text-white pl-4 text-2xl font-bold pb-4'>Bought Courses</h1>
                                 <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
                                     {isLoading ? renderSkeletons() : renderCourses()}
                                 </div>
-                                <div><h1 className='text-white'>To Be Bought</h1>
-                                
-                                </div>
+                               
                             </div>
+                        
                         </div>
                     ) : (
                         <h1 className='text-slate-400 text-center'>You Haven't Logged In</h1>
                     )}
-                </>
+                </div>
             ) : (
                 <div className='h-screen'>
                     <img src={errorPic} alt="Error" />
                 </div>
             )}
         </div>
-    );
+    )
 };
-
 export default Dashboard;
