@@ -250,7 +250,7 @@ const Navbar = () => {
             <div className="flex-row gap-10 mr-32 p-2 text-sm hidden lg:flex rounded-2xl bg-white/20 backdrop-blur-2xl">
               <Link className="flex items-center gap-1 hover:text-sky-500" to="/"><CiHome />Home</Link>
               <Link className="flex items-center gap-1 hover:text-sky-500" to="/dashboard"><RxDashboard />Dashboard</Link>
-              <Link className="flex items-center gap-1 hover:text-sky-500" to="/">Contact Us</Link>
+              <Link className="flex items-center gap-1 hover:text-sky-500" to="/contact-us">Contact Us</Link>
               {!user && <Link className="flex items-center gap-1 hover:text-sky-500" to="/login">Login<IoIosLogIn /></Link>}
               {user && (
                 <div className="flex gap-10 capitalize">
