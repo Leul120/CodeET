@@ -165,7 +165,7 @@ const Dashboard = () => {
                     {storedUser ? (
                         <div className='flex min-h-screen dashboard'>
                             
-                            <div className='pt-24  h-full'>
+                            <div className='pt-24 min-h-screen h-full'>
                                 <h1 className='text-white pl-4 text-2xl font-bold pb-4'>Bought Courses</h1>
                                 <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
                                     {isLoading ? renderSkeletons() : renderCourses()}
