@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { LoadingOutlined } from '@ant-design/icons';
 import * as yup from 'yup'
 import "./popular.css"
@@ -6,10 +6,15 @@ import { useForm,Controller } from 'react-hook-form';
 import { Form } from 'react-router-dom';
 import { Button } from 'antd';
 import axios from 'axios';
+import { AppContext } from './App';
 const ContactUs = () => {
     const [loading,setLoading]=useState(false)
+    const {setMenu}=useContext(AppContext)
     const [email,setEmail]=useState("")
     const {register,handleSubmit,control,reset,formState: { errors }}=useForm()
+    useEffect(()=>{
+        setMenu("Contact-us")
+    })
     const submitData=async (data)=>{
         
         console.log("hello")
