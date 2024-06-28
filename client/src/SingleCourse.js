@@ -10,11 +10,12 @@ import errorPic from './error.avif'
 
 
 const SingleCourse = () => {
-  const { user, setUser,enrolled,setEnrolled,course,setCourse,isLoading,setIsLoading } = useContext(AppContext);
+  const { user,setMenu, setUser,enrolled,setEnrolled,course,setCourse,isLoading,setIsLoading } = useContext(AppContext);
   const [error,setError]=useState(false)
   const [read,setRead]=useState(false)
   const { courseID } = useParams();
   useEffect(() => {
+    setMenu("")
     findUser()
     filter();
     setUser(JSON.parse(window.localStorage.getItem('user')));
