@@ -36,13 +36,14 @@ function App() {
   const [course, setCourse] = useState({});
   const [isLoading,setIsLoading]=useState(true)
   const [sort,setSort]=useState("-Released")
-  const [menu,setMenu]=useState('home')
+  const [menu,setMenu]=useState('Home')
   const [email,setEmail]=useState("")
   const [newID,setNewID]=useState("")
+  const [tab,setTab]=useState("")
   return (
     <div className="App">
       <QueryClientProvider client={client}>
-        <AppContext.Provider value={{ courses, text, setText ,setCourses,count,setCount,page,setPage,isLoading,setIsLoading,tokens,setTokens,name,setName,user,setUser,enrolled,setEnrolled,course,setCourse,refetcher,setRefetcher,setSort,sort,menu,setMenu,email,setEmail,newID,setNewID}}>
+        <AppContext.Provider value={{ courses, text, setText ,setCourses,count,setCount,page,setPage,isLoading,setIsLoading,tokens,setTokens,name,setName,user,setUser,enrolled,setEnrolled,course,setCourse,refetcher,setRefetcher,setSort,sort,menu,setMenu,email,setEmail,newID,setNewID,tab,setTab}}>
           <Router>
             <Navbar />
             <Routes>
