@@ -49,9 +49,9 @@ const VerifyEmail = () => {
   return (
     <div className='flex h-screen justify-center flex-col items-center bg-stone-100'>
     {contextHolder}
-    <div className='flex flex-col bg-white p-10 justify-center rounded-3xl shadow-lg '>
+    <div className='flex flex-col w-72 bg-white p-10 justify-center rounded-3xl shadow-lg '>
     <h1 className='text-serif font-bold text-sky-500 pb-5'>Verify email</h1>
-      <Input variant='borderLess' placeholder='Your verification code'  className='w-48 ml-3  border-0 underline decoration-indigo-500 underline-offset-2 focus:underline-offset-6' onChange={(e)=>{
+      <Input variant='borderLess' placeholder='Your verification code'  className='w-24 ml-12 flex justify-center items-end pl-3 border-0  decoration-indigo-500 border-b-2' onChange={(e)=>{
         setVerificationCode(e.target.value)
       }}/>
       {!loading &&(<button type='submit' value='Submit' className='w-32 mt-3 ml-9 bg-indigo-500 text-serif text-white hover:bg-white hover-text-indigo-500 hover:border rounded-3xl h-9 text-sm' onClick={verifier}>Submit</button>)}
