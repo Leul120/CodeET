@@ -144,7 +144,7 @@ const PopularCourses = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    setMenu('home');
+    setMenu('Home');
     setUser(JSON.parse(window.localStorage.getItem('user')));
     setIsLoading(true);
 
