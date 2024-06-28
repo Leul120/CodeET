@@ -253,8 +253,8 @@ console.log(menu)
               <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Contact-us"?"bg-white rounded-3xl p-2 shadow-lg":""}`} to="/contact-us">Contact Us</Link>
               {!user && <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Login"?"bg-white rounded-3xl p-2 shadow-lg":""}`} to="/login">Login<IoIosLogIn /></Link>}
               {user && (
-                <div className="flex gap-10 capitalize">
-                  <p>{user.name}</p>
+                <div className="flex gap-10 capitalize items-center">
+                  <p >{user.name}</p>
                   <Popconfirm
                     title="Log Out"
                     description="Are you sure to Log Out?"
