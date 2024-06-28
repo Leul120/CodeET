@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 // import {AppContext} from './App'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
@@ -9,19 +9,20 @@ import { FaRegEye } from 'react-icons/fa6'
 import {useNavigate} from 'react-router-dom'
 import {message} from 'antd'
 import { LoadingOutlined } from '@ant-design/icons';
+import { AppContext } from './App'
 
 
 const Login = () => {
     const [types,setTypes]=useState('password')
     const [errored,setErrored]=useState("")
-    // let {user,setUser}=useContext(AppContext)
+    let {setMenu}=useContext(AppContext)
     const [loading,setLoading]=useState(false)
     const navigate=useNavigate()
      const user=JSON.parse(window.localStorage.getItem('user'))
     
      
     useEffect(()=>{
-      
+      setMenu("Login")
       if(user){
         navigate('/')
       }
