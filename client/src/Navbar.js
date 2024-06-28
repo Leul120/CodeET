@@ -149,7 +149,7 @@ import { message } from 'antd';
 import axios from 'axios';
 
 const Navbar = () => {
-  const { setText, user, setUser, setPage, setIsLoading, setMenu } = useContext(AppContext);
+  const { setText, user, setUser, setPage, setIsLoading, setMenu,menu } = useContext(AppContext);
   const [open, setOpen] = useState(false);
   const [tx, setTx] = useState("");
   const [errored, setErrored] = useState(false);
@@ -192,7 +192,7 @@ const Navbar = () => {
   const select = (e) => {
     setMenu(e.key);
   };
-
+console.log(menu)
   return (
     <>
       {!errored && (
@@ -223,12 +223,12 @@ const Navbar = () => {
             >
               <IoIosMenu />
             </button>
-            <Drawer title="Menu" style={{ backgroundColor: "black" }} className="h-1/2 bg-stone-700 w-40" onClose={onClose} open={open}>
-              <Menu theme="dark" defaultSelectedKeys={["menu"]} onSelect={select} className="w-40 bg-transparent flex-col md:flex">
-                <Menu.Item key="home" icon={<CiHome />}><Link to="/">Home</Link></Menu.Item>
+            <Drawer title="Menu" style={{ }} className=" pr-2 bg-stone-700 text-white " onClose={onClose} open={open} width={230}>
+              <Menu  selectedKeys={[menu]} onSelect={select} className="w-40 text-white mr-0 bg-transparent flex-col md:flex">
+                <Menu.Item key="Home" icon={<CiHome />}><Link to="/">Home</Link></Menu.Item>
                 <Menu.Item key="Dashboard" icon={<RxDashboard />}><Link to="/dashboard">Dashboard</Link></Menu.Item>
-                <Menu.Item key="contactus" icon={<IoMdContact />}><Link to="/contact-us">Contact Us</Link></Menu.Item>
-                {!user && <Menu.Item key="login" icon={<IoIosLogIn />}><Link to="/login">Login</Link></Menu.Item>}
+                <Menu.Item key="Contact-us" icon={<IoMdContact />}><Link to="/contact-us">Contact Us</Link></Menu.Item>
+                {!user && <Menu.Item key="Login" icon={<IoIosLogIn />}><Link to="/login">Login</Link></Menu.Item>}
                 {user && (
                   <Menu.SubMenu key="logout" icon={<RxAvatar />} title={user.name}>
                     <Menu.Item>
@@ -247,11 +247,11 @@ const Navbar = () => {
                 )}
               </Menu>
             </Drawer>
-            <div className="flex-row gap-10 mr-32 p-2 text-sm hidden lg:flex rounded-2xl bg-white/20 backdrop-blur-2xl">
-              <Link className="flex items-center gap-1 hover:text-sky-500" to="/"><CiHome />Home</Link>
-              <Link className="flex items-center gap-1 hover:text-sky-500" to="/dashboard"><RxDashboard />Dashboard</Link>
-              <Link className="flex items-center gap-1 hover:text-sky-500" to="/contact-us">Contact Us</Link>
-              {!user && <Link className="flex items-center gap-1 hover:text-sky-500" to="/login">Login<IoIosLogIn /></Link>}
+            <div className="flex-row gap-10 mr-32 p-2 text-sm hidden lg:flex rounded-3xl bg-white/20 backdrop-blur-3xl">
+              <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Home"?"bg-white shadow-lg rounded-3xl p-2":""}`} to="/"><CiHome />Home</Link>
+              <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Dashboard"?"bg-white rounded-3xl p-2 shadow-lg":""}`} to="/dashboard"><RxDashboard />Dashboard</Link>
+              <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Contact-us"?"bg-white rounded-3xl p-2 shadow-lg":""}`} to="/contact-us">Contact Us</Link>
+              {!user && <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Login"?"bg-white rounded-3xl p-2 shadow-lg":""}`} to="/login">Login<IoIosLogIn /></Link>}
               {user && (
                 <div className="flex gap-10 capitalize">
                   <p>{user.name}</p>
