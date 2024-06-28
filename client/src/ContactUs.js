@@ -30,7 +30,7 @@ const ContactUs = () => {
 
   return (<div className='flex flex-row'>
   <section className='logo w-1/2 min-h-screen flex items-center bg-slate-400 h-full bg-gradient-to-r from-slate-700 to-sky-900 '>
-    <div className='text-7xl font-bold -rotate-90  '>CodeET</div>
+    <div className='text-7xl font-bold bg-gradient-to-r from-indigo-400 to-blue-800 text-transparent bg-clip-text -rotate-90 h-full w-full pl-24 '>CodeET</div>
   </section>
     <div className=' flex justify-center pt-16 w-full  bg-stone-100 min-h-screen h-full'>
     <div className=' p-10 rounded-xl '>
