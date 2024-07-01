@@ -4,7 +4,7 @@ import * as yup from 'yup'
 import "./popular.css"
 import { useForm,Controller } from 'react-hook-form';
 import { Form } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button,message } from 'antd';
 import axios from 'axios';
 import { AppContext } from './App';
 const ContactUs = () => {
@@ -23,8 +23,10 @@ const ContactUs = () => {
             setLoading(true)
         await axios.post(`${process.env.REACT_APP_URL}/users/contact-us`,data)
     setLoading(false)
+    message.success("sent")
 }catch(err){
             console.log(err)
+            message.error("error")
         }
     }
 
