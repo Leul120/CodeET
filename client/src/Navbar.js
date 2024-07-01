@@ -247,7 +247,7 @@ console.log(menu)
                 )}
               </Menu>
             </Drawer>
-            <div className="flex-row gap-10 mr-32 p-1 text-sm hidden lg:flex rounded-3xl bg-white/20 backdrop-blur-3xl">
+            <div className="flex-row gap-10 mr-32 p-1 text-sm hidden lg:flex rounded-3xl bg-white/20 backdrop-blur-3xl min-h-9">
               <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Home"?"bg-white shadow-lg rounded-3xl p-2":""}`} to="/"><CiHome />Home</Link>
               <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Dashboard"?"bg-white rounded-3xl p-2 shadow-lg":""}`} to="/dashboard"><RxDashboard />Dashboard</Link>
               <Link className={`flex items-center gap-1 hover:text-sky-500 ${menu==="Contact-us"?"bg-white rounded-3xl p-2 shadow-lg":""}`} to="/contact-us">Contact Us</Link>
