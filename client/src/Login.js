@@ -64,8 +64,12 @@ const Login = () => {
     }
 
   return (<>
-    <div className=' pt-20 bg-stone-100 h-screen'>
-        <form onSubmit={handleSubmit(submitData)} className={`max-w-sm mx-auto border mt-10  bg-white p-10  rounded-3xl shadow-lg `}>
+    <div className='  flex flex-row'>
+    <section className='logo w-1/3 min-h-screen flex items-center justify-center  h-full bg-gradient-to-r from-slate-700 to-sky-900 '>
+    <div className='text-7xl font-bold bg-gradient-to-r from-indigo-400 to-blue-800 text-transparent bg-clip-text -rotate-90 h-full w-full pl-24 '>CodeET</div>
+  </section>
+  <div className='w-full flex justify-center items-center'>
+        <form onSubmit={handleSubmit(submitData)} className={` max-w-[700px] w-full mt-10  bg-white p-10  `}>
         <h1 className='text-green-700 pb-3 font-bold ' >Log In</h1>
           <p className='text-red-800 '>{errored}</p>
         <input type='text' className='rounded-3xl my-1 w-full' placeholder='Email '{...register('email')}/>
@@ -85,8 +89,8 @@ const Login = () => {
         {loading && <button type='submit' disabled className="w-full h-9 mt-3 rounded-3xl p-1 text-white flex gap-2 text-sm items-center justify-center bg-purple-500"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/>Login</button>}
             {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center hover:bg-white hover:text-purple-700 hover:border justify-center bg-purple-700 text-sm">Log In</button> }
         <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-9  rounded-3xl mt-3 mb-5 text-purple-700 text-sm hover:underline">Sign Up</button></Link>
-        <Link to='/forget-Password' className='text-blue-600  text-center p-2 pl-24 hover:underline'>Forget Password</Link>
-        </form>
+        <Link to='/forget-Password' className='text-blue-600  text-center p-2  hover:underline'><div className='text-center '>Forget Password</div></Link>
+        </form></div>
         
     </div></>
   )
