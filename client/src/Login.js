@@ -89,7 +89,7 @@ const Login = () => {
         {loading && <button type='submit' disabled className="w-full h-9 mt-3 rounded-3xl p-1 text-white flex gap-2 text-sm items-center justify-center bg-purple-500"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/>Login</button>}
             {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center hover:bg-white hover:text-purple-700 hover:border justify-center bg-purple-700 text-sm">Log In</button> }
         <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-9  rounded-3xl mt-3 mb-5 text-purple-700 text-sm hover:underline">Sign Up</button></Link>
-        <Link to='/forget-Password' className='text-blue-600  text-center p-2  hover:underline'><div className='text-center '>Forget Password</div></Link>
+        <div className='text-center justify-center'><Link to='/forget-Password' className='text-blue-600  text-center p-2  hover:underline'>Forget Password</Link></div>
         </form></div>
         
     </div></>
