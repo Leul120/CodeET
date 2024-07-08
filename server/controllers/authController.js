@@ -22,8 +22,8 @@ const signRefreshToken=(id)=>{
 let transporter = nodemailer.createTransport({
     service: 'gmail', // Example using Gmail
     auth: {
-        user: 'codeetgo@gmail.com',
-        pass: "ajtr hgyi yqsz tkgv"
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS
     }
 });
 const createPasswordResetToken=(id,expires)=>{
@@ -267,7 +267,7 @@ exports.contactUs=catchAsync(async (req,res)=>{
     if (error) {
         res.status(400).json({
             status:400,
-            message:"An Error Occured"})
+            message:"An Error Occurred"})
         console.log(error)
     }
     console.log('Email sent successfully:', info.response);
