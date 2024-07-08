@@ -180,7 +180,7 @@ async function s3Get(req,res){
       return {
         key:content.Key,
         lastModified:content.LastModified,
-        url:"https://d105f0jjk1ob12.cloudfront.net/"+content.Key
+        url:process.env.CLOUDFRONT_URL+content.Key
       }
     }))
   }catch(error){
