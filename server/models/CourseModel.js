@@ -15,6 +15,7 @@ const CourseSchema=new mongoose.Schema({
         trim:true,
     },
     IntroLink:String,
+    link:String,
     Language:String,
     Poster:String,
     bought:{type:Number,
