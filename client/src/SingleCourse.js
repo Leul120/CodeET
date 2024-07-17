@@ -172,7 +172,7 @@ const SingleCourse = () => {
         <div className="flex flex-col md:flex-row md:items-start items-center w-full max-w-7xl">
           {isLoading ? (
             <div className="w-80 pt-16">
-              <Skeleton className="h-80" baseColor="#ebf0ec" borderRadius="1rem" highlightColor="#cfd4d1" />
+              <Skeleton className="h-64" baseColor="#ebf0ec" borderRadius="1rem" highlightColor="#cfd4d1" />
             </div>
           ) : (
             <div className="h-80 rounded-xl pt-16 inline-block">
@@ -191,7 +191,7 @@ const SingleCourse = () => {
                 <h1 className="mb-4 text-2xl font-bold text-center text-slate-100">{course?.Title}</h1>
                 <button
                   type="button"
-                  className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 transition duration-300"
+                  className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br  ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 transition duration-300"
                   onClick={user ? (enrolled ? () => navigate(`/course/watch/${courseID}`) : () => navigate(`/pay/${course._id}/${user?._id}`)) : () => navigate('/login')}
                 >
                   {user ? (enrolled ? "Go to Course" : "Enroll Now") : "Login To Enroll"}
