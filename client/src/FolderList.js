@@ -51,20 +51,88 @@
 
 // export default FolderList;
 
+// import React, { useContext, useEffect, useState } from 'react';
+// import { useNavigate, useParams } from 'react-router-dom';
+// import axios from 'axios';
+// import { AppContext } from './App';
+// import Skeleton from 'react-loading-skeleton';
+// const FolderList = () => {
+//   const [data, setData] = useState([]);
+//   const {  enrolled, isLoading, setIsLoading } = useContext(AppContext);
+//   const navigate = useNavigate();
+//   const { courseID } = useParams();
+//   const user = JSON.parse(window.localStorage.getItem('user'));
+
+
+ 
+//   useEffect(() => {
+//     if (!user || !enrolled) {
+//       navigate('/');
+//     }
+//   }, [user, enrolled, navigate]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       setIsLoading(true);
+//       try {
+//         const response = await axios.get(`${process.env.REACT_APP_URL}/api/course/get-course/${courseID}`);
+//         setData(response.data);
+//         setIsLoading(false);
+//       } catch (error) {
+//         console.error(error);
+//         setIsLoading(false);
+//       }
+//     };
+//     fetchData();
+//   }, [courseID, setIsLoading]);
+
+//   // Get unique folders and sort them by name
+//   const uniqueFolders = Array.from(new Set(data.map(cour => cour.key.split('/')[1]))).sort();
+ 
+//   uniqueFolders.sort((a, b) => {
+// return a?.split('.')[0]-b?.split('.')[0] || a?.split('-')[0]-b?.split('-')[0]})
+
+// console.log(uniqueFolders)
+//   return (
+//     <>
+//       {isLoading ? (
+//         <div className='w-screen mr-3 pt-24 '><Skeleton className='h-10' count={200} baseColor='#ebf0ec' borderRadius='10px' highlightColor='#cfd4d1' /></div>
+//       ) : (
+//         <div className='pt-16 bg-slate-800'>
+//           <ul className='bg-gray-800 p-4 rounded-lg shadow-md'>
+//             {uniqueFolders.map((folder, index) => (
+//               <li 
+//                 key={index} 
+//                 className='shadow-lg my-2 p-2 text-white  rounded-md hover:bg-slate-300 hover:text-black flex items-center cursor-pointer transition-colors duration-200'
+//                 onClick={() => navigate(`/subfolder/${folder}/${courseID}`)}
+//               >
+//                 <span className=''></span>
+//                 <span className='flex-grow'>{folder}</span>
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default FolderList;
+
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from './App';
 import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+
 const FolderList = () => {
   const [data, setData] = useState([]);
-  const {  enrolled, isLoading, setIsLoading } = useContext(AppContext);
+  const { enrolled, isLoading, setIsLoading } = useContext(AppContext);
   const navigate = useNavigate();
   const { courseID } = useParams();
   const user = JSON.parse(window.localStorage.getItem('user'));
 
-
- 
   useEffect(() => {
     if (!user || !enrolled) {
       navigate('/');
@@ -88,29 +156,34 @@ const FolderList = () => {
 
   // Get unique folders and sort them by name
   const uniqueFolders = Array.from(new Set(data.map(cour => cour.key.split('/')[1]))).sort();
- 
-  uniqueFolders.sort((a, b) => {
-return a?.split('.')[0]-b?.split('.')[0] || a?.split('-')[0]-b?.split('-')[0]})
 
-console.log(uniqueFolders)
+  uniqueFolders.sort((a, b) => {
+    return a?.split('.')[0] - b?.split('.')[0] || a?.split('-')[0] - b?.split('-')[0];
+  });
+
+  console.log(uniqueFolders);
+
   return (
     <>
       {isLoading ? (
-        <div className='w-screen mr-3 pt-24 '><Skeleton className='h-10' count={200} baseColor='#ebf0ec' borderRadius='10px' highlightColor='#cfd4d1' /></div>
+        <div className='w-full h-screen flex items-center justify-center'>
+          <Skeleton className='w-11/12 h-10' count={10} baseColor='#ebf0ec' borderRadius='10px' highlightColor='#cfd4d1' />
+        </div>
       ) : (
-        <div className='pt-16 bg-slate-800'>
-          <ul className='bg-gray-800 p-4 rounded-lg shadow-md'>
-            {uniqueFolders.map((folder, index) => (
-              <li 
-                key={index} 
-                className='shadow-lg my-2 p-2 text-white  rounded-md hover:bg-slate-300 hover:text-black flex items-center cursor-pointer transition-colors duration-200'
-                onClick={() => navigate(`/subfolder/${folder}/${courseID}`)}
-              >
-                <span className=''></span>
-                <span className='flex-grow'>{folder}</span>
-              </li>
-            ))}
-          </ul>
+        <div className='min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex flex-col items-center py-16'>
+          <div className='bg-gray-700 p-6 rounded-lg shadow-xl w-full max-w-4xl'>
+            <ul className=''>
+              {uniqueFolders.map((folder, index) => (
+                <li 
+                  key={index} 
+                  className='my-3 p-4 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-700 hover:text-yellow-400 transition-all duration-300 flex items-center cursor-pointer'
+                  onClick={() => navigate(`/subfolder/${folder}/${courseID}`)}
+                >
+                  <span className='text-lg font-semibold'>{folder}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       )}
     </>
@@ -118,4 +191,3 @@ console.log(uniqueFolders)
 };
 
 export default FolderList;
-
