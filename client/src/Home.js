@@ -19,7 +19,7 @@ function Home() {
         setCount("w-full sm:hidden inline-block hidden")
     }
   return (
-    <div className='pt-16  ' onClick={hide}>
+    <div className='  ' onClick={hide}>
       {/* <Banner/> */}
       
       <PopularCourses />
