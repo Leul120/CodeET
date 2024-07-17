@@ -1,102 +1,233 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-// import {AppContext} from './App'
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
-import * as yup from 'yup'
-import { FaRegEye } from 'react-icons/fa6'
-import {useNavigate} from 'react-router-dom'
-import {message} from 'antd'
-import { LoadingOutlined } from '@ant-design/icons';
-import { AppContext } from './App'
+// import { yupResolver } from '@hookform/resolvers/yup'
+// // import {AppContext} from './App'
+// import axios from 'axios'
+// import React, { useContext, useEffect, useState } from 'react'
+// import { useForm } from 'react-hook-form'
+// import { Link } from 'react-router-dom'
+// import * as yup from 'yup'
+// import { FaRegEye } from 'react-icons/fa6'
+// import {useNavigate} from 'react-router-dom'
+// import {message} from 'antd'
+// import { LoadingOutlined } from '@ant-design/icons';
+// import { AppContext } from './App'
 
 
-const Login = () => {
-    const [types,setTypes]=useState('password')
-    const [errored,setErrored]=useState("")
-    let {setMenu}=useContext(AppContext)
-    const [loading,setLoading]=useState(false)
-    const navigate=useNavigate()
-     const user=JSON.parse(window.localStorage.getItem('user'))
+// const Login = () => {
+//     const [types,setTypes]=useState('password')
+//     const [errored,setErrored]=useState("")
+//     let {setMenu}=useContext(AppContext)
+//     const [loading,setLoading]=useState(false)
+//     const navigate=useNavigate()
+//      const user=JSON.parse(window.localStorage.getItem('user'))
     
      
-    useEffect(()=>{
-      setMenu("Login")
-      if(user){
-        navigate('/')
-      }
-    },[navigate,user])
+//     useEffect(()=>{
+//       setMenu("Login")
+//       if(user){
+//         navigate('/')
+//       }
+//     },[navigate,user])
     
-    const loginSchema=yup.object().shape({
-        email:yup.string().email('Please Provide A Valid Email').required("Email Required"),
-        password:yup.string().required().min(8)
+//     const loginSchema=yup.object().shape({
+//         email:yup.string().email('Please Provide A Valid Email').required("Email Required"),
+//         password:yup.string().required().min(8)
     
-    }) 
-      const dataPost=async (value)=>{
-        try{
-     setLoading(true)
-        const response=await axios.post(`${process.env.REACT_APP_URL}/users/login`,value)
-        if(response?.data.status==='success'){
-          setErrored("")
-         setLoading(false)
-         message.success('Logged In Successfully')
-          const expirationDate = new Date();
-          expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
+//     }) 
+//       const dataPost=async (value)=>{
+//         try{
+//      setLoading(true)
+//         const response=await axios.post(`${process.env.REACT_APP_URL}/users/login`,value)
+//         if(response?.data.status==='success'){
+//           setErrored("")
+//          setLoading(false)
+//          message.success('Logged In Successfully')
+//           const expirationDate = new Date();
+//           expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
           
-          const custom=btoa(response.data.token)
+//           const custom=btoa(response.data.token)
           
-          window.localStorage.setItem('token',custom)
-          window.localStorage.setItem('user',JSON.stringify(response.data.user))
-         navigate('/')
-        }
-      }catch(error){
-          setErrored(error.response.data.message)
-          setLoading(false)
-        }}
-    const {handleSubmit,formState:{errors},register}=useForm({
-        resolver:yupResolver(loginSchema)
-    })
-    const submitData=async (value)=>{
-        dataPost(value)
+//           window.localStorage.setItem('token',custom)
+//           window.localStorage.setItem('user',JSON.stringify(response.data.user))
+//          navigate('/')
+//         }
+//       }catch(error){
+//           setErrored(error.response.data.message)
+//           setLoading(false)
+//         }}
+//     const {handleSubmit,formState:{errors},register}=useForm({
+//         resolver:yupResolver(loginSchema)
+//     })
+//     const submitData=async (value)=>{
+//         dataPost(value)
         
         
+//     }
+
+//   return (<>
+//     <div className='  flex flex-row'>
+//     <section className='logo w-1/3 min-h-screen flex items-center justify-center  h-full bg-gradient-to-r from-slate-700 to-sky-900 '>
+//     <div className='text-7xl font-bold bg-gradient-to-r from-indigo-400 to-blue-800 text-transparent bg-clip-text -rotate-90 h-full w-full pl-24 '>CodeET</div>
+//   </section>
+//   <div className='w-full flex justify-center items-center'>
+//         <form onSubmit={handleSubmit(submitData)} className={` max-w-[700px] w-full mt-10  bg-white p-10  `}>
+//         <h1 className='text-green-700 pb-3 font-bold ' >Log In</h1>
+//           <p className='text-red-800 '>{errored}</p>
+//         <input type='text' className='rounded-3xl my-1 w-full' placeholder='Email '{...register('email')}/>
+//         <p className='text-red-400 text-sm'>{errors.email?.message}</p>
+//         <div className='border bg-white border-border flex justify-between items-center   rounded-3xl mt-1'>
+//       <input type={types} className=' border-white text-black pl-2 h-10 w-full  focus:outline-none rounded-3xl focus:border-0' placeholder='password' {...register("password")}/> <button onClick={(e)=>{
+//         e.preventDefault();
+//         if (types === 'text') {
+//           setTypes('password');
+//         } else if (types === 'password') {
+//           setTypes('text');
+//         }
+    
+//     }} className='pr-2 mr-1 bg-white text-black pl-2'><FaRegEye /></button></div>
+//         <p className='text-red-400 text-sm'>{errors.password?.message}</p>
+        
+//         {loading && <button type='submit' disabled className="w-full h-9 mt-3 rounded-3xl p-1 text-white flex gap-2 text-sm items-center justify-center bg-purple-500"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/>Login</button>}
+//             {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center hover:bg-white hover:text-purple-700 hover:border justify-center bg-purple-700 text-sm">Log In</button> }
+//         <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-9  rounded-3xl mt-3 mb-5 text-purple-700 text-sm hover:underline">Sign Up</button></Link>
+//         <div className='text-center justify-center'><Link to='/forget-Password' className='text-blue-600  text-center p-2  hover:underline'>Forget Password</Link></div>
+//         </form></div>
+        
+//     </div></>
+//   )
+// }
+
+// export default Login
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import { FaRegEye } from 'react-icons/fa6';
+import { message } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import { AppContext } from './App';
+import './login.css'; // Import the CSS file for animations and styles
+
+const Login = () => {
+  const [types, setTypes] = useState('password');
+  const [errored, setErrored] = useState('');
+  let { setMenu } = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const user = JSON.parse(window.localStorage.getItem('user'));
+
+  useEffect(() => {
+    setMenu('Login');
+    if (user) {
+      navigate('/');
     }
+  }, [navigate, user, setMenu]);
 
-  return (<>
-    <div className='  flex flex-row'>
-    <section className='logo w-1/3 min-h-screen flex items-center justify-center  h-full bg-gradient-to-r from-slate-700 to-sky-900 '>
-    <div className='text-7xl font-bold bg-gradient-to-r from-indigo-400 to-blue-800 text-transparent bg-clip-text -rotate-90 h-full w-full pl-24 '>CodeET</div>
-  </section>
-  <div className='w-full flex justify-center items-center'>
-        <form onSubmit={handleSubmit(submitData)} className={` max-w-[700px] w-full mt-10  bg-white p-10  `}>
-        <h1 className='text-green-700 pb-3 font-bold ' >Log In</h1>
-          <p className='text-red-800 '>{errored}</p>
-        <input type='text' className='rounded-3xl my-1 w-full' placeholder='Email '{...register('email')}/>
-        <p className='text-red-400 text-sm'>{errors.email?.message}</p>
-        <div className='border bg-white border-border flex justify-between items-center   rounded-3xl mt-1'>
-      <input type={types} className=' border-white text-black pl-2 h-10 w-full  focus:outline-none rounded-3xl focus:border-0' placeholder='password' {...register("password")}/> <button onClick={(e)=>{
-        e.preventDefault();
-        if (types === 'text') {
-          setTypes('password');
-        } else if (types === 'password') {
-          setTypes('text');
-        }
-    
-    }} className='pr-2 mr-1 bg-white text-black pl-2'><FaRegEye /></button></div>
-        <p className='text-red-400 text-sm'>{errors.password?.message}</p>
-        
-        {loading && <button type='submit' disabled className="w-full h-9 mt-3 rounded-3xl p-1 text-white flex gap-2 text-sm items-center justify-center bg-purple-500"><LoadingOutlined spinning allowFullScreen size="large" style={{color:"white"}}/>Login</button>}
-            {!loading && <button type='submit' className="w-full mt-3 h-9 rounded-3xl p-1 text-white flex items-center hover:bg-white hover:text-purple-700 hover:border justify-center bg-purple-700 text-sm">Log In</button> }
-        <Link to='/signup'><button type='button' value='Sign Up' className="w-full h-9  rounded-3xl mt-3 mb-5 text-purple-700 text-sm hover:underline">Sign Up</button></Link>
-        <div className='text-center justify-center'><Link to='/forget-Password' className='text-blue-600  text-center p-2  hover:underline'>Forget Password</Link></div>
-        </form></div>
-        
-    </div></>
-  )
-}
+  const loginSchema = yup.object().shape({
+    email: yup.string().email('Please Provide A Valid Email').required('Email Required'),
+    password: yup.string().required('Password is required').min(8),
+  });
 
-export default Login
+  const dataPost = async (value) => {
+    try {
+      setLoading(true);
+      const response = await axios.post(`${process.env.REACT_APP_URL}/users/login`, value);
+      if (response?.data.status === 'success') {
+        setErrored('');
+        setLoading(false);
+        message.success('Logged In Successfully');
+        const expirationDate = new Date();
+        expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 1000);
+
+        const custom = btoa(response.data.token);
+
+        window.localStorage.setItem('token', custom);
+        window.localStorage.setItem('user', JSON.stringify(response.data.user));
+        navigate('/');
+      }
+    } catch (error) {
+      setErrored(error.response.data.message);
+      setLoading(false);
+    }
+  };
+
+  const { handleSubmit, formState: { errors }, register } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const submitData = async (value) => {
+    dataPost(value);
+  };
+
+  return (
+    <>
+      <div className='flex flex-row min-h-screen bg-gray-900'>
+        <section className='logo w-1/3 flex items-center justify-center h-full bg-gradient-to-r from-gray-800 to-gray-900 login-section'>
+          <div className='text-7xl font-bold bg-gradient-to-r from-indigo-400 to-blue-800 text-transparent bg-clip-text -rotate-90 h-full w-full pl-24 animate-logo'>
+            CodeET
+          </div>
+        </section>
+        <div className='w-full flex justify-center items-center'>
+          <form onSubmit={handleSubmit(submitData)} className='max-w-[700px] w-full mt-10 bg-gray-800 p-10 rounded-xl shadow-lg animate-form'>
+            <h1 className='text-xl text-gray-100 pb-3 font-bold animate-fade-in'>Log In</h1>
+            <p className='text-red-600'>{errored}</p>
+            <input
+              type='text'
+              className={`rounded-xl my-2 w-full px-4 py-2 bg-gray-700 text-gray-300 border-2 ${errors.email ? 'border-red-500' : 'border-gray-600'} focus:outline-none focus:border-gray-500 transition duration-300`}
+              placeholder='Email'
+              {...register('email')}
+            />
+            <p className='text-red-400 text-sm'>{errors.email?.message}</p>
+            <div className='flex justify-between items-center bg-gray-700 border-2 border-gray-600 rounded-xl mt-1'>
+              <input
+                type={types}
+                className='bg-transparent text-gray-300 px-4 py-2 w-full focus:outline-none rounded-xl'
+                placeholder='Password'
+                {...register('password')}
+              />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setTypes((prevType) => (prevType === 'text' ? 'password' : 'text'));
+                }}
+                className='px-4 py-2 text-gray-400 hover:text-gray-200 transition duration-300'
+              >
+                <FaRegEye />
+              </button>
+            </div>
+            <p className='text-red-400 text-sm'>{errors.password?.message}</p>
+
+            {loading ? (
+              <button type='submit' disabled className='w-full h-10 mt-4 rounded-xl p-1 text-white flex gap-2 text-sm items-center justify-center bg-purple-600'>
+                <LoadingOutlined className='animate-spin' />
+                Logging In...
+              </button>
+            ) : (
+              <button type='submit' className='w-full h-10 mt-4 rounded-xl p-1 text-white flex items-center justify-center bg-purple-700 hover:bg-purple-600 transition duration-300 text-sm'>
+                Log In
+              </button>
+            )}
+            <Link to='/signup'>
+              <button type='button' className='w-full h-10 mt-4 rounded-xl text-purple-700 bg-transparent hover:underline transition duration-300 text-sm'>
+                Sign Up
+              </button>
+            </Link>
+            <div className='text-center'>
+              <Link to='/forget-Password' className='text-blue-600 hover:underline transition duration-300'>
+                Forget Password
+              </Link>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Login;
+
 
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import axios from 'axios';
