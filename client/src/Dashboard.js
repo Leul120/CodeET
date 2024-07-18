@@ -251,7 +251,7 @@ const Dashboard = () => {
             return (
                 <Link to={`/course/${course._id}`} key={course._id} className="flex flex-col items-start p-4 backdrop-blur-md bg-white/20 rounded-xl transition transform hover:scale-105 hover:shadow-lg">
                     <img alt={course.Title} src={course.Poster} className="h-48 w-96 rounded-xl object-cover mb-4" loading="lazy" />
-                    <p className="text-white font-bold text-lg overflow-hidden truncate w-full">{course.Title}</p>
+                    <p className="text-white font-bold text-lg overflow-hidden text-wrap truncate w-full">{course.Title}</p>
                     <p className="text-white text-sm">Released: {date}</p>
                     <p className="text-white text-sm">Rating: {course.Rating}</p>
                 </Link>
