@@ -44,6 +44,7 @@ exports.signup=catchAsync(async (req,res,next)=>{
     })
     const token= signToken(newUser._id)
     await User.findOneAndUpdate({_id:newUser._id},{token:token})
+    newUser.password=undefined
     let mailOptions = {
     from: '"CodeET" <codeetgo@gmail.com>', // Sender address
     to: req.body.email, // List of recipients
