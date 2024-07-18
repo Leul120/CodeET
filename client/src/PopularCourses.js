@@ -334,7 +334,7 @@ const PopularCourses = () => {
                   <div className='mt-2'>
                     <h2 className='text-lg font-semibold text-white'>{course.Title}</h2>
                     <div className='flex items-center mt-1'>
-                      <Rate disabled allowHalf defaultValue={course.Rating / 2} className='mr-2' />
+                      <Rate disabled allowHalf defaultValue={course.Rating} className='mr-2' />
                       <span className='text-red-400'>{course.Rating}</span>
                     </div>
                     <p className='text-sm text-red-300 bg-gradient-to-r from-green-200 to-purple-300 text-transparent bg-clip-text'>{course.bought} people bought</p>
