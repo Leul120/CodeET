@@ -347,7 +347,7 @@ const PopularCourses = () => {
             )}
           </div>
           <div className='flex justify-center mt-6'>
-            <Pagination count={5} color='secondary' page={page} shape='rounded' className='m-3 w-72 text-white bg-white/30 rounded-lg backdrop-blur-2xl' onChange={(e, i) => {
+            <Pagination count={3} color='secondary' page={page} shape='rounded' className='m-3 w-72 text-white bg-white/30 rounded-lg backdrop-blur-2xl' onChange={(e, i) => {
               setPage(i);
               // setRefetcher(true);
             }} />
