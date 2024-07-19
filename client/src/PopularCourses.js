@@ -248,6 +248,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from './App';
 import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
+import 'react-loading-skeleton/dist/skeleton.css';
 import './popular.css';
 import { fetchCourses } from './Home';
 import Description from './Description';
@@ -259,7 +260,17 @@ import errorPic from './error.avif';
 
 const PopularCourses = () => {
   const {
-    courses, text, setCourses, page, setPage, isLoading, setIsLoading,sort, setSort, setUser, setMenu
+    courses,
+    text,
+    setCourses,
+    page,
+    setPage,
+    isLoading,
+    setIsLoading,
+    sort,
+    setSort,
+    setUser,
+    setMenu,
   } = useContext(AppContext);
   const [error, setError] = useState(false);
 
@@ -289,74 +300,140 @@ const PopularCourses = () => {
   };
 
   const renderSkeletons = () => {
-    const skeletons = [];
-    for (let i = 0; i < 10; i++) {
-      skeletons.push(
-        <div key={i} className="flex flex-col items-center p-2">
-          <Skeleton baseColor='#ebf0ec' borderRadius='0.7rem' highlightColor='#cfd4d1' className='h-48 w-full' />
-          <Skeleton className='h-5 mt-2 w-3/4' baseColor='#ebf0ec' borderRadius='0.5rem' highlightColor='#cfd4d1' />
-          <Skeleton className='h-4 mt-1 w-1/2' baseColor='#ebf0ec' borderRadius='0.4rem' highlightColor='#cfd4d1' />
-          <Skeleton className='h-4 mt-1 w-1/4' baseColor='#ebf0ec' borderRadius='0.7rem' highlightColor='#cfd4d1' />
-          <Skeleton className='h-9 mt-2 w-full' baseColor='#ebf0ec' borderRadius='0.5rem' highlightColor='#cfd4d1' />
+    return Array.from({ length: 10 }).map((_, i) => (
+      <div
+        key={i}
+        className="flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg animate-pulse"
+      >
+        <Skeleton
+          baseColor="#4a5568"
+          highlightColor="#718096"
+          className="h-48 w-full object-cover rounded-t-lg"
+        />
+        <div className="mt-2">
+          <Skeleton className="h-6 w-3/4" />
+          <Skeleton className="h-4 w-1/2 mt-1" />
         </div>
-      );
-    }
-    return skeletons;
+        <Skeleton className="mt-4 h-8 w-full" />
+      </div>
+    ));
   };
 
   return (
-    <div className='min-h-screen bg-gray-900 text-white flex flex-col items-center py-10 pt-16'>
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center py-10 pt-16">
       {!error ? (
-        <div className='w-full max-w-7xl flex flex-col min-h-screen '>
+        <div className="w-full max-w-7xl flex flex-col min-h-screen">
           <Description />
-          <Menu onSelect={onChange} className='text-white bg-transparent border-none shadow-none w-24'>
-            <Menu.SubMenu key='sort' title='Sort' className='text-white bg-white/20 backdrop-blur-xl w-24 mt-1 ml-4'>
-              <Menu.SubMenu title='Released'>
-                <Menu.Item key='Released'><p className='flex items-center'><IoIosArrowRoundUp className='text-2xl' />Lower-To-Higher</p></Menu.Item>
-                <Menu.Item key='-Released'><p className='flex items-center'><IoIosArrowRoundDown className='text-2xl' />Higher-To-Lower</p></Menu.Item>
+          <Menu
+            onSelect={onChange}
+            className="text-white bg-transparent border-none shadow-none w-24"
+          >
+            <Menu.SubMenu
+              key="sort"
+              title="Sort"
+              className="text-white bg-white/20 backdrop-blur-xl w-24 mt-1 ml-4"
+            >
+              <Menu.SubMenu title="Released">
+                <Menu.Item key="Released">
+                  <p className="flex items-center">
+                    <IoIosArrowRoundUp className="text-2xl" />
+                    Lower-To-Higher
+                  </p>
+                </Menu.Item>
+                <Menu.Item key="-Released">
+                  <p className="flex items-center">
+                    <IoIosArrowRoundDown className="text-2xl" />
+                    Higher-To-Lower
+                  </p>
+                </Menu.Item>
               </Menu.SubMenu>
-              <Menu.SubMenu title='Price'>
-                <Menu.Item key='Price'><p className='flex items-center'><IoIosArrowRoundUp className='text-2xl' />Lower-To-Higher</p></Menu.Item>
-                <Menu.Item key='-Price'><p className='flex items-center'><IoIosArrowRoundDown className='text-2xl' />Higher-To-Lower</p></Menu.Item>
+              <Menu.SubMenu title="Price">
+                <Menu.Item key="Price">
+                  <p className="flex items-center">
+                    <IoIosArrowRoundUp className="text-2xl" />
+                    Lower-To-Higher
+                  </p>
+                </Menu.Item>
+                <Menu.Item key="-Price">
+                  <p className="flex items-center">
+                    <IoIosArrowRoundDown className="text-2xl" />
+                    Higher-To-Lower
+                  </p>
+                </Menu.Item>
               </Menu.SubMenu>
-              <Menu.SubMenu title='Rating'>
-                <Menu.Item key='Rating'><p className='flex items-center'><IoIosArrowRoundUp className='text-2xl' />Lower-To-Higher</p></Menu.Item>
-                <Menu.Item key='-Rating'><p className='flex items-center'><IoIosArrowRoundDown className='text-2xl' />Higher-To-Lower</p></Menu.Item>
+              <Menu.SubMenu title="Rating">
+                <Menu.Item key="Rating">
+                  <p className="flex items-center">
+                    <IoIosArrowRoundUp className="text-2xl" />
+                    Lower-To-Higher
+                  </p>
+                </Menu.Item>
+                <Menu.Item key="-Rating">
+                  <p className="flex items-center">
+                    <IoIosArrowRoundDown className="text-2xl" />
+                    Higher-To-Lower
+                  </p>
+                </Menu.Item>
               </Menu.SubMenu>
             </Menu.SubMenu>
           </Menu>
 
-          <div className='flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 p-4'>
-            {isLoading ? renderSkeletons() : (
-              courses.map((course) => (
-                <Link to={`/course/${course._id}`} key={course._id} className='flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg transition transform hover:scale-105'>
-                  <img alt={course.Title} src={course.Poster} className='h-48 w-full object-cover rounded-t-lg' loading='lazy' />
-                  <div className='mt-2'>
-                    <h2 className='text-lg font-semibold text-white'>{course.Title}</h2>
-                    <div className='flex items-center mt-1'>
-                      <Rate disabled allowHalf defaultValue={course.Rating} className='mr-2' />
-                      <span className='text-red-400'>{course.Rating}</span>
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 p-4">
+            {isLoading
+              ? renderSkeletons()
+              : courses.map((course) => (
+                  <Link
+                    to={`/course/${course._id}`}
+                    key={course._id}
+                    className="flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg transition transform hover:scale-105"
+                  >
+                    <img
+                      alt={course.Title}
+                      src={course.Poster}
+                      className="h-48 w-full object-cover rounded-t-lg"
+                      loading="lazy"
+                    />
+                    <div className="mt-2">
+                      <h2 className="text-lg font-semibold text-white">
+                        {course.Title}
+                      </h2>
+                      <div className="flex items-center mt-1">
+                        <Rate
+                          disabled
+                          allowHalf
+                          defaultValue={course.Rating}
+                          className="mr-2"
+                        />
+                        <span className="text-red-400">{course.Rating}</span>
+                      </div>
+                      <p className="text-sm text-red-300 bg-gradient-to-r from-green-200 to-purple-300 text-transparent bg-clip-text">
+                        {course.bought} people bought
+                      </p>
                     </div>
-                    <p className='text-sm text-red-300 bg-gradient-to-r from-green-200 to-purple-300 text-transparent bg-clip-text'>{course.bought} people bought</p>
-                  </div>
-                  <button className='mt-4 text-white bg-purple-500 flex items-center justify-center text-xs font-medium rounded-lg px-5 py-2.5 transition duration-300 hover:bg-purple-600'>
-                    {course.Price - 0.01} Birrs only
-                  </button>
-                </Link>
-              ))
-            )}
+                    <button className="mt-4 text-white bg-purple-500 flex items-center justify-center text-xs font-medium rounded-lg px-5 py-2.5 transition duration-300 hover:bg-purple-600">
+                      {course.Price - 0.01} Birrs only
+                    </button>
+                  </Link>
+                ))}
           </div>
-          <div className='flex justify-center mt-6'>
-            <Pagination count={3} color='secondary' page={page} shape='rounded' className='m-3 w-72 text-white bg-white/30 rounded-lg backdrop-blur-2xl' onChange={(e, i) => {
-              setPage(i);
-              // setRefetcher(true);
-            }} />
+          <div className="flex justify-center mt-6">
+            <Pagination
+              count={3}
+              color="secondary"
+              page={page}
+              shape="rounded"
+              className="m-3 w-72 text-white bg-white/30 rounded-lg backdrop-blur-2xl"
+              onChange={(e, i) => {
+                setPage(i);
+                // setRefetcher(true);
+              }}
+            />
           </div>
           <Footer />
         </div>
       ) : (
-        <div className='h-screen flex items-center justify-center'>
-          <img src={errorPic} alt='Error' className='w-80 h-80 object-contain' />
+        <div className="h-screen flex items-center justify-center">
+          <img src={errorPic} alt="Error" className="w-80 h-80 object-contain" />
         </div>
       )}
     </div>
@@ -364,4 +441,3 @@ const PopularCourses = () => {
 };
 
 export default PopularCourses;
-
