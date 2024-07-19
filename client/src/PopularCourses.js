@@ -259,7 +259,7 @@ import errorPic from './error.avif';
 
 const PopularCourses = () => {
   const {
-    courses, text, setCourses, page, setPage, isLoading, setIsLoading, setRefetcher, sort, setSort, setUser, setMenu
+    courses, text, setCourses, page, setPage, isLoading, setIsLoading,sort, setSort, setUser, setMenu
   } = useContext(AppContext);
   const [error, setError] = useState(false);
 
@@ -364,3 +364,4 @@ const PopularCourses = () => {
 };
 
 export default PopularCourses;
+
