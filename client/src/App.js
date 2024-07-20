@@ -18,6 +18,7 @@ import SubfolderList from './SubfolderList';
 import ResetPassword from './ResetPassword';
 import VerifyEmail from './VerifyEmail';
 import ContactUs from './ContactUs';
+import NotFound from './not';
 
 
 export const AppContext = createContext();
@@ -61,7 +62,7 @@ function App() {
               <Route path='/resetPassword/:resetToken' element={<ResetPassword/>}/>  
               <Route path='verifyEmail/:newID' element={<VerifyEmail/>} />  <Route path='/contact-us'  element={<ContactUs/>}/> 
               
-              <Route path='*' element={<Home/>}/>
+              <Route path='*' element={<NotFound/>}/>
                   </Routes>
                    
               </Router>
