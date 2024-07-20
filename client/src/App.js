@@ -59,7 +59,10 @@ function App() {
               <Route path='/pay/:courseID/:userID' element={<Payment/>}/>
               <Route path='dashboard' element={<Dashboard/>}/>   
               <Route path='/resetPassword/:resetToken' element={<ResetPassword/>}/>  
-              <Route path='verifyEmail/:newID' element={<VerifyEmail/>} />  <Route path='/contact-us'  element={<ContactUs/>}/>     </Routes>
+              <Route path='verifyEmail/:newID' element={<VerifyEmail/>} />  <Route path='/contact-us'  element={<ContactUs/>}/> 
+              
+              <Route path='*' element={<Home/>}/>
+                  </Routes>
                    
               </Router>
         </AppContext.Provider>
