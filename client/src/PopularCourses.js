@@ -300,7 +300,7 @@ const PopularCourses = () => {
   };
 
   const renderSkeletons = () => {
-    return Array.from({ length: 10 }).map((_, i) => (
+    return Array.from({ length: 8 }).map((_, i) => (
       <div
         key={i}
         className="flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg animate-pulse"
