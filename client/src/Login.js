@@ -65,11 +65,7 @@ const Login = () => {
   return (
     <>
       <div className="flex flex-col md:flex-row min-h-screen bg-gray-900">
-        <section className="logo w-full md:w-1/3 flex items-center justify-center h-40 md:h-full bg-gradient-to-r from-gray-800 to-gray-900 login-section">
-          <div className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-indigo-400 to-blue-800 text-transparent bg-clip-text">
-            CodeET
-          </div>
-        </section>
+        
         <div className="w-full flex justify-center items-center px-4 py-8">
           <form onSubmit={handleSubmit(submitData)} className="max-w-md w-full bg-gray-800 p-8 rounded-lg shadow-md">
             <h1 className="text-2xl text-gray-100 pb-4 font-bold text-center">Log In</h1>
