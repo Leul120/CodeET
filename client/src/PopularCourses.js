@@ -385,7 +385,7 @@ const PopularCourses = () => {
                   <Link
                     to={`/course/${course._id}`}
                     key={course._id}
-                    className="flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg transition transform hover:scale-105"
+                    className="flex flex-col bg-gray-800 p-4 rounded-lg shadow-lg transition transform hover:scale-105 justify-between"
                   >
                     <img
                       alt={course.Title}
