@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -52,17 +51,25 @@ const Dashboard = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <div key={i} className="p-2">
         <Skeleton
-          className="h-48 w-full rounded-xl"
+          height={192}
+          width="100%"
+          borderRadius="0.75rem"
           baseColor="#303030"
           highlightColor="#525252"
         />
         <Skeleton
-          className="h-6 w-3/4 mt-2 rounded-lg"
+          height={24}
+          width="75%"
+          borderRadius="0.5rem"
+          className="mt-2"
           baseColor="#303030"
           highlightColor="#525252"
         />
         <Skeleton
-          className="h-6 w-1/2 mt-2 rounded-lg"
+          height={24}
+          width="50%"
+          borderRadius="0.5rem"
+          className="mt-2"
           baseColor="#303030"
           highlightColor="#525252"
         />
@@ -85,7 +92,7 @@ const Dashboard = () => {
             className="h-48 w-full rounded-xl object-cover mb-4"
             loading="lazy"
           />
-          <p className="text-white font-bold text-lg overflow-hidden truncate w-full">
+          <p className="text-white font-bold text-lg text-wrap truncate w-full">
             {course.Title}
           </p>
           <p className="text-white text-sm">Released: {date}</p>
@@ -132,3 +139,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
