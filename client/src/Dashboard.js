@@ -1,193 +1,4 @@
-// import axios from 'axios'
-// import React, { useContext, useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
-// import { LoadingOutlined } from '@ant-design/icons';
-// import { AppContext } from './App';
-// import './popular.css'
-// import 'react-loading-skeleton/dist/skeleton.css'
-// import Skeleton from 'react-loading-skeleton'
-// import errorPic from './error.avif'
-// const Dashboard = () => {
-//     const {setUser,isLoading,setIsLoading,setMenu}=useContext(AppContext)
-//     const [error,setError]=useState(false)
-//     let [course,setCourse]=useState([])
-//     const storedUser=JSON.parse(window.localStorage.getItem('user'))
-//     const userID=storedUser?._id
-//     let token= atob(window.localStorage.getItem('token'))
-//     useEffect(() => {
-//       setMenu('Dashboard')
-//         setUser(JSON.parse(window.localStorage.getItem('user')));
-//       }, [setUser]);
 
-
-
-
-// useEffect(() => {
-//     const fetchCourses = async () => {
-//       try{
-//          setIsLoading(true)
-//           const res = await axios.get(`${process.env.REACT_APP_URL}/api/dashboard/${userID}`, {
-//             headers: {
-//               Authorization: `Bearer ${token}`,
-//             },
-//           });
-//           setCourse(res.data.courses);
-//         setIsLoading(false);
-//         setError(false)
-//       }catch(error){
-//         setIsLoading(false)
-//         setError(true)
-//       }
-//       }
-  
-//     fetchCourses();
-//   }, []);
-  
-//   return (
-//     <div >
-//     {!error&&(<>
-//         {storedUser?(<div className='flex dashboard '>
-//         <div className='pt-24 h-screen '  ><h1 className='text-white'> </h1>
-//         <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-//         {isLoading?(<>{(() => {
-//         const components = [];
-//         for (let i = 0; i <10; i++) {
-//           components.push(<div key={i}><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#4a4f4b' className='h-48 bg-white'/>
-//     <Skeleton className='h-5' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
-//     <div className='max-w-56'>
-//     <Skeleton className='h-4 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/></div><div className='max-w-44 '>
-//     <Skeleton className='h-4 w-32' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
-//     </div>
-//     <div className='h-8'>
-//     <Skeleton className='h-8 ' baseColor='#2a2b2a' borderRadius='1rem' highlightColor='#4a4f4b'/>
-//     </div>
-//     </div>);
-//         }
-//         return components;
-//       })()}
-//       </>):(<>{ 
-//            course?.map((course)=>{
-//             const date= course?.Released.slice(0,4)
-//             return(
-//                 <Link to={`/course/${course?._id}`} className='flex flex-col pb-5 justify-between backdrop-blur-md bg-white/20 rounded-xl ml-2'><div><img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-40 xs:w-96 rounded-xl ' loading='lazy'/>
-//                 <p className='text-slate-100 h-5 text-wrap mr-1 font-bold pt-1 pb-1 text-sm overflow-hidden ' key={Math.random()}>{course.Title}</p>
-//                 <p className='text-slate-100 text-sm' key={Math.random()}>Released: {date} </p>
-//                 <p className='text-slate-200 text-sm' key={Math.random()}>Rating: {course.Rating}</p>
-//                 </div></Link>
-//                 )
-//             })   
-//         }</>)}
-//         </div></div></div>):(<h1 className='text-slate-400 text-center'>You Haven't Logged In </h1>)}
-//         </>)}
-//         {error && (<div className='h-screen '><img src={errorPic}/></div>)}
-//     </div>
-//   )
-// }
-
-// export default Dashboard
-
-// import axios from 'axios';
-// import React, { useContext, useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { LoadingOutlined } from '@ant-design/icons';
-// import { AppContext } from './App';
-// import './popular.css';
-// import 'react-loading-skeleton/dist/skeleton.css';
-// import Skeleton from 'react-loading-skeleton';
-// import errorPic from './error.avif';
-// const Dashboard = () => {
-//     const { setUser, isLoading, setIsLoading, setMenu } = useContext(AppContext);
-//     const [error, setError] = useState(false);
-//     const [courses, setCourses] = useState([]);
-//     const storedUser = JSON.parse(window.localStorage.getItem('user'));
-//     const userID = storedUser?._id;
-//     const token = atob(window.localStorage.getItem('token'));
-//     useEffect(()=>{setMenu('Dashboard')},[])
-//     useEffect(() => {
-        
-//         setUser(storedUser);
-//     }, [ setUser, storedUser]);
-//     useEffect(() => {
-//         const fetchCourses = async () => {
-//             setIsLoading(true);
-//             try {
-//                 const res = await axios.get(`${process.env.REACT_APP_URL}/api/dashboard/${userID}`, {
-//                     headers: {
-//                         Authorization: `Bearer ${token}`,
-//                     },
-//                 });
-//                 setCourses(res.data.courses);
-//                 setError(false);
-//             } catch (err) {
-//                 setError(true);
-//             } finally {
-//                 setIsLoading(false);
-//             }
-//         };
-//         fetchCourses();
-//     }, [userID, token, setIsLoading]);
-//     const renderSkeletons = () => {
-//         const skeletons = Array.from({ length: 10 }, (_, i) => (
-//             <div key={i} className='pb-5 pl-2'>
-//                 <div className='w-60'><Skeleton baseColor='#cfd4d1' borderRadius='0.7rem' highlightColor='#ebf0ec' className='h-48 w-64 bg-white'/></div>
-//                 <Skeleton className='h-5' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
-//                 <div className=' w-48'>
-//                     <Skeleton className='h-4' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
-//                 </div>
-//                 <div className='max-w-44'>
-//                     <Skeleton className='h-4 w-32' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
-//                 </div>
-//                 <div className='h-8'>
-//                     <Skeleton className='h-8' baseColor='#cfd4d1' borderRadius='1rem' highlightColor='#ebf0ec'/>
-//                 </div>
-//             </div>
-//         ));
-//         return skeletons;
-//     };
-//     const renderCourses = () => {
-//         return courses.map(course => {
-//             const date = course.Released.slice(0, 4);
-//             return (
-//                 <Link to={`/course/${course._id}`} key={course._id} className='flex flex-col pb-5 justify-between backdrop-blur-md bg-white/20 rounded-xl ml-2'>
-//                     <div>
-//                         <img alt={course.Title} src={course.Poster} className='h-24 shadow-md hover:shadow-border hover:size-2xl xs:h-48 w-40 xs:w-96 rounded-xl' loading='lazy'/>
-//                         <p className='text-slate-100 h-5 text-wrap mr-1 font-bold pt-1 pb-1 text-sm overflow-hidden'>{course.Title}</p>
-//                         <p className='text-slate-100 text-sm'>Released: {date}</p>
-//                         <p className='text-slate-200 text-sm'>Rating: {course.Rating}</p>
-//                     </div>
-//                 </Link>
-//             );
-//         });
-//     };
-//     return (
-//         <div>
-//             {!error ? (
-//                 <div className='min-h-screen h-full'>
-//                     {storedUser ? (
-//                         <div className='flex min-h-screen dashboard'>
-                            
-//                             <div className='pt-24 min-h-screen h-full'>
-//                                 <h1 className='text-white pl-4 text-2xl font-bold pb-4'>Bought Courses</h1>
-//                                 <div className='grid grid-cols-1 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-//                                     {isLoading ? renderSkeletons() : renderCourses()}
-//                                 </div>
-                               
-//                             </div>
-                        
-//                         </div>
-//                     ) : (
-//                         <h1 className='text-slate-400 text-center pt-16'>You Haven't Logged In</h1>
-//                     )}
-//                 </div>
-//             ) : (
-//                 <div className='h-screen'>
-//                     <img src={errorPic} alt="Error" />
-//                 </div>
-//             )}
-//         </div>
-//     )
-// };
-// export default Dashboard;
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -199,88 +10,125 @@ import errorPic from './error.avif';
 import { LoadingOutlined } from '@ant-design/icons';
 
 const Dashboard = () => {
-    const { setUser, isLoading, setIsLoading, setMenu } = useContext(AppContext);
-    const [error, setError] = useState(false);
-    const [courses, setCourses] = useState([]);
-    const storedUser = JSON.parse(window.localStorage.getItem('user'));
-    const userID = storedUser?._id;
-    const token = atob(window.localStorage.getItem('token'));
+  const { setUser, isLoading, setIsLoading, setMenu } = useContext(AppContext);
+  const [error, setError] = useState(false);
+  const [courses, setCourses] = useState([]);
+  const storedUser = JSON.parse(window.localStorage.getItem('user'));
+  const userID = storedUser?._id;
+  const token = atob(window.localStorage.getItem('token'));
 
-    useEffect(() => {
-        setMenu('Dashboard');
-    }, [setMenu]);
+  useEffect(() => {
+    setMenu('Dashboard');
+  }, [setMenu]);
 
-    useEffect(() => {
-        setUser(storedUser);
-    }, [setUser, storedUser]);
+  useEffect(() => {
+    setUser(storedUser);
+  }, [setUser, storedUser]);
 
-    useEffect(() => {
-        const fetchCourses = async () => {
-            setIsLoading(true);
-            try {
-                const res = await axios.get(`${process.env.REACT_APP_URL}/api/dashboard/${userID}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                setCourses(res.data.courses);
-                setError(false);
-            } catch (err) {
-                setError(true);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchCourses();
-    }, [userID, token, setIsLoading]);
+  useEffect(() => {
+    const fetchCourses = async () => {
+      setIsLoading(true);
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_URL}/api/dashboard/${userID}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setCourses(res.data.courses);
+        setError(false);
+      } catch (err) {
+        setError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchCourses();
+  }, [userID, token, setIsLoading]);
 
-    const renderSkeletons = () => {
-        return Array.from({ length: 1 }, (_, i) => (
-            <div key={i} className="p-2">
-                <Skeleton height={300} width={350} baseColor="#cfd4d1" borderRadius="1rem" highlightColor="#ebf0ec" />
-                {/* <Skeleton height={20} width={300} baseColor="#cfd4d1" borderRadius="1rem" highlightColor="#ebf0ec" />
-                <Skeleton height={20} width={250} baseColor="#cfd4d1" borderRadius="1rem" highlightColor="#ebf0ec" />
-                <Skeleton height={20} width={200} baseColor="#cfd4d1" borderRadius="1rem" highlightColor="#ebf0ec" /> */}
+  const renderSkeletons = () => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <div key={i} className="p-2">
+        <Skeleton
+          className="h-48 w-full rounded-xl"
+          baseColor="#303030"
+          highlightColor="#525252"
+        />
+        <Skeleton
+          className="h-6 w-3/4 mt-2 rounded-lg"
+          baseColor="#303030"
+          highlightColor="#525252"
+        />
+        <Skeleton
+          className="h-6 w-1/2 mt-2 rounded-lg"
+          baseColor="#303030"
+          highlightColor="#525252"
+        />
+      </div>
+    ));
+  };
+
+  const renderCourses = () => {
+    return courses.map((course) => {
+      const date = course.Released.slice(0, 4);
+      return (
+        <Link
+          to={`/course/${course._id}`}
+          key={course._id}
+          className="flex flex-col items-start p-4 backdrop-blur-md bg-white/20 rounded-xl transition transform hover:scale-105 hover:shadow-lg"
+        >
+          <img
+            alt={course.Title}
+            src={course.Poster}
+            className="h-48 w-full rounded-xl object-cover mb-4"
+            loading="lazy"
+          />
+          <p className="text-white font-bold text-lg overflow-hidden truncate w-full">
+            {course.Title}
+          </p>
+          <p className="text-white text-sm">Released: {date}</p>
+          <p className="text-white text-sm">Rating: {course.Rating}</p>
+        </Link>
+      );
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-900 p-8 pt-16">
+      {!error ? (
+        <div className="min-h-screen">
+          {storedUser ? (
+            <div className="flex flex-col items-center min-h-screen">
+              <h1 className="text-white text-4xl font-bold mb-8">
+                Bought Courses
+              </h1>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                {isLoading ? (
+                  renderSkeletons()
+                ) : courses.length > 0 ? (
+                  renderCourses()
+                ) : (
+                  <p className="text-white text-lg col-span-full text-center">
+                    No courses bought yet.
+                  </p>
+                )}
+              </div>
             </div>
-        ));
-    };
-
-    const renderCourses = () => {
-        return courses.map(course => {
-            const date = course.Released.slice(0, 4);
-            return (
-                <Link to={`/course/${course._id}`} key={course._id} className="flex flex-col items-start p-4 backdrop-blur-md bg-white/20 rounded-xl transition transform hover:scale-105 hover:shadow-lg">
-                    <img alt={course.Title} src={course.Poster} className="h-48 w-96 rounded-xl object-cover mb-4" loading="lazy" />
-                    <p className="text-white font-bold text-lg overflow-hidden text-wrap truncate w-full">{course.Title}</p>
-                    <p className="text-white text-sm">Released: {date}</p>
-                    <p className="text-white text-sm">Rating: {course.Rating}</p>
-                </Link>
-            );
-        });
-    };
-
-    return (
-        <div className="min-h-screen bg-gray-900 p-8 pt-16">
-            {!error ? (
-                <div className="min-h-screen">
-                    {storedUser ? (
-                        <div className="flex flex-col items-center min-h-screen">
-                            <h1 className="text-white text-4xl font-bold mb-8">Bought Courses</h1>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-                                {isLoading ? renderSkeletons() : renderCourses()}
-                            </div>
-                        </div>
-                    ) : (
-                        <h1 className="text-gray-400 text-center text-2xl mt-16">You Haven't Logged In</h1>
-                    )}
-                </div>
-            ) : (
-                <div className="h-screen flex items-center justify-center">
-                    <img src={errorPic} alt="Error" className="w-1/2 h-auto" />
-                </div>
-            )}
+          ) : (
+            <h1 className="text-gray-400 text-center text-2xl mt-16">
+              You Haven't Logged In
+            </h1>
+          )}
         </div>
-    );
+      ) : (
+        <div className="h-screen flex items-center justify-center">
+          <img src={errorPic} alt="Error" className="w-1/2 h-auto" />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Dashboard;
