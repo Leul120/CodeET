@@ -422,7 +422,7 @@ const PopularCourses = () => {
               color="secondary"
               page={page}
               shape="rounded"
-              className="m-3 w-72 text-white bg-white/30 rounded-lg backdrop-blur-2xl"
+              className="m-3 w-48 text-white bg-white/10 rounded-lg backdrop-blur-2xl"
               onChange={(e, i) => {
                 setPage(i);
                 // setRefetcher(true);
