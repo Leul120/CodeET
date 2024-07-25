@@ -282,17 +282,23 @@ const PopularCourses = () => {
     fetchCourses(page, text, sort)
       .then((fetchedCourses) => {
         if (fetchedCourses) {
+          // Set fetched courses to state
           setCourses(fetchedCourses);
           setIsLoading(false);
           setError(false);
+        } else {
+          // Handle case when fetchedCourses is null or undefined
+          setCourses([]);
+          setIsLoading(false);
+          setError(true);
         }
       })
       .catch((err) => {
-        console.error(err);
+        console.error('Error fetching courses:', err);
         setError(true);
         setIsLoading(false);
       });
-  }, [text, page, sort]);
+  }, [text, page, sort, setCourses, setIsLoading, setMenu, setUser]);
 
   const onChange = (e) => {
     setSort(e.key);
@@ -425,7 +431,6 @@ const PopularCourses = () => {
               className="m-3 w-48 text-white bg-white/10 rounded-lg backdrop-blur-2xl"
               onChange={(e, i) => {
                 setPage(i);
-                // setRefetcher(true);
               }}
             />
           </div>
@@ -441,3 +446,4 @@ const PopularCourses = () => {
 };
 
 export default PopularCourses;
+
