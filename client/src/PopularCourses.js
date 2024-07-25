@@ -383,10 +383,10 @@ const PopularCourses = () => {
               </Menu.SubMenu>
             </Menu.SubMenu>
           </Menu>
-
+{courses.length===0 && !isLoading? (<h1 className='text-stone-200 text-center'>No course with name:{text}</h1>):(
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 p-4">
             {isLoading
-              ? courses.length===0 && !isLoading? (<h1 className='text-stone-200'>No course with name:{text}</h1>): renderSkeletons()
+              ?  renderSkeletons()
               : courses.map((course) => (
                   <Link
                     to={`/course/${course._id}`}
@@ -422,6 +422,7 @@ const PopularCourses = () => {
                   </Link>
                 ))}
           </div>
+      )}
           <div className="flex justify-center mt-6">
             <Pagination
               count={3}
