@@ -383,7 +383,7 @@ const PopularCourses = () => {
               </Menu.SubMenu>
             </Menu.SubMenu>
           </Menu>
-{courses.length===0 && !isLoading? (<h1 className='text-stone-200 text-center'>No course with name:{text}</h1>):(
+{courses.length===0 && !isLoading? (<h1 className='text-stone-200 text-center text-2xl'>No course with name:<strong>{text}</strong></h1>):(
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 p-4">
             {isLoading
               ?  renderSkeletons()
