@@ -8,6 +8,7 @@ import axios from 'axios';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Skeleton from 'react-loading-skeleton';
 import errorPic from './error.avif';
+import { Alert } from 'antd';
 
 const SingleCourse = () => {
   const {
@@ -24,7 +25,7 @@ const SingleCourse = () => {
   const [error, setError] = useState(false);
   const [read, setRead] = useState(false);
   const { courseID } = useParams();
-
+  
   useEffect(() => {
     setMenu('');
     findUser();
@@ -87,6 +88,7 @@ const SingleCourse = () => {
             </div>
           ) : (
             <div className="h-80 rounded-xl pt-16 inline-block">
+            <Alert message="Please Refresh the page once again if you've bought this course and the Enroll button is not changed to Go to course button!" type="info" closable  />
               <img
                 alt={course?.Title}
                 src={course?.Poster}
