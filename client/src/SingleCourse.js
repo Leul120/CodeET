@@ -77,7 +77,7 @@ const SingleCourse = () => {
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center pt-32 py-10">
       {!error && (
         <div className="flex flex-col md:flex-row md:items-start items-center w-full max-w-7xl">
-        <Alert message="Please Refresh the page once again if you've bought this course and the Enroll button is not changed to Go to course button!" type="info" closable showIcon className={`m-2 ${user?"":"hidden"}`}   />
+        <Alert message="Please Refresh the page once again if you've bought this course and the Enroll button is not changed to Go to course button!" type="info" closable showIcon className={`m-2 `}   />
           {isLoading ? (
             <div className="w-80 pt-16">
               <Skeleton
