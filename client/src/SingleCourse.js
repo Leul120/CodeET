@@ -88,7 +88,7 @@ const SingleCourse = () => {
             </div>
           ) : (
             <div className="h-80 rounded-xl pt-16 inline-block">
-            <Alert message="Please Refresh the page once again if you've bought this course and the Enroll button is not changed to Go to course button!" type="info" closable  />
+            <Alert message="Please Refresh the page once again if you've bought this course and the Enroll button is not changed to Go to course button!" type="info" closable showIcon className='m-2 '  />
               <img
                 alt={course?.Title}
                 src={course?.Poster}
@@ -99,9 +99,9 @@ const SingleCourse = () => {
 
           <div className="flex flex-col md:ml-6 mt-6 md:mt-0 w-full">
             {isLoading ? (
-              <div className="w-96">
+              <div className="w-32">
                 <Skeleton
-                  className="h-8 mb-4 rounded-lg"
+                  className="h-8 mb-4 ml-5 rounded-lg"
                   baseColor="#303030"
                   highlightColor="#525252"
                 />
