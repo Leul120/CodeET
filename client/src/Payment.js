@@ -166,7 +166,7 @@ const Payment = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (!user ) {
-      navigate('/');
+      navigate(-1);
     }
   }, [user,  navigate]);
   const paymentSchema = yup.object().shape({
