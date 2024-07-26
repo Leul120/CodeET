@@ -152,18 +152,23 @@
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { LoadingOutlined } from '@ant-design/icons';
 import { AppContext } from './App';
+import { Alert } from 'antd';
 
 const Payment = () => {
   const navigate = useNavigate();
   const { course, user } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
-
+  useEffect(() => {
+    if (!user ) {
+      navigate('/');
+    }
+  }, [user,  navigate]);
   const paymentSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),
     last_name: yup.string().required('Last name is required'),
@@ -191,6 +196,7 @@ const Payment = () => {
 
   return (
     <div className="flex justify-center items-center bg-gray-900 min-h-screen pb-24">
+    <Alert type='info' message="Please make sure to enable the popup window setting of your browser!" showIcon closable/>
       <form onSubmit={handleSubmit(paymentData)} className="flex flex-col justify-center bg-gray-800 rounded-xl p-8 mt-10 items-center gap-5 shadow-lg max-w-md w-full">
         <h1 className="text-2xl font-bold text-gray-100 mb-4">Buy Course</h1>
         
