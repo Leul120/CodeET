@@ -17,7 +17,7 @@ class ApiFeatures{
         const sortBy=this.queryString.sort.split(',').join(' ')
         this.query=this.query.sort(sortBy)
       }else{
-        this.query=this.query.sort('-Released')
+        this.query=this.query.sort('Released')
       }
       return this
     }
