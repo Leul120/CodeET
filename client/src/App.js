@@ -36,7 +36,7 @@ function App() {
   const [enrolled, setEnrolled] = useState(false);
   const [course, setCourse] = useState({});
   const [isLoading,setIsLoading]=useState(true)
-  const [sort,setSort]=useState("-Released")
+  const [sort,setSort]=useState("Released")
   const [menu,setMenu]=useState('Home')
   const [email,setEmail]=useState("")
   const [newID,setNewID]=useState("")
