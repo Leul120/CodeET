@@ -196,7 +196,7 @@ const Payment = () => {
 
   return (
     <div className="flex justify-center items-center bg-gray-900 min-h-screen pb-24">
-    <Alert type='info' message="Please make sure to enable the popup window setting of your browser!" showIcon closable className="absolute top-16"/>
+    <Alert type='info' message="Please make sure that you've enabled the pop-up window setting of your browser!" showIcon closable className="absolute top-16"/>
       <form onSubmit={handleSubmit(paymentData)} className="flex flex-col justify-center bg-gray-800 rounded-xl p-8 mt-10 items-center gap-5 shadow-lg max-w-md w-full">
         <h1 className="text-2xl font-bold text-gray-100 mb-4">Buy Course</h1>
         
