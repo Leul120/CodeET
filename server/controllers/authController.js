@@ -252,10 +252,11 @@ exports.contactUs=catchAsync(async (req,res)=>{
   let mailOptions = {
     from: req.body.email,
     to: "leulmelkamu15@gmail.com", // List of recipients
-    subject: 'Reset Your Password', // Subject line
+    subject: '', // Subject line
     text: 'Greetings from the team.', // Plain text body
     html: `
-        <p>Email from ${req.body.firstName} ${req.body.lastName}</p>
+    
+        <p>Email from ${req.body.firstName} ${req.body.lastName} by email: ${req.body.email}</p>
         you can contact the user with ${req.body.phoneNumber}
         <p>
           ${req.body.description}
