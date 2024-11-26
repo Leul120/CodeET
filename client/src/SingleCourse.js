@@ -208,7 +208,7 @@ const SingleCourse = () => {
             </div>
             {!isLoading && (
               <button
-                className="mt-4 pl-5 flex items-center p-2 rounded-lg text-stone-200 hover:bg-white/20 transition duration-300"
+                className="mt-4 w-32 pl-5 flex items-center p-2 rounded-lg text-stone-200 hover:bg-white/20 transition duration-300"
                 onClick={() => setRead(!read)}
               >
                 {!read ? 'Read More' : 'Show Less'}
