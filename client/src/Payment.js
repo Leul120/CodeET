@@ -184,6 +184,7 @@ const Payment = () => {
 
   const paymentData = async (data) => {
     setLoading(true);
+    console.log(data)
     try {
       const response = await axios.post(`${process.env.REACT_APP_URL}/api/pay/${courseID}/${userID}`, data);
       setLoading(false);
